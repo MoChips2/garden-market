@@ -7,7 +7,7 @@ import SearchResult from "./pages/SearchResult";
 import Market from "./pages/Market";
 import NewMarket from "./pages/NewMarket";
 import NoMatch from "./pages/NoMatch";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navbar";
 
 class App extends Component {
   render() {
