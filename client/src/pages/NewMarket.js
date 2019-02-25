@@ -25,7 +25,7 @@ class NewMarket extends Component {
         const roles = this.state.roles
         let index
         if (e.target.checked) {
-            roles.push(+e.target.value)
+            roles.push(e.target.value)
         } else {
             index = roles.indexOf(+e.target.value)
             roles.splice(index, 1)
@@ -47,7 +47,6 @@ class NewMarket extends Component {
                 city: this.state.city,
                 zip: this.state.zip,
                 about: this.state.about
-                // roles: this.state.roles
 
             })
         }
@@ -93,10 +92,12 @@ class NewMarket extends Component {
                                     </div>
                                     <div className="form-group col-md-2">
                                         <label>State</label>
-                                        <select name="state" className="form-control">
+                                        <select name="state" className="form-control" value={this.state.state} onChange={this.handleInputChange}>
                                             <option>Choose...</option>
-                                            <option>MN</option>
-                                            <option>WI</option>
+                                            <option value={this.state.state}>MN</option>
+                                            <option value={this.state.state}>WI</option>
+                                            <option value={this.state.state}>MI</option>
+
                                         </select>
                                     </div>
                                     <div className="form-group col-md-2">
