@@ -6,7 +6,7 @@ export default {
         return axios.get(query)
     },
 
-    save: function(marketData) {
+    saveMarket: function(marketData) {
         
         return axios.post("/api/markets", marketData);
 
@@ -18,7 +18,7 @@ export default {
     },
 
     getOneMarket: function(id) {
-        
+
         return axios.get("/api/maket/" + id)
     }
 

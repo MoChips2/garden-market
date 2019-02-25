@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+// import API from "../utils/API";
 
 class NewMarket extends Component {
     state = {
@@ -37,6 +38,16 @@ class NewMarket extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         if (this.state.marketName && this.state.name && this.state.email) {
+            // API.saveMarket({
+            //     marketName: this.state.marketName,
+            //     name: this.state.name,
+            //     email: this.state.email,
+            //     roles: this.state.roles,
+            //     state: this.state.state,
+            //     city: this.state.city,
+            //     zip: this.state.zip,
+            //     about: this.state.about
+            // })
             console.log("worked!")
             console.log({
                 marketName: this.state.marketName,
