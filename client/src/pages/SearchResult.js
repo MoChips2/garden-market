@@ -1,14 +1,65 @@
-import React from "react";
+import React, { Component } from "react";
+// import API from "../utils/API";
+import MarketContainer from "../components/MarketContainer";
 
-function SearchResult() {
+class SearchResult extends Component {
+    state = {
+        markets: [],
+        marketName: "",
+        name: "",
+        address: "",
+        city: "",
+        state: "",
+        zip: "",
+        about: "",
+        roles: []
+    };
 
-    return (
-        <div>
-            <h1>This is our Search Page</h1>
-            <p>Results will render down here.</p>
-        </div>
+    // componentDidMount() {
+    //     this.loadMarkets();
+    // };
 
-    )
+    // loadMarkets = () => {
+    //     API.getMarkets()
+    //         .then(res =>
+    //             this.setState({
+    //                 markets: res.data,
+    //                 marketName: "",
+    //                 name: "",
+    //                 address: "",
+    //                 city: "",
+    //                 state: "",
+    //                 zip: "",
+    //                 about: "",
+    //                 roles: []
+    //             }))
+    // }
+
+    render() {
+        return (
+            <div className="row">
+                <div className="col-md-9 mx-auto">
+                    <h1>This is our Search Page</h1>
+                    {this.state.markets.map(market => (
+                        <div className="row" key={market._id}>
+                            <div className="col-md-12 mx-auto">
+                                <MarketContainer
+                                    marketName={market.marketName}
+                                    name={market.name}
+                                    address={market.address}
+                                    city={market.city}
+                                    state={market.state}
+                                    zip={market.zip}
+                                    about={market.about}
+                                />
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div >
+
+        )
+    }
 }
 
 export default SearchResult;

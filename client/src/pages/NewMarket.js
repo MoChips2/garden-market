@@ -94,9 +94,9 @@ class NewMarket extends Component {
                                         <label>State</label>
                                         <select name="state" className="form-control" value={this.state.state} onChange={this.handleInputChange}>
                                             <option>Choose...</option>
-                                            <option value={this.state.state}>MN</option>
-                                            <option value={this.state.state}>WI</option>
-                                            <option value={this.state.state}>MI</option>
+                                            <option value="MN">MN</option>
+                                            <option value="WI">WI</option>
+                                            <option value="MI">MI</option>
 
                                         </select>
                                     </div>
