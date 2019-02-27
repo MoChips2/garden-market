@@ -3,6 +3,6 @@ const marketController = require("../../controllers/marketController");
 
 router.route("/")
 .get(marketController.findAll)
-// .post(marketController.create);
+.post(marketController.create);
 
 module.exports = router;

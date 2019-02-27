@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import API from "../utils/API";
+// import API from "../utils/API";
 import MarketContainer from "../components/MarketContainer";
 
 class Market extends Component {
@@ -7,7 +7,7 @@ class Market extends Component {
     state = {
         markets: [],
         marketName: "",
-        name: "",
+        organizer: "",
         address: "",
         city: "",
         state: "",
@@ -15,25 +15,25 @@ class Market extends Component {
         about: "",
         roles: []
     };
-    componentDidMount() {
-        this.loadOneMarket();
-    }
+    // componentDidMount() {
+    //     this.loadOneMarket();
+    // }
 
-    loadOneMarket = () => {
-        API.getOneMarket()
-            .then(res =>
-                this.setState({
-                    markets: res.data,
-                    marketName: "",
-                    name: "",
-                    address: "",
-                    city: "",
-                    state: "",
-                    zip: "",
-                    about: "",
-                    roles: []
-                }))
-    }
+    // loadOneMarket = () => {
+    //     API.getOneMarket()
+    //         .then(res =>
+    //             this.setState({
+    //                 markets: res.data,
+    //                 marketName: "",
+    //                 name: "",
+    //                 address: "",
+    //                 city: "",
+    //                 state: "",
+    //                 zip: "",
+    //                 about: "",
+    //                 roles: []
+    //             }))
+    // }
     render() {
 
         return (
