@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const marketController = require("../../controllers/marketController");
 
-router.route("/searchresults")
+router.route("/")
 .get(marketController.findAll)
-.post(marketController.create);
+// .post(marketController.create);
 
 module.exports = router;

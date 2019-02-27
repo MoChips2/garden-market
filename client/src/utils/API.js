@@ -19,7 +19,7 @@ export default {
 
     getOneMarket: function(id) {
         console.log(id)
-        return axios.get("/api/maket/" + id)
+        return axios.get("/api/market/" + id)
     }
 
 }

@@ -6,7 +6,7 @@ class SearchResult extends Component {
     state = {
         markets: [],
         marketName: "",
-        name: "",
+        organizer: "",
         address: "",
         city: "",
         state: "",
@@ -25,7 +25,7 @@ class SearchResult extends Component {
                 this.setState({
                     markets: res.data,
                     marketName: "",
-                    name: "",
+                    organizer: "",
                     address: "",
                     city: "",
                     state: "",
@@ -34,7 +34,7 @@ class SearchResult extends Component {
                     roles: []
                 }))
                 .catch(err => console.log(err));
-    }
+    };
 
     render() {
         return (
@@ -46,7 +46,7 @@ class SearchResult extends Component {
                             <div className="col-md-12 mx-auto">
                                 <MarketContainer
                                     marketName={market.marketName}
-                                    name={market.name}
+                                    organizer={market.organizer}
                                     address={market.address}
                                     city={market.city}
                                     state={market.state}
