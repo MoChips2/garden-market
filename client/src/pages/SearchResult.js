@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import API from "../utils/API";
+import API from "../utils/API";
 import MarketContainer from "../components/MarketContainer";
 
 class SearchResult extends Component {
@@ -15,25 +15,26 @@ class SearchResult extends Component {
         roles: []
     };
 
-    // componentDidMount() {
-    //     this.loadMarkets();
-    // };
+    componentDidMount() {
+        this.loadMarkets();
+    };
 
-    // loadMarkets = () => {
-    //     API.getMarkets()
-    //         .then(res =>
-    //             this.setState({
-    //                 markets: res.data,
-    //                 marketName: "",
-    //                 name: "",
-    //                 address: "",
-    //                 city: "",
-    //                 state: "",
-    //                 zip: "",
-    //                 about: "",
-    //                 roles: []
-    //             }))
-    // }
+    loadMarkets = () => {
+        API.getMarkets()
+            .then(res =>
+                this.setState({
+                    markets: res.data,
+                    marketName: "",
+                    name: "",
+                    address: "",
+                    city: "",
+                    state: "",
+                    zip: "",
+                    about: "",
+                    roles: []
+                }))
+                .catch(err => console.log(err));
+    }
 
     render() {
         return (

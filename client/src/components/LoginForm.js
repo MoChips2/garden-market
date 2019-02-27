@@ -8,11 +8,11 @@ function LoginForm() {
                 <div className="col-md-6 mx-auto">
                     <div className="form">
                         <div className="form-group">
-                            <label for="inputAddress">Username</label>
+                            <label>Username</label>
                             <input type="text" className="form-control" id="username" />
                         </div>
                         <div className="form-group">
-                            <label for="inputAddress">Password</label>
+                            <label>Password</label>
                             <input type="text" className="form-control" id="password" />
                         </div>
                         <button type="submit" className="btn btn-primary">Search</button>

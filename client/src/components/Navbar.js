@@ -21,6 +21,9 @@ function Navbar() {
                     <li className={window.location.pathname === "/login" ? "active" : ""}>
                         <Link className="nav-link" to="/login">Login</Link>
                     </li>
+                    <li className={window.location.pathname === "/searchresult" ? "active" : ""}>
+                        <Link className="nav-link" to="/searchresult">Search Result</Link>
+                    </li>
                     <li className={window.location.pathname === "/market" ? "active" : ""}>
                         <Link className="nav-link" to="/market">Market</Link>
                     </li>
