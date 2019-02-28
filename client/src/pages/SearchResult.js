@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "../utils/API";
-import MarketContainer from "../components/MarketContainer";
+import ResultContainer from "../components/ResultContainer";
 
 class SearchResult extends Component {
     state = {
@@ -40,11 +40,11 @@ class SearchResult extends Component {
         return (
             <div className="row">
                 <div className="col-md-9 mx-auto">
-                    <h1>This is our Search Page</h1>
+                    <h1>Search Results</h1>
                     {this.state.markets.map(market => (
                         <div className="row" key={market._id}>
                             <div className="col-md-12 mx-auto">
-                                <MarketContainer
+                                <ResultContainer
                                     marketName={market.marketName}
                                     organizer={market.organizer}
                                     address={market.address}

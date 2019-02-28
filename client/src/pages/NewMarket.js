@@ -4,13 +4,14 @@ import API from "../utils/API";
 class NewMarket extends Component {
     state = {
         marketName: "",
-        name: "",
+        organizer: "",
         email: "",
         address: "",
         city: "",
         state: "",
         zip: "",
         about: "",
+        img: "",
         roles: []
 
     };
@@ -37,27 +38,31 @@ class NewMarket extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        if (this.state.marketName && this.state.name && this.state.email) {
+        if (this.state.marketName && this.state.organizer && this.state.email) {
             API.saveMarket({
                 marketName: this.state.marketName,
-                organizer: this.state.name,
+                organizer: this.state.organizer,
                 email: this.state.email,
                 roles: this.state.roles,
+                address: this.state.address,
                 state: this.state.state,
                 city: this.state.city,
                 zip: this.state.zip,
-                about: this.state.about
+                about: this.state.about,
+                img: this.state.img
             })
             console.log("worked!")
             console.log({
                 marketName: this.state.marketName,
-                name: this.state.name,
+                organizer: this.state.organizer,
                 email: this.state.email,
                 roles: this.state.roles,
+                address: this.state.address,
                 state: this.state.state,
                 city: this.state.city,
                 zip: this.state.zip,
-                about: this.state.about
+                about: this.state.about,
+                img: this.state.img
 
             })
         }
@@ -80,7 +85,7 @@ class NewMarket extends Component {
                                 <div className="form-row">
                                     <div className="form-group col-md-12">
                                         <label>Organizer Name</label>
-                                        <input type="text" className="form-control" name="name" placeholder="Johnny Appleseed" value={this.state.name} onChange={this.handleInputChange} />
+                                        <input type="text" className="form-control" name="organizer" placeholder="Johnny Appleseed" value={this.state.organizer} onChange={this.handleInputChange} />
                                     </div>
                                 </div>
                                 <div className="form-row">
@@ -120,6 +125,12 @@ class NewMarket extends Component {
                                     <div className="form-group col-md-12">
                                         <label>Tell us about your market:</label>
                                         <textarea className="form-control" name="about" rows="3" value={this.state.about} onChange={this.handleInputChange}></textarea>
+                                    </div>
+                                </div>
+                                <div className="form-row">
+                                    <div className="form-group col-md-12">
+                                        <label>Link to an image of your garden or market:</label>
+                                        <input className="form-control" name="img" value={this.state.img} onChange={this.handleInputChange} />
                                     </div>
                                 </div>
                                 <div className="form-group">

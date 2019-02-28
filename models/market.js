@@ -10,7 +10,8 @@ const marketSchema = new Schema({
     state: String,
     zip: Number,
     about: String,
-    // organizer : String, // for now...
+    organizer : String, // for now...
+    img: String,
     // members : [Users],
     roles: []
 });

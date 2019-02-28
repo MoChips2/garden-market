@@ -8,7 +8,7 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// app.use(express.static("public"));
+app.use(express.static("public"));
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -25,7 +25,7 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/gardenmarket");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/gardenmarket", { useNewUrlParser: true });
 
 
 app.listen(PORT, () => {
