@@ -1,0 +1,26 @@
+body {
+    width: 100%;
+}
+
+.titleDiv {
+    background-color: #1fc509;
+    
+}
+
+.market-name {
+    color: white;
+    font-family: "Staatliches", Arial, Helvetica, sans-serif;
+    font-size: 12rem;
+    text-align: center;
+}
+
+img {
+    width: 600px;
+    margin-right: -20px;
+    margin-top: 50px;
+}
+
+.image {
+    text-align: center;
+}
+

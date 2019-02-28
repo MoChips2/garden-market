@@ -1,29 +1,36 @@
 import React from "react";
+import "./MarketContainer.css";
 
 function MarketContainer(props) {
 
-    return(
-        
-    <div className="card" key={props.id}>
-        <div className="card-body">
+
+
+    return (
+        <div>
             <div className="row">
-                <div className="col-md-9">
-                    <h1 className="card-title">Market Name: {props.marketName}</h1>
-                    <h3 className="card-subtitle mb-2 text-muted">Organizer: {props.name}</h3>
+                <div className="col-md-12 titleDiv" key={props.id}>
+                    <h1 className="market-name">{props.marketName}</h1>
+                </div>
+            </div>
+            <div className="row marketInfo">
+                <div className="col-md-6">
+                    <h3 className="organizer">{props.organizer}</h3>
                     <hr />
-                    <div className="row">
-                        <ul>
-                            <li>{props.address}</li>
-                            <li>{props.city}</li>
-                            <li>{props.state}</li>
-                            <li>{props.zip}</li>
-                        </ul>
-                        <p>{props.about}</p>
-                    </div>
+                    
+                        <h5 className="font-weight-lighter">{props.address}</h5>
+                        <h5 className="font-weight-lighter">{props.city + ", " + props.state + " " + props.zip}</h5>
+                    
+                    <p>{props.about}</p>
+                </div>
+                <div className="col-md-6 image">
+                    <img src={props.img} alt="garden" />
                 </div>
             </div>
         </div>
-    </div>
+
+
+
+
     )
 }
 

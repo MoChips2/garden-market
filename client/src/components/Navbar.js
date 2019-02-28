@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
     return (
+        
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <a className="navbar-brand" href="/home">Garden App</a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,6 +21,9 @@ function Navbar() {
                     </li>
                     <li className={window.location.pathname === "/login" ? "active" : ""}>
                         <Link className="nav-link" to="/login">Login</Link>
+                    </li>
+                    <li className={window.location.pathname === "/searchresult" ? "active" : ""}>
+                        <Link className="nav-link" to="/searchresult">Search Result</Link>
                     </li>
                     <li className={window.location.pathname === "/market" ? "active" : ""}>
                         <Link className="nav-link" to="/market">Market</Link>

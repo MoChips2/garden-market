@@ -1,20 +1,21 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const Users = require("./users.js")
+// const Users = require("./users.js")
 
 
-const market = new Schema({
-    marketName :{type : String ,required : true},
-    address:{type : String,required : true},
-    city :{type : String,required : true},
-    state: {type : String,required : true},
-    zip: {type : Number,required : true},
-    about: {type : String,required : true},
-    organizer : {Users}, // for now...
-    members : [Users],
-    roles: [String]
+const marketSchema = new Schema({
+    marketName: String,
+    address: String,
+    city: String,
+    state: String,
+    zip: Number,
+    about: String,
+    organizer : String, // for now...
+    img: String,
+    // members : [Users],
+    roles: []
 });
 
-const Market = mongoose.model("Market", market);
+const Market = mongoose.model("Market", marketSchema);
 
 module.exports = Market;

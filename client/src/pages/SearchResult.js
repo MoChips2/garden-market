@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-// import API from "../utils/API";
-import MarketContainer from "../components/MarketContainer";
+import API from "../utils/API";
+import ResultContainer from "../components/ResultContainer";
 
 class SearchResult extends Component {
     state = {
         markets: [],
         marketName: "",
-        name: "",
+        organizer: "",
         address: "",
         city: "",
         state: "",
@@ -15,37 +15,38 @@ class SearchResult extends Component {
         roles: []
     };
 
-    // componentDidMount() {
-    //     this.loadMarkets();
-    // };
+    componentDidMount() {
+        this.loadMarkets();
+    };
 
-    // loadMarkets = () => {
-    //     API.getMarkets()
-    //         .then(res =>
-    //             this.setState({
-    //                 markets: res.data,
-    //                 marketName: "",
-    //                 name: "",
-    //                 address: "",
-    //                 city: "",
-    //                 state: "",
-    //                 zip: "",
-    //                 about: "",
-    //                 roles: []
-    //             }))
-    // }
+    loadMarkets = () => {
+        API.getMarkets()
+            .then(res =>
+                this.setState({
+                    markets: res.data,
+                    marketName: "",
+                    organizer: "",
+                    address: "",
+                    city: "",
+                    state: "",
+                    zip: "",
+                    about: "",
+                    roles: []
+                }))
+                .catch(err => console.log(err));
+    };
 
     render() {
         return (
             <div className="row">
                 <div className="col-md-9 mx-auto">
-                    <h1>This is our Search Page</h1>
+                    <h1>Search Results</h1>
                     {this.state.markets.map(market => (
                         <div className="row" key={market._id}>
                             <div className="col-md-12 mx-auto">
-                                <MarketContainer
+                                <ResultContainer
                                     marketName={market.marketName}
-                                    name={market.name}
+                                    organizer={market.organizer}
                                     address={market.address}
                                     city={market.city}
                                     state={market.state}
