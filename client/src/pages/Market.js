@@ -64,23 +64,20 @@ class Market extends Component {
 
         return (
             <div className="container-fluid">
-                {this.state.markets.map(market => (
-                    <div className="row" key={market._id}>
+                    <div className="row" key={this.state.markets._id}>
                         <div className="col-md-12 mx-auto">
                             <MarketContainer
-                                marketName={market.marketName}
-                                organizer={market.organizer}
-                                address={market.address}
-                                city={market.city}
-                                state={market.state}
-                                zip={market.zip}
-                                about={market.about}
-                                img={market.img}
+                                marketName={this.state.markets.marketName}
+                                organizer={this.state.markets.organizer}
+                                address={this.state.markets.address}
+                                city={this.state.markets.city}
+                                state={this.state.markets.state}
+                                zip={this.state.markets.zip}
+                                about={this.state.markets.about}
+                                img={this.state.markets.img}
                             />
                         </div>
                     </div>
-                ))}
-
             </div>
 
         )
