@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import MarketContainer from "../components/MarketContainer";
+import JoinMarketBtn from "../components/JoinMarketBtn";
 
 class Market extends Component {
 
@@ -76,6 +77,7 @@ class Market extends Component {
                                 about={market.about}
                                 img={market.img}
                             />
+                            
                         </div>
                     </div>
                 ))}

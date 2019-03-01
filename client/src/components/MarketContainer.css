@@ -1,9 +1,11 @@
 body {
     width: 100%;
+    font-weight: lighter;
 }
 
 .titleDiv {
-    background-color: #1fc509;
+    background-color: #61c454;
+    margin-bottom: 50px;
     
 }
 
@@ -11,16 +13,48 @@ body {
     color: white;
     font-family: "Staatliches", Arial, Helvetica, sans-serif;
     font-size: 12rem;
-    text-align: center;
+    text-align: left;
+    margin-bottom: -30px;
+    padding-bottom: -20px;
 }
 
 img {
     width: 600px;
     margin-right: -20px;
-    margin-top: 50px;
+    border-radius: 5px;
 }
 
 .image {
     text-align: center;
+   
 }
 
+.organizer {
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+    color: white;
+    font-size: 2rem;
+    text-align: right;
+    padding-top: 0;
+    margin-right: 100px;
+}
+
+.about {
+    text-align: justify;
+}
+
+.address {
+    margin-left: 50px;
+    line-height: 1;
+}
+
+.addressHead {
+    margin-left: 50px;
+    
+}
+button {
+    margin: 10px;
+}
+
+.form {
+    margin: 50px;
+}
