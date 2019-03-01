@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./ResultContainer.css";
 
 function ResultContainer(props) {
@@ -9,7 +10,7 @@ function ResultContainer(props) {
         <div className="card-body">
             <div className="row">
                 <div className="col-md-9">
-                    <h1 className="resultName">{props.marketName}</h1>
+                    <Link to={"/markets/" + props.id}><h1 className="resultName">{props.marketName}</h1></Link>
                     <h3 className="card-subtitle mb-2 text-muted">Organizer: {props.organizer}</h3>
                     <hr />
                     <div className="row">

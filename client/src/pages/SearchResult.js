@@ -45,6 +45,7 @@ class SearchResult extends Component {
                         <div className="row" key={market._id}>
                             <div className="col-md-12 mx-auto">
                                 <ResultContainer
+                                    id={market._id}
                                     marketName={market.marketName}
                                     organizer={market.organizer}
                                     address={market.address}

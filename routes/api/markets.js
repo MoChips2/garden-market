@@ -5,4 +5,7 @@ router.route("/")
 .get(marketController.findAll)
 .post(marketController.create);
 
+router.route("/:id")
+.get(marketController.findById);
+
 module.exports = router;

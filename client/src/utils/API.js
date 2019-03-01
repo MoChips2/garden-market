@@ -15,12 +15,14 @@ export default {
     getMarkets: function() {
         console.log("API line 16")
         return axios.get("/api/markets")
+    },
+
+    getOneMarket: function(id) {
+        console.log("getting market by id: " + id);
+        return axios.get("/api/markets/" + id);
     }
 
-    // getOneMarket: function(id) {
-    //     console.log(id)
-    //     return axios.get("/api/market/" + id)
-    // }
+
 
 }
 
