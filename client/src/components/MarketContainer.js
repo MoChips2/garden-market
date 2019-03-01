@@ -17,8 +17,8 @@ function MarketContainer(props) {
                     <h3 className="organizer">{props.organizer}</h3>
                     <hr />
                     
-                        <h5 className="font-weight-lighter">{props.address}</h5>
-                        <h5 className="font-weight-lighter">{props.city + ", " + props.state + " " + props.zip}</h5>
+                        <h5 className="font-weight-lighter address">{props.address}</h5>
+                        <h5 className="font-weight-lighter address">{props.city + ", " + props.state + " " + props.zip}</h5>
                     
                     <p>{props.about}</p>
                 </div>
