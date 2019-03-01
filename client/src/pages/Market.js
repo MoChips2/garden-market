@@ -16,30 +16,31 @@ class Market extends Component {
         img: "",
         roles: []
     };
-    // componentDidMount() {
-    //     this.loadOneMarket();
-    // }
-
-    // loadOneMarket = () => {
-    //     API.getOneMarket()
-    //         .then(res =>
-    //             this.setState({
-    //                 markets: res.data,
-    //                 marketName: "",
-    //                 name: "",
-    //                 address: "",
-    //                 city: "",
-    //                 state: "",
-    //                 zip: "",
-    //                 about: "",
-    //                 img: "",
-    //                 roles: []
-    //             }))
-    // }
 
     componentDidMount() {
-        this.loadMarkets();
-    };
+        this.loadOneMarket();
+    }
+
+    loadOneMarket = () => {
+        API.getOneMarket(this.props.match.params.id)
+            .then(res =>
+                this.setState({
+                    markets: res.data,
+                    marketName: "",
+                    name: "",
+                    address: "",
+                    city: "",
+                    state: "",
+                    zip: "",
+                    about: "",
+                    img: "",
+                    roles: []
+                }))
+    }
+
+    // componentDidMount() {
+    //     this.loadMarkets();
+    // };
 
     loadMarkets = () => {
         API.getMarkets()
