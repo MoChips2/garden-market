@@ -9,6 +9,7 @@ import NewMarket from "./pages/NewMarket";
 import NoMatch from "./pages/NoMatch";
 import Navbar from "./components/Navbar";
 import mHome from "./components/Map/mHome"
+import { ReactiveBase,CategorySearch,RatingsFilter,ResultCard } from '@appbaseio/reactivesearch';
 
 class App extends Component {
   render() {
