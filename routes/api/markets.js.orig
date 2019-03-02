@@ -1,0 +1,34 @@
+// const router = require("express").Router();
+// const marketController = require("../../controllers/marketController");
+
+// router.route("/")
+// .get(marketController.findAll)
+// .post(marketController.create);
+
+// router.route("/:id")
+// .get(marketController.findById);
+
+
+
+// module.exports = router;
+
+const router = require("express").Router();
+const marketController = require("../../controllers/marketController");
+
+// Matches with "/api/books"
+router.route("/")
+  .get(marketController.findAll)
+  .post(marketController.create);
+
+// Matches with "/api/books/:id"
+router.route("/:id")
+  .get(marketController.findById);
+
+<<<<<<< HEAD
+module.exports = router;
+=======
+router.route("/:id")
+.get(marketController.findById);
+
+module.exports = router;
+>>>>>>> 292e4314e2f046828bc19e3f4e10fa8a7f5422ec

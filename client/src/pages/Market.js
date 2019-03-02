@@ -5,16 +5,7 @@ import MarketContainer from "../components/MarketContainer";
 class Market extends Component {
 
     state = {
-        markets: [],
-        marketName: "",
-        organizer: "",
-        address: "",
-        city: "",
-        state: "",
-        zip: "",
-        about: "",
-        img: "",
-        roles: []
+        markets: {}
     };
 
     componentDidMount() {
