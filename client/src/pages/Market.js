@@ -7,16 +7,25 @@ class Market extends Component {
     state = {
         markets: {}
     };
+
     componentDidMount() {
         this.loadOneMarket();
     }
 
     loadOneMarket = () => {
-        console.log("eta aayo")
         API.getOneMarket(this.props.match.params.id)
             .then(res =>
                 this.setState({
-                    markets: res.data
+                    markets: res.data,
+                    marketName: "",
+                    name: "",
+                    address: "",
+                    city: "",
+                    state: "",
+                    zip: "",
+                    about: "",
+                    img: "",
+                    roles: []
                 }))
     }
 
@@ -24,38 +33,42 @@ class Market extends Component {
     //     this.loadMarkets();
     // };
 
-    // loadMarkets = () => {
-    //     API.getMarkets()
-    //         .then(res =>
-    //             this.setState({
-    //                 markets: res.data,
-    //                 marketName: "",
-    //                 organizer: "",
-    //                 address: "",
-    //                 city: "",
-    //                 state: "",
-    //                 zip: "",
-    //                 about: "",
-    //                 img: "",
-    //                 roles: []
-    //             }))
-    //             .catch(err => console.log(err));
-    // };
+    loadMarkets = () => {
+        API.getMarkets()
+            .then(res =>
+                this.setState({
+                    markets: res.data,
+                    marketName: "",
+                    organizer: "",
+                    address: "",
+                    city: "",
+                    state: "",
+                    zip: "",
+                    about: "",
+                    img: "",
+                    roles: []
+                }))
+                .catch(err => console.log(err));
+    };
 
     render() {
 
         return (
             <div className="container-fluid">
-                    <div className="row" >
+                    <div className="row" key={this.state.markets._id}>
                         <div className="col-md-12 mx-auto">
-                    
-                          <p>  
-                              {this.state.markets.marketName}
-                              </p>
-                              
+                            <MarketContainer
+                                marketName={this.state.markets.marketName}
+                                organizer={this.state.markets.organizer}
+                                address={this.state.markets.address}
+                                city={this.state.markets.city}
+                                state={this.state.markets.state}
+                                zip={this.state.markets.zip}
+                                about={this.state.markets.about}
+                                img={this.state.markets.img}
+                            />
                         </div>
                     </div>
-
             </div>
 
         )

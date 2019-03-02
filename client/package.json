@@ -9,6 +9,9 @@
     "mongoose": "^5.4.16",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
+    "react-geocode": "^0.1.2",
+    "react-google-autocomplete": "^1.0.18",
+    "react-google-maps": "^9.4.5",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.1"
   },

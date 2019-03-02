@@ -55,7 +55,7 @@ class NewMarket extends Component {
                 zip: this.state.zip,
                 about: this.state.about,
                 img: this.state.img
-            }).then( this.props.history.push("market/"+myid)
+            }).then( this.props.history.push("markets/"+myid)
             )
             console.log("worked!")
         }
