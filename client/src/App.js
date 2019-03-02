@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SearchResult from "./pages/SearchResult";
 import Market from "./pages/Market";
+
 import NewMarket from "./pages/NewMarket";
 import NoMatch from "./pages/NoMatch";
 import Navbar from "./components/Navbar";
@@ -21,7 +22,7 @@ class App extends Component {
             <Route exact path="/searchresult" component={SearchResult} />
             <Route exact path="/newmarket" component={NewMarket} />
             {/* The following line won't exist in final version. Just for testing purposes using a generic market. */}
-            <Route exact path="/market" component={Market} />
+            
             {/* The following line will take user to a specific market by id */}
             <Route exact path="/market/:id" component={Market} />
             <Route component={NoMatch} />

@@ -5,28 +5,32 @@ import MarketContainer from "../components/MarketContainer";
 class Market extends Component {
 
     state = {
-        markets: [],
-        marketName: "",
-        organizer: "",
-        address: "",
-        city: "",
-        state: "",
-        zip: "",
-        about: "",
-        img: "",
-        roles: []
+        markets: {}
     };
-    // componentDidMount() {
-    //     this.loadOneMarket();
-    // }
+    componentDidMount() {
+        this.loadOneMarket();
+    }
 
-    // loadOneMarket = () => {
-    //     API.getOneMarket()
+    loadOneMarket = () => {
+        console.log("eta aayo")
+        API.getOneMarket(this.props.match.params.id)
+            .then(res =>
+                this.setState({
+                    markets: res.data
+                }))
+    }
+
+    // componentDidMount() {
+    //     this.loadMarkets();
+    // };
+
+    // loadMarkets = () => {
+    //     API.getMarkets()
     //         .then(res =>
     //             this.setState({
     //                 markets: res.data,
     //                 marketName: "",
-    //                 name: "",
+    //                 organizer: "",
     //                 address: "",
     //                 city: "",
     //                 state: "",
@@ -35,50 +39,22 @@ class Market extends Component {
     //                 img: "",
     //                 roles: []
     //             }))
-    // }
-
-    componentDidMount() {
-        this.loadMarkets();
-    };
-
-    loadMarkets = () => {
-        API.getMarkets()
-            .then(res =>
-                this.setState({
-                    markets: res.data,
-                    marketName: "",
-                    organizer: "",
-                    address: "",
-                    city: "",
-                    state: "",
-                    zip: "",
-                    about: "",
-                    img: "",
-                    roles: []
-                }))
-                .catch(err => console.log(err));
-    };
+    //             .catch(err => console.log(err));
+    // };
 
     render() {
 
         return (
             <div className="container-fluid">
-                {this.state.markets.map(market => (
-                    <div className="row" key={market._id}>
+                    <div className="row" >
                         <div className="col-md-12 mx-auto">
-                            <MarketContainer
-                                marketName={market.marketName}
-                                organizer={market.organizer}
-                                address={market.address}
-                                city={market.city}
-                                state={market.state}
-                                zip={market.zip}
-                                about={market.about}
-                                img={market.img}
-                            />
+                    
+                          <p>  
+                              {this.state.markets.marketName}
+                              </p>
+                              
                         </div>
                     </div>
-                ))}
 
             </div>
 
