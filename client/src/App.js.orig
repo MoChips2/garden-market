@@ -24,7 +24,11 @@ class App extends Component {
             <Route exact path="/searchresult" component={SearchResult} />
             <Route exact path="/newmarket" component={NewMarket} />
             {/* The following line won't exist in final version. Just for testing purposes using a generic market. */}
-            <Route exact path="/market" component={Market} />
+<<<<<<< HEAD
+            
+=======
+            {/* <Route exact path="/markets" component={Market} /> */}
+>>>>>>> 292e4314e2f046828bc19e3f4e10fa8a7f5422ec
             {/* The following line will take user to a specific market by id */}
             <Route exact path="/markets/:id" component={Market} />
             <Route component={NoMatch} />

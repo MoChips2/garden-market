@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import API from "../utils/API";
+const mongoose = require("mongoose");
 
 class NewMarket extends Component {
     state = {
@@ -39,7 +40,11 @@ class NewMarket extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         if (this.state.marketName && this.state.organizer && this.state.email) {
+            var myid = mongoose.Types.ObjectId();
+            console.log(myid.toString())
+     
             API.saveMarket({
+               _id : myid,
                 marketName: this.state.marketName,
                 organizer: this.state.organizer,
                 email: this.state.email,
@@ -50,21 +55,9 @@ class NewMarket extends Component {
                 zip: this.state.zip,
                 about: this.state.about,
                 img: this.state.img
-            })
+            }).then( this.props.history.push("markets/"+myid)
+            )
             console.log("worked!")
-            console.log({
-                marketName: this.state.marketName,
-                organizer: this.state.organizer,
-                email: this.state.email,
-                roles: this.state.roles,
-                address: this.state.address,
-                state: this.state.state,
-                city: this.state.city,
-                zip: this.state.zip,
-                about: this.state.about,
-                img: this.state.img
-
-            })
         }
     }
     render() {
