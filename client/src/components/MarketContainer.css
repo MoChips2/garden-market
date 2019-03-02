@@ -1,26 +1,103 @@
 body {
     width: 100%;
+    font-weight: lighter;
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+
 }
 
 .titleDiv {
-    background-color: #1fc509;
+    background-color: #61c454;
+    margin-bottom: 50px;
     
 }
 
 .market-name {
     color: white;
     font-family: "Staatliches", Arial, Helvetica, sans-serif;
-    font-size: 12rem;
-    text-align: center;
+    font-size: 10vw;
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: -30px;
+    padding-bottom: -20px;
 }
 
 img {
-    width: 600px;
-    margin-right: -20px;
-    margin-top: 50px;
+    width: 95%;
+    border-radius: 5px;
 }
 
-.image {
-    text-align: center;
+.joinBtn {
+    width: 35%;
+    margin: 5px;
+    margin-left: 40px;
 }
 
+.donateBtn {
+    width: 35%;
+    margin: 5px;
+    
+
+}
+
+.organizer {
+    color: #296621;
+    font-size: 2rem;
+    padding-top: 0;
+    margin-left: 50px;
+}
+
+.about {
+    text-align: justify;
+    margin: 25px;
+    margin-left: 45px;
+}
+
+.addressHead {
+    margin-left: 45px;
+    color: #61c454;
+}
+
+.hoursHead {
+    margin-left: 45px;
+    color: #61c454;
+}
+.form {
+    margin: 50px;
+}
+
+.products {
+    color: #61c454;
+    margin-left: 45px;
+}
+
+.aboutHeader {
+    margin-top: 0;
+    margin-left: 45px;
+    font-size: 2.5vw;
+}
+
+.form-control {
+    background-color: rgb(39, 39, 39);
+    color: white;
+    font-size: 1.5em;
+}
+
+.form-control:focus {
+    background-color: rgb(39, 39, 39);
+    color: rgb(236, 236, 236);
+}
+
+.chalkboard {
+    background-color: rgb(39, 39, 39);
+    color: white;
+    height: 400px;
+    width: 95%;
+    border-radius: 5px;
+    padding-top: 1px;
+    font-size: 24px;
+}
+
+p {
+    margin: 20px;
+    
+}

@@ -66,7 +66,9 @@ class Market extends Component {
                                 zip={this.state.markets.zip}
                                 about={this.state.markets.about}
                                 img={this.state.markets.img}
+                                roles={this.state.markets.roles}
                             />
+                            
                         </div>
                     </div>
             </div>
