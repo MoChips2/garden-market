@@ -129,15 +129,13 @@ class Map extends React.Component {
   * @param addressArray
   * @return {string}
   */
-grtZip = (addressArray) => {
+getZip = (addressArray) => {
   let zip = '';
   for (let i = 0; i < addressArray.length; i++) {
-    for (let i = 0; i < addressArray.length; i++) {
-      if (addressArray[i].types[0] && 'administrative_area_level_1' === addressArray[i].types[0]) {
+      if (addressArray[i].types[0] && 'postal_code' === addressArray[i].types[0]) {
         zip = addressArray[i].long_name;
         return zip;
       }
-    }
   }
 };
   /**
@@ -239,7 +237,7 @@ grtZip = (addressArray) => {
             />
             {/*Marker*/}
             <Marker google={this.props.google}
-              name={'Roseville MN'}
+              name={'Roseville'}
               draggable={true}
               onDragEnd={this.onMarkerDragEnd}
               position={{ lat: this.state.markerPosition.lat, lng: this.state.markerPosition.lng }}
@@ -248,7 +246,7 @@ grtZip = (addressArray) => {
             {/* InfoWindow on top of marker */}
             <InfoWindow
               onClose={this.onInfoWindowClose}
-              position={{ lat: (this.state.markerPosition.lat + 0.0018), lng: this.state.markerPosition.lng }}
+              position={{ lat: (this.state.markerPosition.lat + 0.100), lng: this.state.markerPosition.lng }}
             >
               <div>
                 <span style={{ padding: 0, margin: 0 }}>{this.state.address}</span>
@@ -271,6 +269,10 @@ grtZip = (addressArray) => {
             <input type="text" name="area" className="form-control" onChange={this.onChange} readOnly="readOnly" value={this.state.area} />
           </div>
           <div className="form-group">
+            <label htmlFor="">Zip</label>
+            <input type="text" name="zip" className="form-control" onChange={this.onChange} readOnly="readOnly" value={this.state.zip} />
+          </div>
+          <div className="form-group">
             <label htmlFor="">State</label>
             <input type="text" name="state" className="form-control" onChange={this.onChange} readOnly="readOnly" value={this.state.state} />
           </div>
@@ -281,11 +283,11 @@ grtZip = (addressArray) => {
         </div>
         <AsyncMap
           googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuJM7YNtOx7ArUcyH6cKOkzJuqH2j4TIU&libraries=places"
-          containerElement={
-            <div style={{ height: this.props.height }} />
-          }
           mapElement={
             <div style={{ height: `100%` }} />
+          }
+          containerElement={
+            <div style={{ height: this.props.height }} />
           }
           loadingElement={
             <div style={{ height: `100%` }} />
