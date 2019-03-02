@@ -8,15 +8,17 @@ import Market from "./pages/Market";
 import NewMarket from "./pages/NewMarket";
 import NoMatch from "./pages/NoMatch";
 import Navbar from "./components/Navbar";
+import mHome from "./components/Map/mHome"
 
 class App extends Component {
   render() {
     return (
       <Router>
         <div className="container.fluid">
-        <Navbar />
+          <Navbar />
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/map" component={mHome} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/searchresult" component={SearchResult} />
             <Route exact path="/newmarket" component={NewMarket} />
