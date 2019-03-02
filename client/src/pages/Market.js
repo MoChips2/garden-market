@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import MarketContainer from "../components/MarketContainer";
-import JoinMarketBtn from "../components/JoinMarketBtn";
 
 class Market extends Component {
 
@@ -76,6 +75,7 @@ class Market extends Component {
                                 zip={this.state.markets.zip}
                                 about={this.state.markets.about}
                                 img={this.state.markets.img}
+                                roles={this.state.markets.roles}
                             />
                             
                         </div>

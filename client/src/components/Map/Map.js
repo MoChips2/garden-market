@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import key from "./key";
 import { withGoogleMap, GoogleMap, withScriptjs, InfoWindow, Marker } from "react-google-maps";
 import Autocomplete from 'react-google-autocomplete';
@@ -172,8 +172,8 @@ const address = place.formatted_address,
  onMarkerDragEnd = ( event ) => {
   console.log( 'event', event );
   let newLat = event.latLng.lat(),
-   newLng = event.latLng.lng(),
-   addressArray = [];
+   newLng = event.latLng.lng()
+  //  addressArray = [];
 Geocode.fromLatLng( newLat , newLng ).then(
    response => {
     const address = response.results[0].formatted_address,
