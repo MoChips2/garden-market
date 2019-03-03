@@ -67,7 +67,9 @@ class Market extends Component {
                                 about={this.state.markets.about}
                                 img={this.state.markets.img}
                                 roles={this.state.markets.roles}
+
                             />
+                            
                             
                         </div>
                     </div>

@@ -13,7 +13,7 @@ class NewMarket extends Component {
         zip: "",
         about: "",
         img: "",
-        roles: []
+        products: []
 
     };
 
@@ -25,15 +25,15 @@ class NewMarket extends Component {
     };
 
     onChange(e) {
-        const roles = this.state.roles
+        const products = this.state.products
         let index
         if (e.target.checked) {
-            roles.push(e.target.value)
+            products.push(e.target.value)
         } else {
-            index = roles.indexOf(+e.target.value)
-            roles.splice(index, 1)
+            index = products.indexOf(+e.target.value)
+            products.splice(index, 1)
         }
-        this.setState({ roles: roles })
+        this.setState({ products: products })
     }
 
 
@@ -42,20 +42,20 @@ class NewMarket extends Component {
         if (this.state.marketName && this.state.organizer && this.state.email) {
             var myid = mongoose.Types.ObjectId();
             console.log(myid.toString())
-     
+
             API.saveMarket({
-               _id : myid,
+                _id: myid,
                 marketName: this.state.marketName,
                 organizer: this.state.organizer,
                 email: this.state.email,
-                roles: this.state.roles,
+                products: this.state.products,
                 address: this.state.address,
                 state: this.state.state,
                 city: this.state.city,
                 zip: this.state.zip,
                 about: this.state.about,
                 img: this.state.img
-            }).then( this.props.history.push("markets/"+myid)
+            }).then(this.props.history.push("markets/" + myid)
             )
             console.log("worked!")
         }
@@ -126,46 +126,109 @@ class NewMarket extends Component {
                                         <input className="form-control" name="img" value={this.state.img} onChange={this.handleInputChange} />
                                     </div>
                                 </div>
+                                <label class="my-1 mr-2">Starting Month</label>
+                                <select class="custom-select my-1 mr-sm-2" id="startMonth">
+                                    <option selected>Choose...</option>
+                                    <option value="Jan">January</option>
+                                    <option value="Feb">February</option>
+                                    <option value="Mar">March</option>
+                                    <option value="Apr">April</option>
+                                    <option value="May">May</option>
+                                    <option value="June">June</option>
+                                    <option value="July">July</option>
+                                    <option value="Aug">August</option>
+                                    <option value="Sept">September</option>
+                                    <option value="Oct">October</option>
+                                    <option value="Nov">November</option>
+                                    <option value="Dec">December</option>
+                                </select>
+                                <label class="my-1 mr-2">Ending Month</label>
+                                <select class="custom-select my-1 mr-sm-2" id="endMonth">
+                                    <option selected>Choose...</option>
+                                    <option value="Jan">January</option>
+                                    <option value="Feb">February</option>
+                                    <option value="Mar">March</option>
+                                    <option value="Apr">April</option>
+                                    <option value="May">May</option>
+                                    <option value="June">June</option>
+                                    <option value="July">July</option>
+                                    <option value="Aug">August</option>
+                                    <option value="Sept">September</option>
+                                    <option value="Oct">October</option>
+                                    <option value="Nov">November</option>
+                                    <option value="Dec">December</option>
+                                </select>
                                 <div className="form-group">
                                     <label>Choose all that apply:</label>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="roles" value="VEGETABLES " onChange={this.onChange.bind(this)} />
+                                        <input className="form-check-input" type="checkbox" name="days" value="Sunday" onChange={this.onChange.bind(this)} />
+                                        <label className="form-check-label">Sunday</label>
+                                    </div>
+                                    <div className="form-check">
+                                        <input className="form-check-input" type="checkbox" name="days" value="Monday" onChange={this.onChange.bind(this)} />
+                                        <label className="form-check-label">Monday</label>
+                                    </div>
+                                    <div className="form-check">
+                                        <input className="form-check-input" type="checkbox" name="days" value="Tuesday" onChange={this.onChange.bind(this)} />
+                                        <label className="form-check-label">Tuesday</label>
+                                    </div>
+                                    <div className="form-check">
+                                        <input className="form-check-input" type="checkbox" name="days" value="Wednesday" onChange={this.onChange.bind(this)} />
+                                        <label className="form-check-label">Wednesday</label>
+                                    </div>
+                                    <div className="form-check">
+                                        <input className="form-check-input" type="checkbox" name="days" value="Thursday" onChange={this.onChange.bind(this)} />
+                                        <label className="form-check-label">Thursday</label>
+                                    </div>
+                                    <div className="form-check">
+                                        <input className="form-check-input" type="checkbox" name="days" value="Friday" onChange={this.onChange.bind(this)} />
+                                        <label className="form-check-label">Friday</label>
+                                    </div>
+                                    <div className="form-check">
+                                        <input className="form-check-input" type="checkbox" name="days" value="Saturday" onChange={this.onChange.bind(this)} />
+                                        <label className="form-check-label">Saturday</label>
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <label>Choose all that apply:</label>
+                                    <div className="form-check">
+                                        <input className="form-check-input" type="checkbox" name="products" value="VEGETABLES" onChange={this.onChange.bind(this)} />
                                         <label className="form-check-label">Vegetables</label>
                                     </div>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="roles" value="FRUIT " onChange={this.onChange.bind(this)} />
+                                        <input className="form-check-input" type="checkbox" name="products" value="FRUIT" onChange={this.onChange.bind(this)} />
                                         <label className="form-check-label">Fruits</label>
                                     </div>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="roles" value="MEAT " onChange={this.onChange.bind(this)} />
+                                        <input className="form-check-input" type="checkbox" name="products" value="MEAT" onChange={this.onChange.bind(this)} />
                                         <label className="form-check-label">Meat</label>
                                     </div>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="roles" value="DAIRY " onChange={this.onChange.bind(this)} />
+                                        <input className="form-check-input" type="checkbox" name="products" value="DAIRY" onChange={this.onChange.bind(this)} />
                                         <label className="form-check-label">Dairy</label>
                                     </div>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="roles" value="HONEY " onChange={this.onChange.bind(this)} />
+                                        <input className="form-check-input" type="checkbox" name="products" value="HONEY" onChange={this.onChange.bind(this)} />
                                         <label className="form-check-label">Honey</label>
                                     </div>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="roles" value="EGGS " onChange={this.onChange.bind(this)} />
+                                        <input className="form-check-input" type="checkbox" name="products" value="EGGS" onChange={this.onChange.bind(this)} />
                                         <label className="form-check-label">Eggs</label>
                                     </div>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="roles" value="CRAFTS " onChange={this.onChange.bind(this)} />
+                                        <input className="form-check-input" type="checkbox" name="products" value="CRAFTS" onChange={this.onChange.bind(this)} />
                                         <label className="form-check-label">Crafts</label>
                                     </div>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="roles" value="BREAD " onChange={this.onChange.bind(this)} />
+                                        <input className="form-check-input" type="checkbox" name="products" value="BREAD" onChange={this.onChange.bind(this)} />
                                         <label className="form-check-label">Bread</label>
                                     </div>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="roles" value="MUSIC " onChange={this.onChange.bind(this)} />
+                                        <input className="form-check-input" type="checkbox" name="products" value="MUSIC" onChange={this.onChange.bind(this)} />
                                         <label className="form-check-label">Music</label>
                                     </div>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="roles" value="OTHER " onChange={this.onChange.bind(this)} />
+                                        <input className="form-check-input" type="checkbox" name="products" value="OTHER" onChange={this.onChange.bind(this)} />
                                         <label className="form-check-label">Other</label>
                                     </div>
                                 </div>

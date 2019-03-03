@@ -13,7 +13,7 @@ const marketSchema = new Schema({
     organizer : String, // for now...
     img: String,
     // members : [Users],
-    roles: []
+    products: []
 });
 
 const Market = mongoose.model("Market", marketSchema);
