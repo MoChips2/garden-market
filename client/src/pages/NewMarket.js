@@ -13,7 +13,12 @@ class NewMarket extends Component {
         zip: "",
         about: "",
         img: "",
-        products: []
+        products: [],
+        startMonth: "",
+        endMonth: "",
+        days: [],
+        startTime: "",
+        endTime: ""
 
     };
 
@@ -54,7 +59,12 @@ class NewMarket extends Component {
                 city: this.state.city,
                 zip: this.state.zip,
                 about: this.state.about,
-                img: this.state.img
+                img: this.state.img,
+                startMonth: this.state.startMonth,
+                endMonth: this.state.endMonth,
+                days: this.state.days,
+                startTime: this.state.startTime,
+                endTime: this.state.endTime
             }).then(this.props.history.push("markets/" + myid)
             )
             console.log("worked!")
@@ -103,10 +113,56 @@ class NewMarket extends Component {
                                         <label>State</label>
                                         <select name="state" className="form-control" value={this.state.state} onChange={this.handleInputChange}>
                                             <option>Choose...</option>
-                                            <option value="MN">MN</option>
-                                            <option value="WI">WI</option>
+                                            <option value="AL">AL</option>
+                                            <option value="AK">AK</option>
+                                            <option value="AZ">AZ</option>
+                                            <option value="AR">AR</option>
+                                            <option value="CA">CA</option>
+                                            <option value="CO">CO</option>
+                                            <option value="CT">CT</option>
+                                            <option value="DE">DE</option>
+                                            <option value="FL">FL</option>
+                                            <option value="GA">GA</option>
+                                            <option value="HI">HI</option>
+                                            <option value="ID">ID</option>
+                                            <option value="IL">IL</option>
+                                            <option value="IN">IN</option>
+                                            <option value="IA">IA</option>
+                                            <option value="KS">KS</option>
+                                            <option value="KY">KY</option>
+                                            <option value="LA">LA</option>
+                                            <option value="ME">ME</option>
+                                            <option value="MD">MD</option>
+                                            <option value="MA">MA</option>
                                             <option value="MI">MI</option>
-
+                                            <option value="MN">MN</option>
+                                            <option value="MS">MS</option>
+                                            <option value="MO">MO</option>
+                                            <option value="MT">MT</option>
+                                            <option value="NE">NE</option>
+                                            <option value="NV">NV</option>
+                                            <option value="NH">NH</option>
+                                            <option value="NJ">NJ</option>
+                                            <option value="NM">NM</option>
+                                            <option value="NY">NY</option>
+                                            <option value="NC">NC</option>
+                                            <option value="ND">ND</option>
+                                            <option value="OH">OH</option>
+                                            <option value="OK">OK</option>
+                                            <option value="OR">OR</option>
+                                            <option value="PA">PA</option>
+                                            <option value="RI">RI</option>
+                                            <option value="SC">SC</option>
+                                            <option value="SD">SD</option>
+                                            <option value="TN">TN</option>
+                                            <option value="TX">TX</option>
+                                            <option value="UT">UT</option>
+                                            <option value="VT">VT</option>
+                                            <option value="VA">VA</option>
+                                            <option value="WA">WA</option>
+                                            <option value="WV">WV</option>
+                                            <option value="WI">WI</option>
+                                            <option value="WY">WY</option>
                                         </select>
                                     </div>
                                     <div className="form-group col-md-2">
@@ -126,38 +182,45 @@ class NewMarket extends Component {
                                         <input className="form-control" name="img" value={this.state.img} onChange={this.handleInputChange} />
                                     </div>
                                 </div>
-                                <label class="my-1 mr-2">Starting Month</label>
-                                <select class="custom-select my-1 mr-sm-2" id="startMonth">
-                                    <option selected>Choose...</option>
-                                    <option value="Jan">January</option>
-                                    <option value="Feb">February</option>
-                                    <option value="Mar">March</option>
-                                    <option value="Apr">April</option>
-                                    <option value="May">May</option>
-                                    <option value="June">June</option>
-                                    <option value="July">July</option>
-                                    <option value="Aug">August</option>
-                                    <option value="Sept">September</option>
-                                    <option value="Oct">October</option>
-                                    <option value="Nov">November</option>
-                                    <option value="Dec">December</option>
-                                </select>
-                                <label class="my-1 mr-2">Ending Month</label>
-                                <select class="custom-select my-1 mr-sm-2" id="endMonth">
-                                    <option selected>Choose...</option>
-                                    <option value="Jan">January</option>
-                                    <option value="Feb">February</option>
-                                    <option value="Mar">March</option>
-                                    <option value="Apr">April</option>
-                                    <option value="May">May</option>
-                                    <option value="June">June</option>
-                                    <option value="July">July</option>
-                                    <option value="Aug">August</option>
-                                    <option value="Sept">September</option>
-                                    <option value="Oct">October</option>
-                                    <option value="Nov">November</option>
-                                    <option value="Dec">December</option>
-                                </select>
+                                <div className="row">
+                                    <div className="col">
+                                        <label className="my-1 mr-2">Starting Month</label>
+                                        <select className="custom-select my-1 mr-sm-2" id="startMonth" value={this.state.startMonth} onChange={this.handleInputChange}>
+                                            <option selected>Choose...</option>
+                                            <option value="Jan">January</option>
+                                            <option value="Feb">February</option>
+                                            <option value="Mar">March</option>
+                                            <option value="Apr">April</option>
+                                            <option value="May">May</option>
+                                            <option value="June">June</option>
+                                            <option value="July">July</option>
+                                            <option value="Aug">August</option>
+                                            <option value="Sept">September</option>
+                                            <option value="Oct">October</option>
+                                            <option value="Nov">November</option>
+                                            <option value="Dec">December</option>
+                                        </select>
+                                    </div>
+                                    <div className="col">
+                                        <label className="my-1 mr-2">Ending Month</label>
+                                        <select className="custom-select my-1 mr-sm-2" id="endMonth" value={this.state.endMonth} onChange={this.handleInputChange}>
+                                            <option selected>Choose...</option>
+                                            <option value="Jan">January</option>
+                                            <option value="Feb">February</option>
+                                            <option value="Mar">March</option>
+                                            <option value="Apr">April</option>
+                                            <option value="May">May</option>
+                                            <option value="June">June</option>
+                                            <option value="July">July</option>
+                                            <option value="Aug">August</option>
+                                            <option value="Sept">September</option>
+                                            <option value="Oct">October</option>
+                                            <option value="Nov">November</option>
+                                            <option value="Dec">December</option>
+                                        </select>
+                                    </div>
+                                </div>
+
                                 <div className="form-group">
                                     <label>Choose all that apply:</label>
                                     <div className="form-check">
@@ -189,61 +252,99 @@ class NewMarket extends Component {
                                         <label className="form-check-label">Saturday</label>
                                     </div>
                                 </div>
+                                <div className="row">
+                                    <div className="col">
+                                        <label className="my-1 mr-2">Starting Time</label>
+                                        <select className="custom-select my-1 mr-sm-2" id="startTime" value={this.state.startTime} onChange={this.handleInputChange}>
+                                            <option selected>Choose...</option>
+                                            <option value="5:00am">5:00am</option>
+                                            <option value="6:00am">6:00am</option>
+                                            <option value="7:00am">7:00am</option>
+                                            <option value="8:00am">8:00am</option>
+                                            <option value="9:00am">9:00am</option>
+                                            <option value="10:00am">10:00am</option>
+                                            <option value="11:00am">11:00am</option>
+                                            <option value="12:00 noon">12:00 noon</option>
+                                            <option value="1:00pm">1:00pm</option>
+                                        </select>
+                                    </div>
+                                    <div className="col">
+                                        <label className="my-1 mr-2">Ending Time</label>
+                                        <select className="custom-select my-1 mr-sm-2" id="endTime" value={this.state.endTime} onChange={this.handleInputChange}>
+                                            <option selected>Choose...</option>
+                                            <option value="8:00am">8:00am</option>
+                                            <option value="9:00am">9:00am</option>
+                                            <option value="10:00am">10:00am</option>
+                                            <option value="11:00am">11:00am</option>
+                                            <option value="12:00 noon">12:00 noon</option>
+                                            <option value="1:00pm">1:00pm</option>
+                                            <option value="2:00pm">2:00pm</option>
+                                            <option value="3:00pm">3:00pm</option>
+                                            <option value="4:00pm">4:00pm</option>
+                                            <option value="5:00pm">5:00pm</option>
+                                            <option value="6:00pm">6:00pm</option>
+                                            <option value="7:00pm">7:00pm</option>
+                                        </select>
+                                    </div>
+                                </div>
                                 <div className="form-group">
                                     <label>Choose all that apply:</label>
-                                    <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="products" value="VEGETABLES" onChange={this.onChange.bind(this)} />
-                                        <label className="form-check-label">Vegetables</label>
-                                    </div>
-                                    <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="products" value="FRUIT" onChange={this.onChange.bind(this)} />
-                                        <label className="form-check-label">Fruits</label>
-                                    </div>
-                                    <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="products" value="MEAT" onChange={this.onChange.bind(this)} />
-                                        <label className="form-check-label">Meat</label>
-                                    </div>
-                                    <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="products" value="DAIRY" onChange={this.onChange.bind(this)} />
-                                        <label className="form-check-label">Dairy</label>
-                                    </div>
-                                    <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="products" value="HONEY" onChange={this.onChange.bind(this)} />
-                                        <label className="form-check-label">Honey</label>
-                                    </div>
-                                    <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="products" value="EGGS" onChange={this.onChange.bind(this)} />
-                                        <label className="form-check-label">Eggs</label>
-                                    </div>
-                                    <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="products" value="CRAFTS" onChange={this.onChange.bind(this)} />
-                                        <label className="form-check-label">Crafts</label>
-                                    </div>
-                                    <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="products" value="BREAD" onChange={this.onChange.bind(this)} />
-                                        <label className="form-check-label">Bread</label>
-                                    </div>
-                                    <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="products" value="MUSIC" onChange={this.onChange.bind(this)} />
-                                        <label className="form-check-label">Music</label>
-                                    </div>
-                                    <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="products" value="OTHER" onChange={this.onChange.bind(this)} />
-                                        <label className="form-check-label">Other</label>
+                                    <div className="row">
+                                        <div className="col">
+                                            <div className="form-check">
+                                                <input className="form-check-input" type="checkbox" name="products" value="VEGETABLES" onChange={this.onChange.bind(this)} />
+                                                <label className="form-check-label">Veggies</label>
+                                            </div>
+                                            <div className="form-check">
+                                                <input className="form-check-input" type="checkbox" name="products" value="FRUIT" onChange={this.onChange.bind(this)} />
+                                                <label className="form-check-label">Fruits</label>
+                                            </div>
+                                            <div className="form-check">
+                                                <input className="form-check-input" type="checkbox" name="products" value="EGGS" onChange={this.onChange.bind(this)} />
+                                                <label className="form-check-label">Eggs</label>
+                                            </div>
+                                            <div className="form-check">
+                                                <input className="form-check-input" type="checkbox" name="products" value="MEAT" onChange={this.onChange.bind(this)} />
+                                                <label className="form-check-label">Meat</label>
+                                            </div>
+                                        </div>
+                                        <div className="col">
+                                            <div className="form-check">
+                                                <input className="form-check-input" type="checkbox" name="products" value="DAIRY" onChange={this.onChange.bind(this)} />
+                                                <label className="form-check-label">Dairy</label>
+                                            </div>
+                                            <div className="form-check">
+                                                <input className="form-check-input" type="checkbox" name="products" value="HONEY" onChange={this.onChange.bind(this)} />
+                                                <label className="form-check-label">Honey</label>
+                                            </div>
+                                            <div className="form-check">
+                                                <input className="form-check-input" type="checkbox" name="products" value="CRAFTS" onChange={this.onChange.bind(this)} />
+                                                <label className="form-check-label">Crafts</label>
+                                            </div>
+                                            <div className="form-check">
+                                                <input className="form-check-input" type="checkbox" name="products" value="BREAD" onChange={this.onChange.bind(this)} />
+                                                <label className="form-check-label">Bread</label>
+                                            </div>
+
+                                        </div>
+                                        <div className="col">
+                                            <div className="form-check">
+                                                <input className="form-check-input" type="checkbox" name="products" value="MUSIC" onChange={this.onChange.bind(this)} />
+                                                <label className="form-check-label">Music</label>
+                                            </div>
+                                            <div className="form-check">
+                                                <input className="form-check-input" type="checkbox" name="products" value="OTHER" onChange={this.onChange.bind(this)} />
+                                                <label className="form-check-label">Other</label>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <button type="submit" className="btn btn-primary" onClick={this.handleFormSubmit}>Submit</button>
                             </form>
-
                         </div>
                     </div>
                 </div>
-
-
             </div>
-
-
-
         )
     }
 }
