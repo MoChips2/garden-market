@@ -31,19 +31,19 @@ function EditContainer(props) {
                 <tr>
                     <td>Organizer</td>
                     <td>{props.organizer}</td>
-                    <td></td>
+                    <td><input type="text" className="form-control" name="organizer" placeholder="Example Market" /></td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>Address</td>
                     <td>{props.address}</td>
-                    <td></td>
+                    <td><input type="text" className="form-control" name="address" placeholder="Example Market" /></td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>City</td>
                     <td>{props.city}</td>
-                    <td></td>
+                    <td><input type="text" className="form-control" name="city" placeholder="Example Market" /></td>
                     <td></td>
                 </tr>
                 <tr>
@@ -55,19 +55,19 @@ function EditContainer(props) {
                 <tr>
                     <td>Zip</td>
                     <td>{props.zip}</td>
-                    <td></td>
+                    <td><input type="text" className="form-control" name="zip" placeholder="zip" /></td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>About</td>
                     <td>{props.about}</td>
-                    <td></td>
+                    <td><input type="text" className="form-control" name="about" placeholder="Example Market" /></td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>Image Link</td>
                     <td>{props.img}</td>
-                    <td></td>
+                    <td><input type="text" className="form-control" name="img" placeholder="Example Market" /></td>
                     <td></td>
                 </tr>
                 <tr>
