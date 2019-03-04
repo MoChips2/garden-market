@@ -6,13 +6,10 @@ class SearchResult extends Component {
     state = {
         markets: [],
         marketName: "",
-        organizer: "",
         address: "",
         city: "",
         state: "",
-        zip: "",
-        about: "",
-        roles: []
+        zip: ""
     };
 
     componentDidMount() {
@@ -25,13 +22,10 @@ class SearchResult extends Component {
                 this.setState({
                     markets: res.data,
                     marketName: "",
-                    organizer: "",
                     address: "",
                     city: "",
                     state: "",
-                    zip: "",
-                    about: "",
-                    roles: []
+                    zip: ""
                 }))
                 .catch(err => console.log(err));
     };

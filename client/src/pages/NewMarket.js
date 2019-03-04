@@ -41,6 +41,18 @@ class NewMarket extends Component {
         this.setState({ products: products })
     }
 
+    onChangeDays(e) {
+        const days = this.state.days
+        let index
+        if (e.target.checked) {
+            days.push(e.target.value)
+        } else {
+            index = days.indexOf(+e.target.value)
+            days.splice(index, 1)
+        }
+        this.setState({ days: days })
+    }
+
 
     handleFormSubmit = event => {
         event.preventDefault();
@@ -68,6 +80,11 @@ class NewMarket extends Component {
             }).then(this.props.history.push("markets/" + myid)
             )
             console.log("worked!")
+            console.log({startMonth: this.state.startMonth,
+                endMonth: this.state.endMonth,
+                days: this.state.days,
+                startTime: this.state.startTime,
+                endTime: this.state.endTime});
         }
     }
     render() {
@@ -185,8 +202,8 @@ class NewMarket extends Component {
                                 <div className="row">
                                     <div className="col">
                                         <label className="my-1 mr-2">Starting Month</label>
-                                        <select className="custom-select my-1 mr-sm-2" id="startMonth" value={this.state.startMonth} onChange={this.handleInputChange}>
-                                            <option selected>Choose...</option>
+                                        <select name="startMonth" className="custom-select my-1 mr-sm-2" id="startMonth" value={this.state.startMonth} onChange={this.handleInputChange}>
+                                            <option>Choose...</option>
                                             <option value="Jan">January</option>
                                             <option value="Feb">February</option>
                                             <option value="Mar">March</option>
@@ -203,8 +220,8 @@ class NewMarket extends Component {
                                     </div>
                                     <div className="col">
                                         <label className="my-1 mr-2">Ending Month</label>
-                                        <select className="custom-select my-1 mr-sm-2" id="endMonth" value={this.state.endMonth} onChange={this.handleInputChange}>
-                                            <option selected>Choose...</option>
+                                        <select name="endMonth" className="custom-select my-1 mr-sm-2" id="endMonth" value={this.state.endMonth} onChange={this.handleInputChange}>
+                                            <option>Choose...</option>
                                             <option value="Jan">January</option>
                                             <option value="Feb">February</option>
                                             <option value="Mar">March</option>
@@ -224,39 +241,39 @@ class NewMarket extends Component {
                                 <div className="form-group">
                                     <label>Choose all that apply:</label>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="days" value="Sunday" onChange={this.onChange.bind(this)} />
+                                        <input className="form-check-input" type="checkbox" name="days" value="Sunday" onChange={this.onChangeDays.bind(this)} />
                                         <label className="form-check-label">Sunday</label>
                                     </div>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="days" value="Monday" onChange={this.onChange.bind(this)} />
+                                        <input className="form-check-input" type="checkbox" name="days" value="Monday" onChange={this.onChangeDays.bind(this)} />
                                         <label className="form-check-label">Monday</label>
                                     </div>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="days" value="Tuesday" onChange={this.onChange.bind(this)} />
+                                        <input className="form-check-input" type="checkbox" name="days" value="Tuesday" onChange={this.onChangeDays.bind(this)} />
                                         <label className="form-check-label">Tuesday</label>
                                     </div>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="days" value="Wednesday" onChange={this.onChange.bind(this)} />
+                                        <input className="form-check-input" type="checkbox" name="days" value="Wednesday" onChange={this.onChangeDays.bind(this)} />
                                         <label className="form-check-label">Wednesday</label>
                                     </div>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="days" value="Thursday" onChange={this.onChange.bind(this)} />
+                                        <input className="form-check-input" type="checkbox" name="days" value="Thursday" onChange={this.onChangeDays.bind(this)} />
                                         <label className="form-check-label">Thursday</label>
                                     </div>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="days" value="Friday" onChange={this.onChange.bind(this)} />
+                                        <input className="form-check-input" type="checkbox" name="days" value="Friday" onChange={this.onChangeDays.bind(this)} />
                                         <label className="form-check-label">Friday</label>
                                     </div>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="days" value="Saturday" onChange={this.onChange.bind(this)} />
+                                        <input className="form-check-input" type="checkbox" name="days" value="Saturday" onChange={this.onChangeDays.bind(this)} />
                                         <label className="form-check-label">Saturday</label>
                                     </div>
                                 </div>
                                 <div className="row">
                                     <div className="col">
                                         <label className="my-1 mr-2">Starting Time</label>
-                                        <select className="custom-select my-1 mr-sm-2" id="startTime" value={this.state.startTime} onChange={this.handleInputChange}>
-                                            <option selected>Choose...</option>
+                                        <select name="startTime" className="custom-select my-1 mr-sm-2" id="startTime" value={this.state.startTime} onChange={this.handleInputChange}>
+                                            <option>Choose...</option>
                                             <option value="5:00am">5:00am</option>
                                             <option value="6:00am">6:00am</option>
                                             <option value="7:00am">7:00am</option>
@@ -270,8 +287,8 @@ class NewMarket extends Component {
                                     </div>
                                     <div className="col">
                                         <label className="my-1 mr-2">Ending Time</label>
-                                        <select className="custom-select my-1 mr-sm-2" id="endTime" value={this.state.endTime} onChange={this.handleInputChange}>
-                                            <option selected>Choose...</option>
+                                        <select name="endTime" className="custom-select my-1 mr-sm-2" id="endTime" value={this.state.endTime} onChange={this.handleInputChange}>
+                                            <option>Choose...</option>
                                             <option value="8:00am">8:00am</option>
                                             <option value="9:00am">9:00am</option>
                                             <option value="10:00am">10:00am</option>

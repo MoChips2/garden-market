@@ -12,6 +12,11 @@ const marketSchema = new Schema({
     about: String,
     organizer : String, // for now...
     img: String,
+    startMonth: String,
+    endMonth: String,
+    days: [],
+    startTime: "",
+    endTime: "",
     // members : [Users],
     products: []
 });

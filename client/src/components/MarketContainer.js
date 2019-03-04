@@ -3,7 +3,10 @@ import "./MarketContainer.css";
 
 function MarketContainer(props) {
 
-
+    
+    
+// separate components for each
+// month/days(array)/hours, address, products (array), 
 
     return (
         <div>
@@ -17,11 +20,9 @@ function MarketContainer(props) {
             <br />
             <div className="row marketInfo">
                 <div className="col-md-5">
-
-
-                    
-                    <h6 className="hours">April 2019 - Aug 2019</h6>
-                    <h6 className="hours">SAT & SUN 7am - 1pm</h6>
+                    <h6 className="hours">{props.startMonth}-{props.endMonth}</h6>
+                    <h6 className="hours">{props.days}</h6>
+                    <h6 className="hours">{props.startTime}-{props.endTime}</h6>
                     <br />
                     <h6 className="address">{props.address}</h6>
                     <h6 className="address">{props.city + ", " + props.state + " " + props.zip}</h6>
@@ -29,8 +30,8 @@ function MarketContainer(props) {
                     <h4 className="products">{props.products}</h4>
 
                     <div className="mx-auto">
-                        <button type="button" class="btn btn-dark joinBtn">Join</button>
-                        <button type="button" class="btn btn-dark donateBtn">Donate</button>
+                        <button type="button" className="btn btn-dark joinBtn">Join</button>
+                        <button type="button" className="btn btn-dark donateBtn">Donate</button>
                     </div>
                     <br />
                     <div className="form">
