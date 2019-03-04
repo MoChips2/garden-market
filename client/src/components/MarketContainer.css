@@ -52,15 +52,6 @@ img {
     margin-left: 45px;
 }
 
-.addressHead {
-    margin-left: 45px;
-    color: #61c454;
-}
-
-.hoursHead {
-    margin-left: 45px;
-    color: #61c454;
-}
 .form {
     margin: 50px;
 }
@@ -76,15 +67,13 @@ img {
     font-size: 2.5vw;
 }
 
-.form-control {
-    background-color: rgb(39, 39, 39);
-    color: white;
-    font-size: 1.5em;
+.hours {
+    margin-left: 45px;
+    font-size: 2rem;
 }
 
-.form-control:focus {
-    background-color: rgb(39, 39, 39);
-    color: rgb(236, 236, 236);
+.address {
+    margin-left: 45px;
 }
 
 .chalkboard {

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import API from "../utils/API";
-import MarketContainer from "../components/MarketContainer";
-// import ProductList from "../components/ProductList";
-import JoinMessage from "../components/JoinMessage";
+import EditContainer from "../components/EditContainer";
 
-class Market extends Component {
+// import ProductList from "../components/ProductList";
+
+class MyMarket extends Component {
 
     state = {
         markets: {}
@@ -65,7 +65,7 @@ class Market extends Component {
             <div className="container-fluid">
                 <div className="row" key={this.state.markets._id}>
                     <div className="col-md-12 mx-auto">
-                        <MarketContainer
+                        <EditContainer
                             marketName={this.state.markets.marketName}
                             organizer={this.state.markets.organizer}
                             address={this.state.markets.address}
@@ -81,10 +81,6 @@ class Market extends Component {
                             startTime={this.state.markets.startTime}
                             endTime={this.state.markets.endTime}
                         />
-                        <JoinMessage 
-                        marketName={this.state.markets.marketName}
-                        organizer={this.state.markets.organizer}
-                        />
                     </div>
                 </div>
             </div>
@@ -94,4 +90,4 @@ class Market extends Component {
     
 }
 
-export default Market;
+export default MyMarket;

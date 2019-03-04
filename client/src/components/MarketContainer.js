@@ -3,7 +3,10 @@ import "./MarketContainer.css";
 
 function MarketContainer(props) {
 
-
+    
+    
+// separate components for each
+// month/days(array)/hours, address, products (array), 
 
     return (
         <div>
@@ -17,17 +20,18 @@ function MarketContainer(props) {
             <br />
             <div className="row marketInfo">
                 <div className="col-md-5">
-                    <h2 className="aboutHeader">ABOUT THE MARKET</h2>
-                    
-                                <h6 className="font-weight-lighter address"><span className="addressHead">ADDRESS: </span>{props.address + props.city + "," + props.state + " " + props.zip}</h6>
-                           
-                                <h6 className="font-weight-lighter hours"><span className="hoursHead">HOURS: </span>April 2019 - Aug 2019: SAT & SUN 7am - 1pm</h6>
-                           
-                    <h4 className="products">{props.roles}</h4>
-                    <p className="about">{props.about}</p>
+                    <h6 className="hours">{props.startMonth}-{props.endMonth}</h6>
+                    <h6 className="hours">{props.days}</h6>
+                    <h6 className="hours">{props.startTime}-{props.endTime}</h6>
+                    <br />
+                    <h6 className="address">{props.address}</h6>
+                    <h6 className="address">{props.city + ", " + props.state + " " + props.zip}</h6>
+
+                    <h4 className="products">{props.products}</h4>
+
                     <div className="mx-auto">
-                        <button type="button" class="btn btn-dark joinBtn">Join</button>
-                        <button type="button" class="btn btn-dark donateBtn">Donate</button>
+                        <button type="button" className="btn btn-dark joinBtn">Join</button>
+                        <button type="button" className="btn btn-dark donateBtn">Donate</button>
                     </div>
                     <br />
                     <div className="form">
@@ -41,10 +45,12 @@ function MarketContainer(props) {
                     </div>
                 </div>
                 <div className="col-md-7">
-                
+
                     <div className="image">
                         <img src={props.img} alt="garden" />
                     </div>
+                    <h2 className="aboutHeader">ABOUT THE MARKET</h2>
+                    <p className="about">{props.about}</p>
                     <br />
                     <div className="chalkboard">
                         <p className="messages">My family and I had a great time at your market. We'll see you next week! -George</p>
