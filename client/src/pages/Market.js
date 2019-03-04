@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import MarketContainer from "../components/MarketContainer";
 // import ProductList from "../components/ProductList";
+import JoinMessage from "../components/JoinMessage";
 
 class Market extends Component {
 
@@ -79,20 +80,12 @@ class Market extends Component {
                             days={this.state.markets.days}
                             startTime={this.state.markets.startTime}
                             endTime={this.state.markets.endTime}
-                        >
-                       
-                                <ul>
-                                    <li>
-                                        {this.state.products}
-                                    </li>
-
-                                </ul>
-                           
-                            </MarketContainer>
+                        />
+                        <JoinMessage 
+                        marketName={this.state.markets.marketName}
+                        organizer={this.state.markets.organizer}
+                        />
                     </div>
-                    <h1>Here's the products!</h1>
-
-                    {/* {output} */}
                 </div>
             </div>
 
