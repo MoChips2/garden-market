@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import API from "../utils/API";
 const mongoose = require("mongoose");
 
-class NewMarket extends Component {
+class UpdateMarket extends Component {
     state = {
         marketName: "",
         organizer: "",
@@ -18,8 +18,7 @@ class NewMarket extends Component {
         endMonth: "",
         days: [],
         startTime: "",
-        endTime: "",
-        members: ""
+        endTime: ""
 
     };
 
@@ -187,10 +186,6 @@ class NewMarket extends Component {
                                     <div className="form-group col-md-2">
                                         <label>Zip</label>
                                         <input type="text" className="form-control" name="zip" value={this.state.zip} onChange={this.handleInputChange} />
-                                    </div>
-                                    <div className="form-group col-md-2">
-                                        <label>Members</label>
-                                        <input type="text" className="form-control" name="members" value={this.state.members} onChange={this.handleInputChange} />
                                     </div>
                                 </div>
                                 <div className="form-row">

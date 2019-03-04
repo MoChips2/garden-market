@@ -11,6 +11,7 @@ function ResultContainer(props) {
             <div className="row">
                 <div className="col-md-9">
                     <Link to={"/markets/" + props.id}><h1 className="resultName">{props.marketName}</h1></Link>
+                    <Link to={"/mymarket/" + props.id}><h3 className="myMarket">Edit: {props.marketName}</h3></Link>
                     <h3 className="card-subtitle mb-2 text-muted">Organizer: {props.organizer}</h3>
                     <hr />
                     <div className="row">
