@@ -20,12 +20,8 @@ export default {
     getOneMarket: function(id) {
         console.log("getting market by id: " + id);
         return axios.get("/api/markets/" + id);
-    },
+    }
 
-    // updateMarket: function(id) {
-    //     console.log("updating market by id: " + id);
-    //     return axios.put
-    // }
 
 
 }

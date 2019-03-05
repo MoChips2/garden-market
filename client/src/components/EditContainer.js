@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 // import "./MarketContainer.css";
+const mongoose = require("mongoose");
 
 class EditContainer extends Component {
 
@@ -36,7 +37,7 @@ class EditContainer extends Component {
         console.log(myid.toString())
 
         API.updateMarket({
-            
+
         })
     }
 
