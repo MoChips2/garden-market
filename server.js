@@ -2,7 +2,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const path = require("path");
-const passport = require("passport");
+//const passport = require("./config/passport");
+var passport = require('passport');
+require('./config/passport');
 const users = require("./routes/api/users");
 
 const PORT = process.env.PORT || 3001;
@@ -35,7 +37,7 @@ app.use(passport.initialize());
 // Passport config
 require("./config/passport")(passport);
 // Routes
-app.use("/api/users", users);
+app.use("./api/users", users);
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
