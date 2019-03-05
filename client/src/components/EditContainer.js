@@ -109,7 +109,7 @@ class EditContainer extends Component {
                         <td>State</td>
                         <td>{this.props.state}</td>
                         <td>
-                            <select name="state" className="form-control">
+                            <select name="state" className="form-control" value={this.state.state} onChange={this.handleInputChange}>
                                 <option>Choose...</option>
                                 <option value="AL">AL</option>
                                 <option value="AK">AK</option>
@@ -241,7 +241,7 @@ class EditContainer extends Component {
                         <td>Starting Month</td>
                         <td>{this.props.startMonth}</td>
                         <td>
-                            <select name="startMonth" className="custom-select my-1 mr-sm-2">
+                            <select name="startMonth" className="custom-select my-1 mr-sm-2" value={this.state.startMonth} onChange={this.handleInputChange}>
                                 <option>Choose...</option>
                                 <option value="Jan">January</option>
                                 <option value="Feb">February</option>
@@ -263,7 +263,7 @@ class EditContainer extends Component {
                         <td>Ending Month</td>
                         <td>{this.props.endMonth}</td>
                         <td>
-                            <select name="endMonth" className="custom-select my-1 mr-sm-2">
+                            <select name="endMonth" className="custom-select my-1 mr-sm-2" value={this.state.endMonth} onChange={this.handleInputChange}>
                                 <option>Choose...</option>
                                 <option value="Jan">January</option>
                                 <option value="Feb">February</option>
@@ -323,7 +323,7 @@ class EditContainer extends Component {
                         <td>Start Time</td>
                         <td>{this.props.startTime}</td>
                         <td>
-                            <select name="startTime" className="custom-select my-1 mr-sm-2">
+                            <select name="startTime" className="custom-select my-1 mr-sm-2" value={this.state.startTime} onChange={this.handleInputChange}>
                                 <option>Choose...</option>
                                 <option value="5:00am">5:00am</option>
                                 <option value="6:00am">6:00am</option>
@@ -342,7 +342,7 @@ class EditContainer extends Component {
                         <td>End Time</td>
                         <td>{this.props.endTime}</td>
                         <td>
-                            <select name="endTime" className="custom-select my-1 mr-sm-2">
+                            <select name="endTime" className="custom-select my-1 mr-sm-2" value={this.state.endTime} onChange={this.handleInputChange}>
                                 <option>Choose...</option>
                                 <option value="8:00am">8:00am</option>
                                 <option value="9:00am">9:00am</option>
