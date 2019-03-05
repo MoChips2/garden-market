@@ -1,3 +1,15 @@
-.changeTo {
-    width: 100%;
+.valueColumn {
+    width: 20%;
+}
+
+.currentColumn {
+    width: 35%;
+}
+
+.changeToColumn {
+    width: 35%;
+}
+
+.btnColumn {
+    width: 10%;
 }
