@@ -3,12 +3,8 @@ import "./MarketContainer.css";
 
 function MarketContainer(props) {
 
-    
-    
-// separate components for each
-// month/days(array)/hours, address, products (array), 
-
     return (
+        
         <div>
             <div className="row">
                 <div className="col-md-12 titleDiv" key={props.id}>
@@ -45,7 +41,6 @@ function MarketContainer(props) {
                     </div>
                 </div>
                 <div className="col-md-7">
-
                     <div className="image">
                         <img src={props.img} alt="garden" />
                     </div>
@@ -58,10 +53,6 @@ function MarketContainer(props) {
                 </div>
             </div>
         </div>
-
-
-
-
     )
 }
 
