@@ -8,20 +8,7 @@ class MyMarket extends Component {
 
     state = {
         markets: {}
-        // marketName: "",
-        // name: "",
-        // address: "",
-        // city: "",
-        // state: "",
-        // zip: "",
-        // about: "",
-        // img: "",
-        // products: [],
-        // startMonth: "",
-        // endMonth: "",
-        // days: [],
-        // startTime: "",
-        // endTime: ""
+        
     };
 
     componentDidMount() {
@@ -35,31 +22,10 @@ class MyMarket extends Component {
                 this.setState({
                     markets: res.data,
                     products: res.data.products
-                    // marketName: "",
-                    // name: "",
-                    // address: "",
-                    // city: "",
-                    // state: "",
-                    // zip: "",
-                    // about: "",
-                    // img: "",
-                    // products: [],
-                    // startMonth: "",
-                    // endMonth: "",
-                    // days: [],
-                    // startTime: "",
-                    // endTime: ""
                 }))
-                // console.log(this.state.markets)
-               
     }
-    
 
     render() {
-        
-        // let output = this.state.markets.products.map(e => e.split(' '));
-
-       console.log(this.state.products)
 
         return (
             <div className="container-fluid">
