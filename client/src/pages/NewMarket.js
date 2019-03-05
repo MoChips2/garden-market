@@ -247,31 +247,31 @@ class NewMarket extends Component {
                                 <div className="form-group">
                                     <label>Choose all that apply:</label>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="days" value="Sunday" onChange={this.onChangeDays.bind(this)} />
+                                        <input className="form-check-input" type="checkbox" name="days" value="Sunday " onChange={this.onChangeDays.bind(this)} />
                                         <label className="form-check-label">Sunday</label>
                                     </div>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="days" value="Monday" onChange={this.onChangeDays.bind(this)} />
+                                        <input className="form-check-input" type="checkbox" name="days" value="Monday " onChange={this.onChangeDays.bind(this)} />
                                         <label className="form-check-label">Monday</label>
                                     </div>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="days" value="Tuesday" onChange={this.onChangeDays.bind(this)} />
+                                        <input className="form-check-input" type="checkbox" name="days" value="Tuesday " onChange={this.onChangeDays.bind(this)} />
                                         <label className="form-check-label">Tuesday</label>
                                     </div>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="days" value="Wednesday" onChange={this.onChangeDays.bind(this)} />
+                                        <input className="form-check-input" type="checkbox" name="days" value="Wednesday " onChange={this.onChangeDays.bind(this)} />
                                         <label className="form-check-label">Wednesday</label>
                                     </div>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="days" value="Thursday" onChange={this.onChangeDays.bind(this)} />
+                                        <input className="form-check-input" type="checkbox" name="days" value="Thursday " onChange={this.onChangeDays.bind(this)} />
                                         <label className="form-check-label">Thursday</label>
                                     </div>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="days" value="Friday" onChange={this.onChangeDays.bind(this)} />
+                                        <input className="form-check-input" type="checkbox" name="days" value="Friday " onChange={this.onChangeDays.bind(this)} />
                                         <label className="form-check-label">Friday</label>
                                     </div>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="days" value="Saturday" onChange={this.onChangeDays.bind(this)} />
+                                        <input className="form-check-input" type="checkbox" name="days" value="Saturday " onChange={this.onChangeDays.bind(this)} />
                                         <label className="form-check-label">Saturday</label>
                                     </div>
                                 </div>

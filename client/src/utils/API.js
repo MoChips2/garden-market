@@ -23,7 +23,7 @@ export default {
     updateMarket: function(id, updatedMarketData) {
         console.log("updating market by id: " + id);
         console.log(updatedMarketData);
-        return axios.put("/api/markets/" + id);
+        return axios.put(`/api/markets/${id}`, updatedMarketData);
     }
 
 

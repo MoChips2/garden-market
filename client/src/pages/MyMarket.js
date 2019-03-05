@@ -32,6 +32,7 @@ class MyMarket extends Component {
                 <div className="row" key={this.state.markets._id}>
                     <div className="col-md-12 mx-auto">
                         <EditContainer
+                            id={this.state.markets._id}
                             marketName={this.state.markets.marketName}
                             organizer={this.state.markets.organizer}
                             address={this.state.markets.address}

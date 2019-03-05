@@ -9,7 +9,7 @@ function Search() {
                 <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" />
             </div>
 
-            <button type="submit" className="btn btn-primary">Search</button>
+            <button type="submit" className="btn btn-primary" to="/searchresult">Search</button>
         </div >
     )
 }
