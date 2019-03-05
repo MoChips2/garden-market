@@ -8,6 +8,7 @@ router.route("/")
 
 // Matches with "/api/books/:id"
 router.route("/:id")
-  .get(marketController.findById);
+  .get(marketController.findById)
+  .put(marketController.update);
 
 module.exports = router;
