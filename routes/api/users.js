@@ -1,5 +1,7 @@
 const express = require("express");
-const router = express.Router();
+// const router = express.Router();
+const router = require("express").Router();
+const usersController = require("../../controllers/usersController");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
@@ -19,12 +21,13 @@ router.post("/register", (req, res) => {
     if (!isValid) {
       return res.status(400).json(errors);
     }
-  User.findOne({ email: req.body.email }).then(user => {
+    User.findOne({ email: req.body.email }).then(user => {
       if (user) {
         return res.status(400).json({ email: "Email already exists" });
       } 
   const newUser = new User({
           name: req.body.name,
+          // username:req.body.username,
           email: req.body.email,
           password: req.body.password
         });
@@ -55,7 +58,7 @@ const { errors, isValid } = validateLoginInput(req.body);
 const email = req.body.email;
   const password = req.body.password;
 // Find user by email
-  User.findOne({ email }).then(user => {
+usersController.findOne({ email }).then(user => {
     // Check if user exists
     if (!user) {
       return res.status(404).json({ emailnotfound: "Email not found" });
@@ -91,3 +94,5 @@ const email = req.body.email;
     });
   });
 });
+
+module.exports = router;
