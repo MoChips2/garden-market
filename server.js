@@ -2,6 +2,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const path = require("path");
+const passport = require("passport");
+const users = require("./routes/api/users");
+
 const PORT = process.env.PORT || 3001;
 const app = express();
 // Define middleware here
@@ -27,6 +30,12 @@ app.get("*", (req, res) => {
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/gardenmarket", { useNewUrlParser: true });
 
+// Passport middleware
+app.use(passport.initialize());
+// Passport config
+require("./config/passport")(passport);
+// Routes
+app.use("/api/users", users);
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
