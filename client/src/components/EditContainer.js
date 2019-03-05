@@ -37,8 +37,11 @@ class EditContainer extends Component {
         console.log(myid.toString())
 
         API.updateMarket({
+            _id: myid,
 
-        })
+        }).then(this.props.history.push("mymarket/" + myid)
+        )
+        console.log("update in EditContainer")
     }
 
 
@@ -62,28 +65,28 @@ class EditContainer extends Component {
                     <tr>
                         <td>Market Name</td>
                         <td>{this.props.marketName}</td>
-                        <td><input type="text" className="form-control" name="marketName" placeholder="Example Market" /></td>
-                        <td><button type="submit" className="btn btn-dark">Submit</button></td>
+                        <td><input type="text" className="form-control" name="marketName" value={this.state.marketName} onChange={this.handleInputChange}/></td>
+                        <td><button type="submit" className="btn btn-dark" onClick={this.handleFormSubmit}>Submit</button></td>
 
                     </tr>
 
                     <tr>
                         <td>Organizer</td>
                         <td>{this.props.organizer}</td>
-                        <td><input type="text" className="form-control" name="organizer" placeholder="Example Market" /></td>
-                        <td><button type="submit" className="btn btn-dark">Submit</button></td>
+                        <td><input type="text" className="form-control" name="organizer" value={this.state.organizer} onChange={this.handleInputChange}/></td>
+                        <td><button type="submit" className="btn btn-dark" onClick={this.handleFormSubmit}>Submit</button></td>
                     </tr>
                     <tr>
                         <td>Address</td>
                         <td>{this.props.address}</td>
-                        <td><input type="text" className="form-control" name="address" placeholder="Example Market" /></td>
-                        <td><button type="submit" className="btn btn-dark">Submit</button></td>
+                        <td><input type="text" className="form-control" name="address" value={this.state.address} onChange={this.handleInputChange}/></td>
+                        <td><button type="submit" className="btn btn-dark" onClick={this.handleFormSubmit}>Submit</button></td>
                     </tr>
                     <tr>
                         <td>City</td>
                         <td>{this.props.city}</td>
-                        <td><input type="text" className="form-control" name="city" placeholder="Example Market" /></td>
-                        <td><button type="submit" className="btn btn-dark">Submit</button></td>
+                        <td><input type="text" className="form-control" name="city" value={this.state.city} onChange={this.handleInputChange}/></td>
+                        <td><button type="submit" className="btn btn-dark" onClick={this.handleFormSubmit}>Submit</button></td>
                     </tr>
                     <tr>
                         <td>State</td>
@@ -160,7 +163,7 @@ class EditContainer extends Component {
                     <tr>
                         <td>Image Link</td>
                         <td>{this.props.img}</td>
-                        <td><input type="text" className="form-control" name="img" placeholder="Example Market" /></td>
+                        <td><input type="text" className="form-control" name="img"/></td>
                         <td><button type="submit" className="btn btn-dark">Submit</button></td>
                     </tr>
                     <tr>
