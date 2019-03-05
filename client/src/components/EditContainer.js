@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 // import "./MarketContainer.css";
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 
 class EditContainer extends Component {
 
@@ -33,15 +33,9 @@ class EditContainer extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        var myid = mongoose.Types.ObjectId();
-        console.log(myid.toString())
-
-        API.updateMarket({
-            _id: myid,
-
-        }).then(this.props.history.push("mymarket/" + myid)
-        )
-        console.log("update in EditContainer")
+        var name = event.target.name;
+        var id = event.target.id;
+        API.updateMarket(id, {[name]: this.state[name]})
     }
 
 
@@ -66,7 +60,7 @@ class EditContainer extends Component {
                         <td>Market Name</td>
                         <td>{this.props.marketName}</td>
                         <td><input type="text" className="form-control" name="marketName" value={this.state.marketName} onChange={this.handleInputChange}/></td>
-                        <td><button type="submit" className="btn btn-dark" onClick={this.handleFormSubmit}>Submit</button></td>
+                        <td><button type="submit" className="btn btn-dark" id={this.props.id} onClick={this.handleFormSubmit} name={'marketName'}>Submit</button></td>
 
                     </tr>
 
@@ -74,19 +68,19 @@ class EditContainer extends Component {
                         <td>Organizer</td>
                         <td>{this.props.organizer}</td>
                         <td><input type="text" className="form-control" name="organizer" value={this.state.organizer} onChange={this.handleInputChange}/></td>
-                        <td><button type="submit" className="btn btn-dark" onClick={this.handleFormSubmit}>Submit</button></td>
+                        <td><button type="submit" className="btn btn-dark" id={this.props.id} onClick={this.handleFormSubmit} name={'organizer'}>Submit</button></td>
                     </tr>
                     <tr>
                         <td>Address</td>
                         <td>{this.props.address}</td>
                         <td><input type="text" className="form-control" name="address" value={this.state.address} onChange={this.handleInputChange}/></td>
-                        <td><button type="submit" className="btn btn-dark" onClick={this.handleFormSubmit}>Submit</button></td>
+                        <td><button type="submit" className="btn btn-dark" id={this.props.id} onClick={this.handleFormSubmit} name={'address'}>Submit</button></td>
                     </tr>
                     <tr>
                         <td>City</td>
                         <td>{this.props.city}</td>
                         <td><input type="text" className="form-control" name="city" value={this.state.city} onChange={this.handleInputChange}/></td>
-                        <td><button type="submit" className="btn btn-dark" onClick={this.handleFormSubmit}>Submit</button></td>
+                        <td><button type="submit" className="btn btn-dark" id={this.props.id} onClick={this.handleFormSubmit} name={'city'}>Submit</button></td>
                     </tr>
                     <tr>
                         <td>State</td>
@@ -146,25 +140,25 @@ class EditContainer extends Component {
                                 <option value="WY">WY</option>
                             </select>
                         </td>
-                        <td><button type="submit" className="btn btn-dark">Submit</button></td>
+                        <td><button type="submit" className="btn btn-dark" id={this.props.id} onClick={this.handleFormSubmit} name={'state'}>Submit</button></td>
                     </tr>
                     <tr>
                         <td>Zip</td>
                         <td>{this.props.zip}</td>
                         <td><input type="text" className="form-control" name="zip" placeholder="zip" /></td>
-                        <td><button type="submit" className="btn btn-dark">Submit</button></td>
+                        <td><button type="submit" className="btn btn-dark" id={this.props.id} onClick={this.handleFormSubmit} name={'zip'}>Submit</button></td>
                     </tr>
                     <tr>
                         <td>About</td>
                         <td>{this.props.about}</td>
-                        <td><textarea className="form-control" name="about" rows="3"></textarea></td>
-                        <td><button type="submit" className="btn btn-dark">Submit</button></td>
+                        <td><textarea className="form-control" name="about" rows="3" onChange={this.handleInputChange}></textarea></td>
+                        <td><button type="submit" className="btn btn-dark" id={this.props.id} onClick={this.handleFormSubmit} name={'about'}>Submit</button></td>
                     </tr>
                     <tr>
                         <td>Image Link</td>
                         <td>{this.props.img}</td>
-                        <td><input type="text" className="form-control" name="img"/></td>
-                        <td><button type="submit" className="btn btn-dark">Submit</button></td>
+                        <td><input type="text" className="form-control" name="img" onChange={this.handleInputChange}/></td>
+                        <td><button type="submit" className="btn btn-dark" id={this.props.id} onClick={this.handleFormSubmit} name={'img'}>Submit</button></td>
                     </tr>
                     <tr>
                         <td>Products</td>
@@ -218,13 +212,13 @@ class EditContainer extends Component {
                             </div>
 
                         </td>
-                        <td><button type="submit" className="btn btn-dark">Submit</button></td>
+                        <td><button type="submit" className="btn btn-dark" id={this.props.id} onClick={this.handleFormSubmit} name={'products'}>Submit</button></td>
                     </tr>
                     <tr>
                         <td>Starting Month</td>
                         <td>{this.props.startMonth}</td>
                         <td>
-                            <select name="startMonth" className="custom-select my-1 mr-sm-2" id="startMonth">
+                            <select name="startMonth" className="custom-select my-1 mr-sm-2">
                                 <option>Choose...</option>
                                 <option value="Jan">January</option>
                                 <option value="Feb">February</option>
@@ -240,13 +234,13 @@ class EditContainer extends Component {
                                 <option value="Dec">December</option>
                             </select>
                         </td>
-                        <td><button type="submit" className="btn btn-dark">Submit</button></td>
+                        <td><button type="submit" className="btn btn-dark" id={this.props.id} onClick={this.handleFormSubmit} name={'startMonth'}>Submit</button></td>
                     </tr>
                     <tr>
                         <td>Ending Month</td>
                         <td>{this.props.endMonth}</td>
                         <td>
-                            <select name="endMonth" className="custom-select my-1 mr-sm-2" id="endMonth">
+                            <select name="endMonth" className="custom-select my-1 mr-sm-2">
                                 <option>Choose...</option>
                                 <option value="Jan">January</option>
                                 <option value="Feb">February</option>
@@ -262,7 +256,7 @@ class EditContainer extends Component {
                                 <option value="Dec">December</option>
                             </select>
                         </td>
-                        <td><button type="submit" className="btn btn-dark">Submit</button></td>
+                        <td><button type="submit" className="btn btn-dark" id={this.props.id} onClick={this.handleFormSubmit} name={'endMonth'}>Submit</button></td>
                     </tr>
                     <tr>
                         <td>Days of the Week</td>
@@ -300,13 +294,13 @@ class EditContainer extends Component {
                                 </div>
                             </div>
                         </td>
-                        <td><button type="submit" className="btn btn-dark">Submit</button></td>
+                        <td><button type="submit" className="btn btn-dark" id={this.props.id} onClick={this.handleFormSubmit} name={'days'}>Submit</button></td>
                     </tr>
                     <tr>
                         <td>Start Time</td>
                         <td>{this.props.startTime}</td>
                         <td>
-                            <select name="startTime" className="custom-select my-1 mr-sm-2" id="startTime">
+                            <select name="startTime" className="custom-select my-1 mr-sm-2">
                                 <option>Choose...</option>
                                 <option value="5:00am">5:00am</option>
                                 <option value="6:00am">6:00am</option>
@@ -319,13 +313,13 @@ class EditContainer extends Component {
                                 <option value="1:00pm">1:00pm</option>
                             </select>
                         </td>
-                        <td><button type="submit" className="btn btn-dark">Submit</button></td>
+                        <td><button type="submit" className="btn btn-dark" id={this.props.id} onClick={this.handleFormSubmit} name={'startTime'}>Submit</button></td>
                     </tr>
                     <tr>
                         <td>End Time</td>
                         <td>{this.props.endTime}</td>
                         <td>
-                            <select name="endTime" className="custom-select my-1 mr-sm-2" id="endTime">
+                            <select name="endTime" className="custom-select my-1 mr-sm-2">
                                 <option>Choose...</option>
                                 <option value="8:00am">8:00am</option>
                                 <option value="9:00am">9:00am</option>
@@ -341,7 +335,7 @@ class EditContainer extends Component {
                                 <option value="7:00pm">7:00pm</option>
                             </select>
                         </td>
-                        <td><button type="submit" className="btn btn-dark">Submit</button></td>
+                        <td><button type="submit" className="btn btn-dark" id={this.props.id} onClick={this.handleFormSubmit} name={'endTime'}>Submit</button></td>
                     </tr>
 
                 </tbody>
