@@ -6,10 +6,8 @@
     text-align: center;
 }
 .green {
-    /* color: rgb(52, 87, 0); */
     font-size: 26rem;
     font-family: 'Rancho', Arial, Helvetica, sans-serif;
-    margin-bottom: -20px;
     padding-right: 160px;
     letter-spacing: -25px;
     text-shadow: 0 5px 2px rgba(0, 0, 0, 0.4);
@@ -42,7 +40,7 @@
 
 .titleContent {
     position: absolute;
-    bottom: 8%;
+    bottom: 5%;
     left: 14%;
     z-index: 20;
    
