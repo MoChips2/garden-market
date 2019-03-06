@@ -30,7 +30,7 @@ function MarketContainer(props) {
                         <button type="button" className="btn btn-dark donateBtn">Donate</button>
                     </div>
                     <br />
-                    <div className="form">
+                    <div className="form marketForm">
                         <div className="form-row">
                             <div className="form-group col-md-12">
                                 <label>Write on the chalkboard (but be cool):</label>

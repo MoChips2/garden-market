@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Search from "../components/Search";
 
 
 function Navbar() {
@@ -28,8 +29,8 @@ function Navbar() {
                     <li className={window.location.pathname === "/market" ? "active" : ""}>
                         <Link className="nav-link" to="/mymarket/5c7c2bdf6489ba0000387807">My Market</Link>
                     </li>
-                    {/* <li className={window.location.pathname === "/map" ? "active" : ""}>
-                        <Link className="nav-link" to="/map">Map</Link>
+                    {/* <li className={window.location.pathname === "/searchresult" ? "active" : ""}>
+                        <Link className="nav-link" to="/searchresult"></Link>
                     </li> */}
                 </ul>
             </div>

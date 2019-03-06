@@ -21,7 +21,7 @@ body {
     padding-bottom: -20px;
 }
 
-img {
+.image {
     width: 95%;
     border-radius: 5px;
 }
@@ -52,7 +52,7 @@ img {
     margin-left: 45px;
 }
 
-.form {
+.marketForm {
     margin: 50px;
 }
 
@@ -86,7 +86,3 @@ img {
     font-size: 24px;
 }
 
-p {
-    margin: 20px;
-    
-}
