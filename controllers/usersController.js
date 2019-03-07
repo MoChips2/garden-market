@@ -16,7 +16,7 @@ module.exports = {
   findOne: function(req,res){
     db.Users
     .findOne(req.body)
-    .then(dbModel => console.log("here111:" + dbModel))
+    .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
   },
   
