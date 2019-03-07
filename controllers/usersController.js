@@ -15,8 +15,8 @@ module.exports = {
   },
   findOne: function(req,res){
     db.Users
-    .findOne(req.body.email)
-    .then(dbModel => res.json(dbModel))
+    .findOne(req.body)
+    .then(dbModel => console.log("here111:" + dbModel))
     .catch(err => res.status(422).json(err));
   },
   

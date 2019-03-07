@@ -58,8 +58,7 @@ const { errors, isValid } = validateLoginInput(req.body);
 const email = req.body.email;
   const password = req.body.password;
 // Find user by email
-usersController.findOne({ email }).then(user => {
-    // Check if user exists
+User.findOne({email:email}).then(user => {
     if (!user) {
       return res.status(404).json({ emailnotfound: "Email not found" });
     }
