@@ -5,5 +5,4 @@ exports.googleAPI = {
   apiKey:process.env.API_KEY
 }
 
-//module.exports = spotify;
 console.log('End Loading keys.js..');
