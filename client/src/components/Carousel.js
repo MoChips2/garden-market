@@ -16,10 +16,10 @@ function Carousel() {
                     <img src="images/kale-growing-in-garden.jpg" className="d-block w-100" alt="..." />
                 </div>
                 <div className="carousel-item">
-                    <img src="images/radishes.jpg" className="d-block w-100" alt="..." />
+                    <img src="images/carrots-3440368_1920.jpg" className="d-block w-100" alt="..." />
                 </div>
                 <div className="carousel-item">
-                    <img src="images/apples-on-farmers-market-picjumbo-com.jpg" className="d-block w-100" alt="..." />
+                    <img src="images/grapes-690230_1920.jpg" className="d-block w-100" alt="..." />
                 </div>
             </div>
             <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
