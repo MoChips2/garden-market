@@ -7,11 +7,9 @@ import About from "../components/About";
 function Home() {
 
     return (
-        <div className="container">
+        <div className="container-fluid">
             <div className="row">
                 <div className="col-md-12 mainTitleDiv">
-                <br />
-                <br />
                     <Carousel />
                 </div>
             </div>

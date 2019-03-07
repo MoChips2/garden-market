@@ -1,9 +1,13 @@
 /* body {
     background-color: rgb(32, 41, 17);
 } */
-
+.slide {
+    margin-left: -20px;
+    margin-right: -20px;
+}
 .mainTitleDiv {
     text-align: center;
+    padding: -50px;
 }
 .green {
     font-size: 26rem;
@@ -29,7 +33,7 @@
     font-family: 'Staatliches', Arial, Helvetica, sans-serif;
     font-size: 1.6rem;
     margin-top: -50px;
-    margin-left: 95px;
+    margin-left: 43px;
     letter-spacing: 3px;
     display:inline-block;
     color: white; 
@@ -40,8 +44,8 @@
 
 .titleContent {
     position: absolute;
-    bottom: 5%;
-    left: 14%;
+    bottom: 20%;
+    left: 24%;
     z-index: 20;
    
 }
