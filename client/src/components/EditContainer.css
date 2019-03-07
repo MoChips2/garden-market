@@ -13,3 +13,8 @@
 .btnColumn {
     width: 10%;
 }
+
+th {
+    background-color: #343a40;
+    color: white;
+}

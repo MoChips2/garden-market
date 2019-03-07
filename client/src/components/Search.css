@@ -1,0 +1,19 @@
+.searchDiv {
+    border: 1px rgb(207, 207, 207) solid;
+    border-radius: 3px;
+    padding: 10px;
+    width: 100%;
+    margin-top: 30px;
+    background-color: white;
+}
+
+.addressSearchBtn {
+    background-color: red;
+    border-color: red;
+    width: 100%;
+}
+
+.addressSearchBtn:hover {
+    background-color: rgb(197, 0, 0);
+    border-color: rgb(197, 0, 0);
+}

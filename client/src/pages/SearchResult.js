@@ -27,33 +27,42 @@ class SearchResult extends Component {
                     state: "",
                     zip: ""
                 }))
-                .catch(err => console.log(err));
+            .catch(err => console.log(err));
     };
 
     render() {
         return (
-            <div className="row">
-                <div className="col-md-9 mx-auto">
-                    <h1>Search Results</h1>
-                    {this.state.markets.map(market => (
-                        <div className="row" key={market._id}>
-                            <div className="col-md-12 mx-auto">
-                                <ResultContainer
-                                    id={market._id}
-                                    marketName={market.marketName}
-                                    organizer={market.organizer}
-                                    address={market.address}
-                                    city={market.city}
-                                    state={market.state}
-                                    zip={market.zip}
-                                    about={market.about}
-                                />
+            <div className="container">
+            <br />
+            <br />
+            <h1 className="searchHeader">SEARCH RESULTS</h1>
+                        <hr />
+                <div className="row">
+                    <div className="col-md-6">
+                        
+                        <div className="container">
+                            <div className="col-md-12">
+                                {this.state.markets.map(market => (
+                                    <div className="row" key={market._id}>
+                                        <ResultContainer
+                                            id={market._id}
+                                            marketName={market.marketName}
+                                            address={market.address}
+                                            city={market.city}
+                                            state={market.state}
+                                            zip={market.zip}
+                                        />
+                                    </div>
+                                ))}
                             </div>
                         </div>
-                    ))}
+                    </div>
+                    <br />
+                    <div className="col-md-6 mapDiv">
+                        <h1>MAP</h1>
+                    </div>
                 </div>
             </div >
-
         )
     }
 }
