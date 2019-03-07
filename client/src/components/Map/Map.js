@@ -38,7 +38,6 @@
 //           state = this.getState(addressArray);
 
 //         console.log("city", city, area, zip, state);
-
 //         this.setState({
 //           address: (address) ? address : '',
 //           area: (area) ? area : '',
