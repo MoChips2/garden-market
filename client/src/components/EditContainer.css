@@ -1,0 +1,20 @@
+.valueColumn {
+    width: 20%;
+}
+
+.currentColumn {
+    width: 35%;
+}
+
+.changeToColumn {
+    width: 35%;
+}
+
+.btnColumn {
+    width: 10%;
+}
+
+th {
+    background-color: #343a40;
+    color: white;
+}

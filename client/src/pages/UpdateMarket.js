@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import API from "../utils/API";
 const mongoose = require("mongoose");
 
-class NewMarket extends Component {
+class UpdateMarket extends Component {
     state = {
         marketName: "",
         organizer: "",
@@ -18,8 +18,7 @@ class NewMarket extends Component {
         endMonth: "",
         days: [],
         startTime: "",
-        endTime: "",
-        members: ""
+        endTime: ""
 
     };
 
@@ -188,10 +187,6 @@ class NewMarket extends Component {
                                         <label>Zip</label>
                                         <input type="text" className="form-control" name="zip" value={this.state.zip} onChange={this.handleInputChange} />
                                     </div>
-                                    <div className="form-group col-md-2">
-                                        <label>Members</label>
-                                        <input type="text" className="form-control" name="members" value={this.state.members} onChange={this.handleInputChange} />
-                                    </div>
                                 </div>
                                 <div className="form-row">
                                     <div className="form-group col-md-12">
@@ -247,31 +242,31 @@ class NewMarket extends Component {
                                 <div className="form-group">
                                     <label>Choose all that apply:</label>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="days" value="Sunday " onChange={this.onChangeDays.bind(this)} />
+                                        <input className="form-check-input" type="checkbox" name="days" value="Sunday" onChange={this.onChangeDays.bind(this)} />
                                         <label className="form-check-label">Sunday</label>
                                     </div>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="days" value="Monday " onChange={this.onChangeDays.bind(this)} />
+                                        <input className="form-check-input" type="checkbox" name="days" value="Monday" onChange={this.onChangeDays.bind(this)} />
                                         <label className="form-check-label">Monday</label>
                                     </div>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="days" value="Tuesday " onChange={this.onChangeDays.bind(this)} />
+                                        <input className="form-check-input" type="checkbox" name="days" value="Tuesday" onChange={this.onChangeDays.bind(this)} />
                                         <label className="form-check-label">Tuesday</label>
                                     </div>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="days" value="Wednesday " onChange={this.onChangeDays.bind(this)} />
+                                        <input className="form-check-input" type="checkbox" name="days" value="Wednesday" onChange={this.onChangeDays.bind(this)} />
                                         <label className="form-check-label">Wednesday</label>
                                     </div>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="days" value="Thursday " onChange={this.onChangeDays.bind(this)} />
+                                        <input className="form-check-input" type="checkbox" name="days" value="Thursday" onChange={this.onChangeDays.bind(this)} />
                                         <label className="form-check-label">Thursday</label>
                                     </div>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="days" value="Friday " onChange={this.onChangeDays.bind(this)} />
+                                        <input className="form-check-input" type="checkbox" name="days" value="Friday" onChange={this.onChangeDays.bind(this)} />
                                         <label className="form-check-label">Friday</label>
                                     </div>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" name="days" value="Saturday " onChange={this.onChangeDays.bind(this)} />
+                                        <input className="form-check-input" type="checkbox" name="days" value="Saturday" onChange={this.onChangeDays.bind(this)} />
                                         <label className="form-check-label">Saturday</label>
                                     </div>
                                 </div>

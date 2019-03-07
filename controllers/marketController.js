@@ -29,5 +29,13 @@ module.exports = {
     .findById(req.params.id)
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
+  },
+  update: function(req, res) {
+    console.log("inside update, id: " + req.params.id);
+    console.log(req.body);
+    db.Market
+      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   }
 }

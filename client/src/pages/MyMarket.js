@@ -1,23 +1,14 @@
 import React, { Component } from "react";
 import API from "../utils/API";
-import MarketContainer from "../components/MarketContainer";
-
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { logoutUser } from "../actions/authActions";
+import EditContainer from "../components/EditContainer";
 
 // import ProductList from "../components/ProductList";
-import JoinMessage from "../components/JoinMessage";
 
-class Market extends Component {
-
-    onLogoutClick = e => {
-        e.preventDefault();
-        this.props.logoutUser();
-    };
+class MyMarket extends Component {
 
     state = {
         markets: {}
+        
     };
 
     componentDidMount() {
@@ -32,21 +23,16 @@ class Market extends Component {
                     markets: res.data,
                     products: res.data.products
                 }))
-
-            .catch(err => console.log(err));
-    };
+    }
 
     render() {
-        const { user } = this.props.auth;
-        
-       console.log(this.state.products);
-      
+
         return (
-      
             <div className="container-fluid">
                 <div className="row" key={this.state.markets._id}>
                     <div className="col-md-12 mx-auto">
-                        <MarketContainer
+                        <EditContainer
+                            id={this.state.markets._id}
                             marketName={this.state.markets.marketName}
                             organizer={this.state.markets.organizer}
                             address={this.state.markets.address}
@@ -55,12 +41,6 @@ class Market extends Component {
                             zip={this.state.markets.zip}
                             about={this.state.markets.about}
                             img={this.state.markets.img}
-
-                            roles={this.state.markets.roles}
-                        />
-
-                    </div>
-                </div>
                             products={this.state.markets.products}
                             startMonth={this.state.markets.startMonth}
                             endMonth={this.state.markets.endMonth}
@@ -68,26 +48,13 @@ class Market extends Component {
                             startTime={this.state.markets.startTime}
                             endTime={this.state.markets.endTime}
                         />
-                        <JoinMessage 
-                        marketName={this.state.markets.marketName}
-                        organizer={this.state.markets.organizer}
-                        />
                     </div>
                 </div>
             </div>
+
         )
     }
+    
 }
 
-// export default Market;
-Market.propTypes = {
-    logoutUser: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired
-  };
-  const mapStateToProps = state => ({
-    auth: state.auth
-  });
-  export default connect(
-    mapStateToProps,
-    { logoutUser }
-  )(Market);
+export default MyMarket;
