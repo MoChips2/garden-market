@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import ResultContainer from "../components/ResultContainer";
+import MapContainer from "../components/Map";
 
 class SearchResult extends Component {
     state = {
@@ -59,7 +60,7 @@ class SearchResult extends Component {
                     </div>
                     <br />
                     <div className="col-md-6 mapDiv">
-                        <h1>MAP</h1>
+                        <MapContainer/>
                     </div>
                 </div>
             </div >
