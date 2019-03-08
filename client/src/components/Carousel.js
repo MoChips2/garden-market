@@ -6,7 +6,7 @@ function Carousel() {
     return (
 
         <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
-            <div className="titleContent">
+            <div className="titleContent col-md-8">
                 <h1 className="green">Green</h1>
                 <h1 className="street">STREET</h1>
                 <h5 className="tagline">A FRONT YARD MARKET REVOLUTION</h5>

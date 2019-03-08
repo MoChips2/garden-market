@@ -1,9 +1,8 @@
 .searchDiv {
     border: 1px rgb(240, 240, 240) solid;
     border-radius: 5px;
-    padding: 10px 30px 15px 30px;
-    width: 50%;
-    
+    padding: 5px 30px 15px 30px;
+    width: 80%;
     margin-top: 40px;
     text-align: left;
     background-color: rgba(255, 255, 255, 0.15);
@@ -13,16 +12,16 @@
     text-align: right;
 }
 .addressSearchBtn {
-    background-color: red;
-    border-color: red;
+    background-color: rgb(209, 34, 34);
+    border-color: rgb(209, 34, 34);
     color: white;
     border-radius: 0 5px 5px 0;
-    margin-right: 10px;
+    margin-right: 25px;
 }
 
 .addressSearchBtn:hover {
-    background-color: rgb(197, 0, 0);
-    border-color: rgb(197, 0, 0);
+    background-color: rgb(172, 0, 0);
+    border-color: rgb(172, 0, 0);
 }
 
 .searchMessage {
@@ -30,9 +29,9 @@
 }
 .searchMessage {
     text-align: left;
-    padding-left: 10px;
+    padding-left: 27px;
 }
 
 .input-group {
-    padding-left: 10px;
+    padding-left: 25px;
 }
