@@ -17,7 +17,7 @@ class App extends Component {
       <Router>
         <div>
           <Navbar />
-          <div className="container-fluid">
+          <div>
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/map" component={mHome} />

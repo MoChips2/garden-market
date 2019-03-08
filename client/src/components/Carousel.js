@@ -10,7 +10,6 @@ function Carousel() {
                 <h1 className="green">Green</h1>
                 <h1 className="street">STREET</h1>
                 <h5 className="tagline">A FRONT YARD MARKET REVOLUTION</h5>
-
                 <Search />
             </div>
             <div className="carousel-inner">
