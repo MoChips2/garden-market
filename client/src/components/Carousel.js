@@ -1,5 +1,6 @@
 import React from "react";
 import "../pages/Home.css";
+import Search from "../components/Search";
 
 function Carousel() {
     return (
@@ -9,17 +10,19 @@ function Carousel() {
                 <h1 className="green">Green</h1>
                 <h1 className="street">STREET</h1>
                 <h5 className="tagline">A FRONT YARD MARKET REVOLUTION</h5>
+
+                <Search />
             </div>
             <div className="carousel-inner">
                 <div className="carousel-item active">
 
-                    <img src="images/kale-growing-in-garden.jpg" className="d-block w-100" alt="..." />
+                    <img src="images/vegetables-752153_1920.jpg" className="d-block w-100" alt="..." />
                 </div>
                 <div className="carousel-item">
-                    <img src="images/radishes.jpg" className="d-block w-100" alt="..." />
+                    <img src="images/grapes-690230_1920.jpg" className="d-block w-100" alt="..." />
                 </div>
                 <div className="carousel-item">
-                    <img src="images/apples-on-farmers-market-picjumbo-com.jpg" className="d-block w-100" alt="..." />
+                    <img src="images/plant-690051_1920.jpg" className="d-block w-100" alt="..." />
                 </div>
             </div>
             <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
