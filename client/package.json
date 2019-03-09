@@ -6,6 +6,8 @@
   "proxy": "http://localhost:3001/",
   "dependencies": {
     "axios": "^0.18.0",
+    "dotenv": "^6.2.0",
+    "google-maps-react": "^2.0.2",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "classnames": "^2.2.6",

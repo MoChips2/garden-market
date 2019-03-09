@@ -1,9 +1,8 @@
-require('dotenv').config();
-console.log('keys.js is loaded');
+require("dotenv").config()
+console.log("Loding...");
 
-exports.googleAPI = {
-  apiKey:process.env.API_KEY
+var googleAPI = {
+  apiKey: process.env.API_KEY
 }
-
-//module.exports = spotify;
-console.log('End Loading keys.js..');
+console.log(googleAPI);
+export default googleAPI;

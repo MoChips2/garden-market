@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import ResultContainer from "../components/ResultContainer";
+import MapContainer from "../components/Map";
 
 class SearchResult extends Component {
     state = {
@@ -9,12 +10,16 @@ class SearchResult extends Component {
         address: "",
         city: "",
         state: "",
-        zip: ""
+        zip: "",
+        lat: 0,
+        lng: 0,
     };
 
     componentDidMount() {
         this.loadMarkets();
+        this.getCoordinates();
     };
+    
 
     loadMarkets = () => {
         API.getMarkets()
@@ -30,16 +35,34 @@ class SearchResult extends Component {
             .catch(err => console.log(err));
     };
 
+    // converts address into coordinates -Simone
+    
+    getCoordinates = () => {
+        API.geocodeAddress("1420 Eckles Ave, St Paul, MN 55108") 
+            .then(res => {
+                console.log(res.data);
+                let coords = res.data.results[0].geometry.location;
+                let lat = coords.lat;
+                let lng = coords.lng
+                console.log(lat, lng);
+                this.setState({
+                    lat: lat,
+                    lng: lng
+                })
+            })
+            .catch(err => console.log(err));
+    };
+
     render() {
         return (
             <div className="container">
-            <br />
-            <br />
-            <h1 className="searchHeader">SEARCH RESULTS</h1>
-                        <hr />
+                <br />
+                <br />
+                <h1 className="searchHeader">SEARCH RESULTS</h1>
+                <hr />
                 <div className="row">
                     <div className="col-md-6">
-                        
+
                         <div className="container">
                             <div className="col-md-12">
                                 {this.state.markets.map(market => (
@@ -59,7 +82,10 @@ class SearchResult extends Component {
                     </div>
                     <br />
                     <div className="col-md-6 mapDiv">
-                        <h1>MAP</h1>
+                        <MapContainer
+                            lat={this.state.lat}
+                            lng={this.state.lng}
+                        />
                     </div>
                 </div>
             </div >
