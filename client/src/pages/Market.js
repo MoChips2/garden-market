@@ -37,7 +37,7 @@ class Market extends Component {
 
         return (
             <div className="container-fluid">
-                <div className="row" key={this.state.markets._id}>
+                <div className="row titleRow" key={this.state.markets._id}>
                     <div className="col-md-12 mx-auto">
                         <MarketTitle
                             marketName={this.state.markets.marketName}
@@ -45,7 +45,7 @@ class Market extends Component {
                         />
                     </div>
                 </div>
-                <div className="row">
+                <div className="row marketRow">
                     <div className="col-md-3">
                         <div className="container">
                             <div className="row">
