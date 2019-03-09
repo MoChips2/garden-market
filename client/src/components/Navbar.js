@@ -6,13 +6,9 @@ import "./Navbar.css";
 
 function Navbar() {
     return (
-<<<<<<< HEAD
         
         <nav className="navbar navbar-expand-lg navbar-default bg-default">
-=======
 
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
->>>>>>> 2962ff868488cdce67ab7ee174ecce0cc9623cd5
             <Link className="navbar-brand" to="/">Green Street</Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
