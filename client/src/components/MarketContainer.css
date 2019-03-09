@@ -7,22 +7,23 @@ body {
 
 .titleDiv {
     background-color: #61c454;
-    margin-bottom: 50px;
+    
     
 }
 
-.market-name {
+.marketName {
     color: white;
     font-family: "Staatliches", Arial, Helvetica, sans-serif;
     font-size: 10vw;
     text-align: left;
     margin-top: 0;
+    padding-left: 40px;
     margin-bottom: -30px;
     padding-bottom: -20px;
 }
 
-.image {
-    width: 95%;
+img {
+    width: 90%;
     border-radius: 5px;
 }
 
@@ -86,3 +87,7 @@ body {
     font-size: 24px;
 }
 
+.joinMessage {
+    margin-right: 35px;
+    margin-left: 35px;
+}

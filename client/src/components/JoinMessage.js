@@ -28,7 +28,7 @@ class JoinMessage extends Component {
                     <label>Email</label>
                     <input type="text" className="form-control" name="email" value={this.state.email} onChange={this.handleInputChange} />
                 </div>
-                <div className="form-row">
+                <div className="form-row joinMessage">
                     <div className="form-group col-md-4">
                         <label>Send a private message to {this.props.organizer} with your name, where you live, what you grow and why you'd like to join {this.props.marketName}.</label>
                         <textarea className="form-control" name="message" rows="3" value={this.state.message} onChange={this.handleInputChange}></textarea>

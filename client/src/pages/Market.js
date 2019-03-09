@@ -3,6 +3,8 @@ import API from "../utils/API";
 import MarketContainer from "../components/MarketContainer";
 // import ProductList from "../components/ProductList";
 import JoinMessage from "../components/JoinMessage";
+import AboutMarket from "../components/AboutMarket";
+import Times from "../components/Times/index.js";
 
 class Market extends Component {
 
@@ -23,10 +25,10 @@ class Market extends Component {
                     products: res.data.products
                 }))
     }
-    
+
     render() {
-        
-       console.log(this.state.products)
+
+        console.log(this.state.products)
 
         return (
             <div className="container-fluid">
@@ -42,15 +44,20 @@ class Market extends Component {
                             about={this.state.markets.about}
                             img={this.state.markets.img}
                             products={this.state.markets.products}
+                        />
+                        <Times
                             startMonth={this.state.markets.startMonth}
                             endMonth={this.state.markets.endMonth}
                             days={this.state.markets.days}
                             startTime={this.state.markets.startTime}
                             endTime={this.state.markets.endTime}
                         />
-                        <JoinMessage 
-                        marketName={this.state.markets.marketName}
-                        organizer={this.state.markets.organizer}
+                        <JoinMessage
+                            marketName={this.state.markets.marketName}
+                            organizer={this.state.markets.organizer}
+                        />
+                        <AboutMarket
+                            about={this.state.markets.about}
                         />
                     </div>
                 </div>

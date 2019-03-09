@@ -5,10 +5,10 @@ function MarketContainer(props) {
 
     return (
         
-        <div>
+        <div className="container-fluid">
             <div className="row">
                 <div className="col-md-12 titleDiv" key={props.id}>
-                    <h1 className="market-name">{props.marketName}</h1>
+                    <h1 className="marketName">{props.marketName}</h1>
                     <h3 className="organizer">organized by {props.organizer}</h3>
                 </div>
             </div>
@@ -16,12 +16,12 @@ function MarketContainer(props) {
             <br />
             <div className="row marketInfo">
                 <div className="col-md-5">
-                    <h6 className="hours">{props.startMonth}-{props.endMonth}</h6>
+                    {/* <h6 className="hours">{props.startMonth}-{props.endMonth}</h6>
                     <h6 className="hours">{props.days}</h6>
                     <h6 className="hours">{props.startTime}-{props.endTime}</h6>
                     <br />
                     <h6 className="address">{props.address}</h6>
-                    <h6 className="address">{props.city + ", " + props.state + " " + props.zip}</h6>
+                    <h6 className="address">{props.city + ", " + props.state + " " + props.zip}</h6> */}
 
                     <h4 className="products">{props.products}</h4>
 
@@ -45,7 +45,7 @@ function MarketContainer(props) {
                         <img src={props.img} alt="garden" />
                     </div>
                     <h2 className="aboutHeader">ABOUT THE MARKET</h2>
-                    <p className="about">{props.about}</p>
+                    {/* <p className="about">{props.about}</p> */}
                     <br />
                     <div className="chalkboard">
                         <p className="messages">My family and I had a great time at your market. We'll see you next week! -George</p>
