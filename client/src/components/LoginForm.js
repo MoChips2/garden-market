@@ -8,7 +8,7 @@ function LoginForm() {
                 <div className="col-md-6 mx-auto">
                     <div className="form">
                         <div className="form-group">
-                            <label>Username</label>
+                            <label>Username11</label>
                             <input type="text" className="form-control" id="username" />
                         </div>
                         <div className="form-group">

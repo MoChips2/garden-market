@@ -73,8 +73,6 @@ class Market extends Component {
                         organizer={this.state.markets.organizer}
                         />
                     </div>
-                </div>
-            </div>
         )
     }
 }
