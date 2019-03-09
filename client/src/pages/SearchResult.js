@@ -36,8 +36,9 @@ class SearchResult extends Component {
     };
 
     // converts address into coordinates -Simone
+    
     getCoordinates = () => {
-        API.geocodeAddress()
+        API.geocodeAddress("1420 Eckles Ave, St Paul, MN 55108") 
             .then(res => {
                 console.log(res.data);
                 let coords = res.data.results[0].geometry.location;

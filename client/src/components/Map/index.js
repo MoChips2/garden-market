@@ -30,7 +30,7 @@ export class MapContainer extends Component {
           position={{ lat: 44.9738, lng: -93.2578 }}
         />
         <Marker
-          title={"Target"}
+          title={"U of M"}
           position={{ lat: this.props.lat, lng: this.props.lng }}
         />
       </Map>

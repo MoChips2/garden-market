@@ -26,11 +26,11 @@ export default {
         return axios.put(`/api/markets/${id}`, updatedMarketData);
     },
 
-    geocodeAddress: function() {
-        console.log("searching for: ");
+    geocodeAddress: function(address) {
+        console.log("searching for: " + address);
         return axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
             params:{
-                address:"900 Nicollet Mall Minneapolis, MN",
+                address: address,
                 key: "AIzaSyCkb1B8yUakYSWHYbogPL28_aN95F99qhY"
             }
         })
