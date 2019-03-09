@@ -1,5 +1,10 @@
 import React, { Component } from "react";
 import API from "../utils/API";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { logoutUser } from "../actions/authActions";
+
+// import ProductList from "../components/ProductList";
 import JoinMessage from "../components/JoinMessage";
 import AboutMarket from "../components/AboutMarket";
 import Times from "../components/Times/index";
@@ -12,6 +17,11 @@ import MembersList from "../components/MembersList";
 import "../components/Market.css";
 
 class Market extends Component {
+
+    onLogoutClick = e => {
+        e.preventDefault();
+        this.props.logoutUser();
+    };
 
     state = {
         markets: {}
@@ -29,13 +39,17 @@ class Market extends Component {
                     markets: res.data,
                     products: res.data.products
                 }))
-    }
+
+            .catch(err => console.log(err));
+    };
 
     render() {
-
-        console.log(this.state.products)
-
+        const { user } = this.props.auth;
+        
+       console.log(this.state.products);
+      
         return (
+      
             <div className="container-fluid">
                 <div className="row titleRow" key={this.state.markets._id}>
                     <div className="col-md-12 mx-auto">
@@ -124,4 +138,15 @@ class Market extends Component {
     }
 }
 
-export default Market;
+// export default Market;
+Market.propTypes = {
+    logoutUser: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired
+  };
+  const mapStateToProps = state => ({
+    auth: state.auth
+  });
+  export default connect(
+    mapStateToProps,
+    { logoutUser }
+  )(Market);
