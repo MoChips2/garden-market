@@ -7,7 +7,7 @@ export default {
     // },
 
     saveMarket: function(marketData) {
-        
+
         return axios.post("/api/markets", marketData);
 
     },
@@ -24,9 +24,17 @@ export default {
         console.log("updating market by id: " + id);
         console.log(updatedMarketData);
         return axios.put(`/api/markets/${id}`, updatedMarketData);
+    },
+
+    geocodeAddress: function() {
+        console.log("searching for: ");
+        return axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
+            params:{
+                address:"900 Nicollet Mall Minneapolis, MN",
+                key: "AIzaSyCkb1B8yUakYSWHYbogPL28_aN95F99qhY"
+            }
+        })
     }
-
-
 
 }
 
