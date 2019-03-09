@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import "./Navbar.css";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -14,7 +14,10 @@ onLogoutClick = e => {
 
 }
 
+
  render() {
+    const isLoggedIn = this.props.auth.isAuthenticated;
+    console.log("isLoggedIn:"+isLoggedIn);
     return (
         
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -50,13 +53,13 @@ onLogoutClick = e => {
                 </ul>
                 <ul className="navbar-nav">
                    
-                    <li className={window.location.pathname === "/login" ? "active" : ""}>
+                    <li className={window.location.pathname === "/login" ? "active" : ""} style={{display: isLoggedIn?"none":"block"}}>
                         <Link className="nav-link" to="/login">Login</Link>
                     </li>
-                    <li className={window.location.pathname === "/register" ? "active" : ""}>
+                    <li className={window.location.pathname === "/register" ? "active" : ""} style={{display: isLoggedIn?"none":"block"}}>
                         <Link className="nav-link" to="/register">Register</Link>
                     </li>
-                    <li className={window.location.pathname === "/" ? "active" : ""}>
+                    <li className={window.location.pathname === "/" ? "active" : ""} style={{display: isLoggedIn?"block":"none"}} >
                         <Link className="nav-link" to="/" onClick={this.onLogoutClick}>Logout</Link>
                     </li>
                 </ul>
@@ -78,7 +81,7 @@ Navbar.propTypes = {
   export default connect(
     mapStateToProps,
     { logoutUser }
-  )(Navbar);
+  )(withRouter(Navbar));
 
 
 // export default Navbar;
