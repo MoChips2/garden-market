@@ -38,11 +38,11 @@ class Market extends Component {
 
     render() {
         const { user } = this.props.auth;
-        
-       console.log(this.state.products);
-      
+
+        console.log(this.state.products);
+
         return (
-      
+
             <div className="container-fluid">
                 <div className="row" key={this.state.markets._id}>
                     <div className="col-md-12 mx-auto">
@@ -61,33 +61,30 @@ class Market extends Component {
 
                     </div>
                 </div>
-                            products={this.state.markets.products}
-                            startMonth={this.state.markets.startMonth}
-                            endMonth={this.state.markets.endMonth}
-                            days={this.state.markets.days}
-                            startTime={this.state.markets.startTime}
-                            endTime={this.state.markets.endTime}
-                        />
-                        <JoinMessage 
-                        marketName={this.state.markets.marketName}
-                        organizer={this.state.markets.organizer}
-                        />
-                    </div>
-                </div>
+                products={this.state.markets.products}
+                startMonth={this.state.markets.startMonth}
+                endMonth={this.state.markets.endMonth}
+                days={this.state.markets.days}
+                startTime={this.state.markets.startTime}
+                endTime={this.state.markets.endTime}
+                />
+                        <JoinMessage
+                    marketName={this.state.markets.marketName}
+                    organizer={this.state.markets.organizer}
+                />
             </div>
         )
     }
 }
-
 // export default Market;
 Market.propTypes = {
     logoutUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired
-  };
-  const mapStateToProps = state => ({
+};
+const mapStateToProps = state => ({
     auth: state.auth
-  });
-  export default connect(
+});
+export default connect(
     mapStateToProps,
     { logoutUser }
-  )(Market);
+)(Market);
