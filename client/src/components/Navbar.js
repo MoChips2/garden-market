@@ -17,12 +17,16 @@ function Navbar() {
                 <ul className="navbar-nav mr-auto">
                     {/* <li className={window.location.pathname === "/" ? "active" : ""}>
                         <Link className="nav-link" to="/">Home </Link>
+
                     </li> */}
-                    <li className={window.location.pathname === "/newmarket" ? "active" : ""}>
-                        <Link className="nav-link" to="/newmarket">NewMarket</Link>
-                    </li>
                     <li className={window.location.pathname === "/login" ? "active" : ""}>
                         <Link className="nav-link" to="/login">Login</Link>
+                    </li>
+                    <li className={window.location.pathname === "/register" ? "active" : ""}>
+                        <Link className="nav-link" to="/register">Register</Link>
+                    </li>
+                    <li className={window.location.pathname === "/newmarket" ? "active" : ""}>
+                        <Link className="nav-link" to="/newmarket">NewMarket</Link>
                     </li>
                     <li className={window.location.pathname === "/searchresult" ? "active" : ""}>
                         <Link className="nav-link" to="/searchresult">Search Result</Link>

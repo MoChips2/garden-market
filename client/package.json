@@ -6,16 +6,34 @@
   "proxy": "http://localhost:3001/",
   "dependencies": {
     "axios": "^0.18.0",
+<<<<<<< HEAD
     "dotenv": "^6.2.0",
     "google-maps-react": "^2.0.2",
     "mongoose": "^5.4.16",
+=======
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "classnames": "^2.2.6",
+    "concurrently": "^4.1.0",
+    "express": "^4.16.4",
+    "is-empty": "^1.2.0",
+    "jsonwebtoken": "^8.5.0",
+    "jwt-decode": "^2.2.0",
+    "mongoose": "^5.4.17",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+>>>>>>> 53a1a34cdcc63f199b3db12f008b72b20b6b3337
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-geocode": "^0.1.2",
     "react-google-autocomplete": "^1.0.18",
     "react-google-maps": "^9.4.5",
+    "react-redux": "^6.0.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "^2.1.1"
+    "react-scripts": "^2.1.1",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
+    "validator": "^10.11.0"
   },
   "scripts": {
     "start": "react-scripts start",
