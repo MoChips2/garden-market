@@ -210,36 +210,36 @@ class NewMarket extends Component {
                                         <label className="my-1 mr-2">Starting Month</label>
                                         <select name="startMonth" className="custom-select my-1 mr-sm-2" id="startMonth" value={this.state.startMonth} onChange={this.handleInputChange}>
                                             <option>Choose...</option>
-                                            <option value="Jan">January</option>
-                                            <option value="Feb">February</option>
-                                            <option value="Mar">March</option>
-                                            <option value="Apr">April</option>
+                                            <option value="January">January</option>
+                                            <option value="February">February</option>
+                                            <option value="March">March</option>
+                                            <option value="April">April</option>
                                             <option value="May">May</option>
                                             <option value="June">June</option>
                                             <option value="July">July</option>
-                                            <option value="Aug">August</option>
-                                            <option value="Sept">September</option>
-                                            <option value="Oct">October</option>
-                                            <option value="Nov">November</option>
-                                            <option value="Dec">December</option>
+                                            <option value="August">August</option>
+                                            <option value="September">September</option>
+                                            <option value="October">October</option>
+                                            <option value="November">November</option>
+                                            <option value="December">December</option>
                                         </select>
                                     </div>
                                     <div className="col">
                                         <label className="my-1 mr-2">Ending Month</label>
                                         <select name="endMonth" className="custom-select my-1 mr-sm-2" id="endMonth" value={this.state.endMonth} onChange={this.handleInputChange}>
                                             <option>Choose...</option>
-                                            <option value="Jan">January</option>
-                                            <option value="Feb">February</option>
-                                            <option value="Mar">March</option>
-                                            <option value="Apr">April</option>
+                                            <option value="January">January</option>
+                                            <option value="February">February</option>
+                                            <option value="March">March</option>
+                                            <option value="April">April</option>
                                             <option value="May">May</option>
                                             <option value="June">June</option>
                                             <option value="July">July</option>
-                                            <option value="Aug">August</option>
-                                            <option value="Sept">September</option>
-                                            <option value="Oct">October</option>
-                                            <option value="Nov">November</option>
-                                            <option value="Dec">December</option>
+                                            <option value="August">August</option>
+                                            <option value="September">September</option>
+                                            <option value="October">October</option>
+                                            <option value="November">November</option>
+                                            <option value="December">December</option>
                                         </select>
                                     </div>
                                 </div>

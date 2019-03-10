@@ -56,12 +56,39 @@ class Market extends Component {
                         <MarketTitle
                             marketName={this.state.markets.marketName}
                             organizer={this.state.markets.organizer}
+                            img={this.state.markets.img}
                         />
                     </div>
                 </div>
                 <div className="row marketRow">
+                    <div className="col-md-6">
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <Image
+                                        img={this.state.markets.img}
+                                    />
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <AboutMarket
+                                        about={this.state.markets.about}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div className="col-md-3">
                         <div className="container">
+                            <div className="row productRow">
+                                <div className="col-md-12">
+                                    <Products
+                                        products={this.state.markets.products}
+                                    />
+                                </div>
+                            </div>
                             <div className="row">
                                 <div className="col-md-12">
                                     <Times
@@ -85,40 +112,6 @@ class Market extends Component {
                             </div>
                             <div className="row">
                                 <div className="col-md-12">
-                                    <MessageBoard />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-6">
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-md-12">
-                                    <Image
-                                        img={this.state.markets.img}
-                                    />
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-md-12">
-                                    <AboutMarket
-                                        about={this.state.markets.about}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-3">
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-md-12">
-                                    <Products
-                                        products={this.state.markets.products}
-                                    />
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-md-12">
                                     <MembersList />
                                 </div>
                             </div>
@@ -132,6 +125,16 @@ class Market extends Component {
                             </div>
                         </div>
                     </div>
+                    <div className="col-md-3">
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <MessageBoard />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         )
