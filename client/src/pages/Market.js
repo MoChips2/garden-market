@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
 
 // import ProductList from "../components/ProductList";
-import JoinMessage from "../components/JoinMessage";
+import JoinBtn from "../components/JoinBtn";
 import AboutMarket from "../components/AboutMarket";
 import Times from "../components/Times/index";
 import Products from "../components/Products";
@@ -77,6 +77,11 @@ class Market extends Component {
                                     />
                                 </div>
                             </div>
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <JoinBtn />
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -112,7 +117,10 @@ class Market extends Component {
                             </div>
                             <div className="row">
                                 <div className="col-md-12">
-                                    <MembersList />
+                                    <MembersList 
+                                    members={this.state.markets.members}
+                                    organizer={this.state.markets.organizer}
+                                    />
                                 </div>
                             </div>
                         </div>

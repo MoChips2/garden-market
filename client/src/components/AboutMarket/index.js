@@ -3,6 +3,7 @@ import "./style.css"
 
 function AboutMarket(props) {
 
+
     return(
         <div className="aboutMarketDiv">
             <h2 className="aboutMarketHeader">ABOUT THE MARKET</h2>

@@ -1,6 +1,19 @@
 .aboutMarketDiv {
-    font-weight: lighter;
     margin-top: 25px;
     text-align: justify;
     padding-left: 20px;
+
+}
+
+.about {
+    padding-top: 5px;
+    font-weight: lighter;
+    font-size: 1rem;
+    color: #162714;
+
+}
+
+.aboutMarketHeader {
+    font-size: 2.25rem;
+    color: #162714;
 }
