@@ -76,7 +76,7 @@ User.findOne({email:email}).then(user => {
           payload,
           keys.secretOrKey,
           {
-            expiresIn: 60 // 1 year in seconds
+            expiresIn: 31556926 // 1 year in seconds
           },
           (err, token) => {
             res.json({

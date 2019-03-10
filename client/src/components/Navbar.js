@@ -17,7 +17,6 @@ onLogoutClick = e => {
 
  render() {
     const isLoggedIn = this.props.auth.isAuthenticated;
-    console.log("isLoggedIn:"+isLoggedIn);
     return (
         
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -38,14 +37,15 @@ onLogoutClick = e => {
                     <li className={window.location.pathname === "/register" ? "active" : ""}>
                         <Link className="nav-link" to="/register">Register</Link>
                     </li> */}
-                    <li className={window.location.pathname === "/newmarket" ? "active" : ""}>
+                    <li className={window.location.pathname === "/newmarket" ? "active" : ""} style={{display: isLoggedIn?"block":"none"}}>
                         <Link className="nav-link" to="/newmarket">NewMarket</Link>
                     </li>
                     <li className={window.location.pathname === "/searchresult" ? "active" : ""}>
                         <Link className="nav-link" to="/searchresult">Search Result</Link>
                     </li>
-                    <li className={window.location.pathname === "/mymarket" ? "active" : ""}>
-                        <Link className="nav-link" to="/mymarket/">My Market</Link>
+                    <li className={window.location.pathname === "/mymarket" ? "active" : ""} style={{display: isLoggedIn?"block":"none"}}>
+                    <Link className="nav-link" to="/mymarket/5c7c2bdf6489ba0000387807">My Market</Link>
+
                     </li>
                     {/* <li className={window.location.pathname === "/searchresult" ? "active" : ""}>
                         <Link className="nav-link" to="/searchresult"></Link>
