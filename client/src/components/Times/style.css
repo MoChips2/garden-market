@@ -1,17 +1,17 @@
 .schedule {
     font-size: 22px;
-    text-align: justify;
+
 }
 
 .card-header {
-    background-color: #4d8f45;
+    background-color: #79cc6e;
     color: white;
 }
 
 .card-body {
-    color: #2f5a2a;
+    color: #569e4d;
 }
 
 .card {
-    border-color: #4d8f45;
+    border-color: #79cc6e;
 }

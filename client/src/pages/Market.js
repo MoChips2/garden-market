@@ -115,14 +115,6 @@ class Market extends Component {
                                     <MembersList />
                                 </div>
                             </div>
-                            <div className="row">
-                                <div className="col-md-12">
-                                    <JoinMessage
-                                        marketName={this.state.markets.marketName}
-                                        organizer={this.state.markets.organizer}
-                                    />
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div className="col-md-3">
@@ -134,8 +126,9 @@ class Market extends Component {
                             </div>
                         </div>
                     </div>
-
                 </div>
+                <br />
+                <br />
             </div>
         )
     }
