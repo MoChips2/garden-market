@@ -5,21 +5,29 @@ const Schema = mongoose.Schema;
 
 const marketSchema = new Schema({
     marketName: String,
-    address: String,
-    city: String,
-    state: String,
-    zip: Number,
     about: String,
     organizer : String, // for now...
+    email:String,
     img: String,
     startMonth: String,
     endMonth: String,
     days: [],
-    startTime: "",
-    endTime: "",
-    members: "",
+    startTime: Date,
+    endTime: Date,
+    members: [],
     // members : [Users],
-    products: []
+    products: [],
+    address: {
+        street: String,
+        city: String,
+        state: String,
+        zip: Number,
+        country: String,
+    },
+    coords: {
+        lat:Number,
+        lon:Number,
+    },
 });
 
 const Market = mongoose.model("Market", marketSchema);

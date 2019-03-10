@@ -1,16 +1,15 @@
 import React, { Component } from "react";
+import axios from "axios";
 import API from "../utils/API";
 const mongoose = require("mongoose");
+const APP_ID_HERE = 'IJMnFWRcCVoHjEFzN4ON';
+const APP_CODE_HERE = 'D6MSE7e5KHI7s5cf-RZ3ow';
 
 class NewMarket extends Component {
     state = {
         marketName: "",
         organizer: "",
         email: "",
-        address: "",
-        city: "",
-        state: "",
-        zip: "",
         about: "",
         img: "",
         products: [],
@@ -19,8 +18,21 @@ class NewMarket extends Component {
         days: [],
         startTime: "",
         endTime: "",
-        members: ""
-
+        members: "",
+        address: {
+            street: "",
+            city: "",
+            state: "",
+            zip: "",
+            country: "",
+        },
+        query: "",
+        locationId: "",
+        isChecked: false,
+        coords: {
+            lat:"",
+            lon:"",
+        },
     };
 
     handleInputChange = event => {
@@ -53,24 +65,22 @@ class NewMarket extends Component {
         }
         this.setState({ days: days })
     }
-
-
     handleFormSubmit = event => {
         event.preventDefault();
         if (this.state.marketName && this.state.organizer && this.state.email) {
             var myid = mongoose.Types.ObjectId();
             console.log(myid.toString())
-
+            //Address Validation code
+            this.addressValidation(this.state.address);
+            console.log("Address Validation:" + this.state.coords.lat);
+            //Address Validation end
             API.saveMarket({
                 _id: myid,
                 marketName: this.state.marketName,
                 organizer: this.state.organizer,
                 email: this.state.email,
                 products: this.state.products,
-                address: this.state.address,
-                state: this.state.state,
-                city: this.state.city,
-                zip: this.state.zip,
+
                 about: this.state.about,
                 img: this.state.img,
                 startMonth: this.state.startMonth,
@@ -78,17 +88,89 @@ class NewMarket extends Component {
                 days: this.state.days,
                 startTime: this.state.startTime,
                 endTime: this.state.endTime,
-                members: this.state.members
+                members: this.state.members,
+                address: {
+                    street: this.state.address.street,
+                    city: this.state.address.city,
+                    state: this.state.address.state,
+                    zip: this.state.address.zip,
+                    country: this.state.address.country,
+                },
+                query: this.state.query,
+                locationId: this.state.locationId,
+                isChecked: false,
+                coords: {
+                    lat: this.state.coords.lat,
+                    lon: this.state.coords.lon,
+                },
             }).then(this.props.history.push("markets/" + myid)
             )
             console.log("worked!")
-            console.log({startMonth: this.state.startMonth,
+            console.log({
+                startMonth: this.state.startMonth,
                 endMonth: this.state.endMonth,
                 days: this.state.days,
                 startTime: this.state.startTime,
-                endTime: this.state.endTime});
+                endTime: this.state.endTime
+            });
         }
     }
+    //Shilpa Address validation -
+    addressValidation = (address) => {
+        console.log(address);
+        const self = this;
+        let params = {
+            app_id: APP_ID_HERE,
+            app_code: APP_CODE_HERE,
+        }
+        if (this.state.locationId.length > 0) {
+            params['locationId'] = this.state.locationId;
+        } else {
+            params['searchtext'] = this.state.address.street
+                + this.state.address.city
+                + this.state.address.state
+                + this.state.address.postalCode
+                + this.state.address.country;
+        }
+        axios.get('https://geocoder.api.here.com/6.2/geocode.json',
+            { 'params': params }
+        ).then(function (response) {
+            const view = response.data.Response.View
+         
+            if (view.length > 0 && view[0].Result.length > 0) {
+                const location = view[0].Result[0].Location;
+                console.log("location:" + location.Address.Label + location.DisplayPosition.Latitude);
+                self.setState({
+                    isChecked: 'true',
+                    locationId: '',
+                    query: location.Address.Label,
+                    address: {
+                        street: location.Address.HouseNumber + ' ' + location.Address.Street,
+                        city: location.Address.City,
+                        state: location.Address.State,
+                        zip: location.Address.PostalCode,
+                        country: location.Address.Country
+                    },
+                    coords: {
+                        lat: location.DisplayPosition.Latitude,
+                        lon: location.DisplayPosition.Longitude
+                    }
+                });
+            } else {
+                self.setState({
+                    isChecked: true,
+                    coords: null,
+                });
+            }
+        }).catch(function (error) {
+                console.log('caught failed query');
+                self.setState({
+                    isChecked: true,
+                    coords: null,
+                });
+            });
+    }
+    /////////////////////////////
     render() {
         return (
             <div>

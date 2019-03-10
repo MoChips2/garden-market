@@ -1,14 +1,11 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import EditContainer from "../components/EditContainer";
-
 // import ProductList from "../components/ProductList";
 
 class MyMarket extends Component {
-
     state = {
         markets: {}
-        
     };
 
     componentDidMount() {
@@ -26,7 +23,6 @@ class MyMarket extends Component {
     }
 
     render() {
-
         return (
             <div className="container-fluid">
                 <div className="row" key={this.state.markets._id}>
