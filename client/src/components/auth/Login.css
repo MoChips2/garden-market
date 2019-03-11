@@ -1,15 +1,15 @@
 body {
-    background-color: #f5fffa;
+    background-color: rgb(243, 246, 243);
 }
 
 .loginCard {
     margin-top: 100px;
-    border-color: #86b6dd;
+    border-color: rgb(45, 47, 45);
     border-radius: 5px;
 }
 
 .loginCardHeader {
-    background-color: #86b6dd;
+    background-color: rgb(45, 47, 45);
     padding: 10px;
 }
 .loginCardBody {
@@ -19,18 +19,18 @@ body {
 
 .loginCardTitle {
     font-size: 2rem;
-    color: #497eaa;
+    color: rgb(45, 47, 45);
     padding-bottom: 30px;
 
 }
 
 .registerLink {
-    color: #ff9099;
+    color: #ff8f8f;
 }
 
 .registerLink:hover {
     text-decoration: none;
-    color: #ff0015;
+    color: #ff0000;
 }
 
 .loginHeader {
@@ -42,20 +42,14 @@ body {
     color: red;
 }
 
-.emailInput {
-    margin-top: 35px;
-    padding-left: auto;
-    padding-right: auto;
-}
-
 .loginBtnDiv {
     text-align: right;
 }
 
 .loginBtn {
     width: 120px;
-    background-color: #86b6dd;
-    border-color: #86b6dd;
+    background-color: rgb(45, 47, 45);
+    border-color: rgb(45, 47, 45);
     margin-bottom: 20px;
 }
 
@@ -65,10 +59,6 @@ body {
 }
 
 .label {
-    color: #497eaa;
+    color: rgb(45, 47, 45);
     font-size: 1.25rem;
-}
-
-.passwordDiv {
-    padding-top: 25px;
 }
