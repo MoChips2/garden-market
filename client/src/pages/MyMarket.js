@@ -26,7 +26,6 @@ class MyMarket extends Component {
     }
 
     render() {
-
         return (
             <div className="container-fluid">
                 <div className="row" key={this.state.markets._id}>

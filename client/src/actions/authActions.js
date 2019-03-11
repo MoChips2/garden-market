@@ -10,7 +10,7 @@ import {
 export const registerUser = (userData, history) => dispatch => {
   axios
     .post("/api/users/register", userData)
-    .then(res => history.push("/register")) // re-direct to login on successful register
+    .then(res => history.push("/login")) // re-direct to login on successful register
     .catch(err =>
       dispatch({
         type: GET_ERRORS,
@@ -55,7 +55,7 @@ export const setUserLoading = () => {
   };
 };
 // Log user out
-export const logoutUser = () => dispatch => {
+export const logoutUser = (history) => dispatch => {
   // Remove token from local storage
   localStorage.removeItem("jwtToken");
   // Remove auth header for future requests
