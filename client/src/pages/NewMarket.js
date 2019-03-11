@@ -65,14 +65,15 @@ class NewMarket extends Component {
         }
         this.setState({ days: days })
     }
+
     handleFormSubmit = event => {
         event.preventDefault();
         if (this.state.marketName && this.state.organizer && this.state.email) {
             var myid = mongoose.Types.ObjectId();
             console.log(myid.toString())
             //Address Validation code
-            this.addressValidation(this.state.address);
-            console.log("Address Validation:" + this.state.coords.lat);
+            const isValid = this.addressValidation(this.state);
+            console.log("Address Validation:" + this.state.coords.lat + "Value" + isValid);
             //Address Validation end
             API.saveMarket({
                 _id: myid,
@@ -116,8 +117,8 @@ class NewMarket extends Component {
         }
     }
     //Shilpa Address validation -
-    addressValidation = (address) => {
-        console.log(address);
+    addressValidation = (val) => {
+        console.log(val.address);
         const self = this;
         let params = {
             app_id: APP_ID_HERE,
@@ -132,6 +133,8 @@ class NewMarket extends Component {
                 + this.state.address.postalCode
                 + this.state.address.country;
         }
+        console.log(params);
+
         axios.get('https://geocoder.api.here.com/6.2/geocode.json',
             { 'params': params }
         ).then(function (response) {
@@ -156,11 +159,13 @@ class NewMarket extends Component {
                         lon: location.DisplayPosition.Longitude
                     }
                 });
+                return true;
             } else {
                 self.setState({
                     isChecked: true,
                     coords: null,
                 });
+                return false;
             }
         }).catch(function (error) {
                 console.log('caught failed query');
@@ -168,6 +173,7 @@ class NewMarket extends Component {
                     isChecked: true,
                     coords: null,
                 });
+                return false;
             });
     }
     /////////////////////////////
