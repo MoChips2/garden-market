@@ -1,0 +1,57 @@
+.loginCard {
+    margin-top: 100px;
+    height: 450px;
+}
+
+.loginCardBody {
+    background-color: #f0ffee;
+    padding-left: 35px;
+    padding-right: 35px;
+
+
+}
+
+.loginCardTitle {
+    font-size: 2rem;
+    color: #1b221a;
+    padding-bottom: 30px;
+
+}
+
+.registerLink {
+    color: #27c2ff;
+}
+
+.registerLink:hover {
+    text-decoration: none;
+    color: #0090c9;
+}
+
+.loginHeader {
+    font-size: 3rem;
+}
+
+.red-text {
+    color: red;
+}
+
+.emailInput {
+    margin-top: 50px;
+    padding-left: auto;
+    padding-right: auto;
+}
+
+.loginBtnDiv {
+    text-align: right;
+}
+
+.loginBtn {
+    width: 120px;
+    background-color: #27c2ff;
+    border-color: #27c2ff;
+}
+
+.loginBtn:hover {
+    background-color: #0090c9;
+    border-color: #0090c9;
+}

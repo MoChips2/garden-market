@@ -6,6 +6,7 @@
 .card {
     margin-top: 20px;
     width: 100%;
+    border-color: red;
 }
 
 .searchHeader {
@@ -20,3 +21,17 @@
     margin-top: 20px;
     height: 500px;
 }
+
+.card-header {
+    background-color: red;
+    color: white;
+    padding-top:5px;
+    padding-bottom: 0;
+}
+
+.card-body {
+    color: #569e4d;
+    padding: 10px;
+    padding-left: 15px
+}
+

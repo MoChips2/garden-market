@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
 import classnames from "classnames";
+import "./Login.css";
+
 class Login extends Component {
   constructor() {
     super();
@@ -19,44 +21,91 @@ class Login extends Component {
       this.props.history.push("/market");
     }
   }
-componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
       this.props.history.push("/newmarket"); // push user to newmarket when they login
     }
-if (nextProps.errors) {
+    if (nextProps.errors) {
       this.setState({
         errors: nextProps.errors
       });
     }
   }
-onChange = e => {
+  onChange = e => {
     this.setState({ [e.target.id]: e.target.value });
   };
-onSubmit = e => {
+  onSubmit = e => {
     e.preventDefault();
-const userData = {
+    const userData = {
       email: this.state.email,
       password: this.state.password
     };
-this.props.loginUser(userData); // since we handle the redirect within our component, we don't need to pass in this.props.history as a parameter
+    this.props.loginUser(userData); // since we handle the redirect within our component, we don't need to pass in this.props.history as a parameter
   };
-render() {
+  render() {
     const { errors } = this.state;
-return (
+    return (
       <div className="container">
-        <div style={{ marginTop: "4rem" }} className="row">
-          <div className="col s8 offset-s2">
-            <Link to="/" className="btn-flat waves-effect">
-              <i className="material-icons left">keyboard_backspace</i> Back to
-              home
-            </Link>
-            <div className="col s12" style={{ paddingLeft: "11.250px" }}>
+        <div className="row">
+          <div className="col-md-8 mx-auto">
+            <div className="card loginCard">
+              <div className="card-header">
+                <h2 className="loginHeader">LOGIN</h2>
+              </div>
+              <div className="card-body loginCardBody">
+                <h5 className="card-title loginCardTitle">
+                  Don't have an account? <Link to="/register" className="registerLink">REGISTER</Link>
+                </h5>
+                <form noValidate onSubmit={this.onSubmit}>
+                  <div>
+                    <input
+                      onChange={this.onChange}
+                      value={this.state.email}
+                      error={errors.email}
+                      id="email"
+                      type="email"
+                      className={classnames("form-control form-control-lg emailInput", {
+                        invalid: errors.email || errors.emailnotfound
+                      })}
+                    />
+                    <label htmlFor="email">Email</label>
+                    <span className="red-text">
+                      {errors.email}
+                      {errors.emailnotfound}
+                    </span>
+                  </div>
+                  <div>
+                    <input
+                      onChange={this.onChange}
+                      value={this.state.password}
+                      error={errors.password}
+                      id="password"
+                      type="password"
+                      className={classnames("form-control form-control-lg passwordInput", {
+                        invalid: errors.password || errors.passwordincorrect
+                      })}
+                    />
+                    <label htmlFor="password">Password</label>
+                    <span className="red-text">
+                      {errors.password}
+                      {errors.passwordincorrect}
+                    </span>
+                  </div>
+                  <div className="loginBtnDiv">
+                    <button type="submit" className="btn btn-primary loginBtn">Login</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+
+
+
+            {/* <div className="col-md-8">
               <h4>
                 <b>Login</b> below
               </h4>
-              <p className="grey-text text-darken-1">
-                Don't have an account? <Link to="/register">Register</Link>
-              </p>
+
             </div>
             <form noValidate onSubmit={this.onSubmit}>
               <div className="input-field col s12">
@@ -107,7 +156,7 @@ return (
                   Login
                 </button>
               </div>
-            </form>
+            </form> */}
           </div>
         </div>
       </div>
