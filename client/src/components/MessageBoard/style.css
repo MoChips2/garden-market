@@ -1,0 +1,57 @@
+.publicDiv {
+    margin-top: -20px;
+    margin-right: 10px;
+}
+
+.publicCardHeader {
+    background-color: #86b6dd;
+    color: white;
+    padding-bottom: 0;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.publicBody {
+    color: #5c85a7;
+}
+
+.publicCard {
+    border-color: #86b6dd;
+    margin-top: 20px;
+}
+
+.btnDiv {
+    text-align: right;
+    margin-top: 10px;
+    padding-bottom: 0;
+}
+
+.form-group {
+    margin: 10px;
+}
+
+.publicBtn {
+    background-color: #2579be;
+    border-color: #2579be;
+    width: 100%;
+}
+
+.publicHeader {
+    padding-left: 10px;
+}
+
+.timestamp {
+    color: #86b6dd;
+    font-size: 14px;
+}
+
+.postName {
+    color: #2579be;
+    text-align: right;
+    margin-bottom: 0;
+}
+
+.public-list {
+    padding-top: 2px;
+    padding-bottom: 2px;
+}

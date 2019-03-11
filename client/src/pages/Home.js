@@ -1,5 +1,4 @@
 import React from "react";
-import Search from "../components/Search";
 import "./Home.css";
 import Carousel from "../components/Carousel";
 
@@ -14,9 +13,6 @@ function Home() {
             </div>
             
         </div>
-
-
-
     )
 }
 

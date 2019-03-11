@@ -5,7 +5,7 @@ function LoginForm() {
     return (
         <div className="container">
             <div className="row">
-                <div className="col-md-6 mx-auto">
+                <div className="col-md-8 mx-auto">
                     <div className="form">
                         <div className="form-group">
                             <label>Username</label>

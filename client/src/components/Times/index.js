@@ -3,11 +3,20 @@ import "./style.css";
 
 function Times(props) {
     return (
-        <div className="timesDiv">
-            <h2 className="months">{props.startMonth}-{props.endMonth}</h2>
-            <h2 className="days">{props.days}</h2>
-            <h2 className="className">{props.startTime}-{props.endTime}</h2>
+        <div className="card market-card">
+            <div className="card-header market-card-header">
+                <h5 className="timesHeader">HOURS OF OPERATION</h5>
+            </div>
+
+            <ul className="list-group list-group-flush">
+                <li className="list-group-item schedule">{props.startMonth} - {props.endMonth}</li>
+                <li className="list-group-item schedule">{props.days}</li>
+                <li className="list-group-item schedule">{props.startTime} - {props.endTime}</li>
+            </ul>
+
         </div>
+
+
     )
 }
 

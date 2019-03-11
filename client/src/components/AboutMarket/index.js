@@ -3,9 +3,10 @@ import "./style.css"
 
 function AboutMarket(props) {
 
+
     return(
-        <div>
-            <h2>ABOUT THE MARKET</h2>
+        <div className="aboutMarketDiv">
+            <h2 className="aboutMarketHeader">ABOUT THE MARKET</h2>
            <p className="about">{props.about}</p>
         </div>
     )

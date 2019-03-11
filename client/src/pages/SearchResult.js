@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import ResultContainer from "../components/ResultContainer";
 import MapContainer from "../components/Map";
+import "../components/auth/Login.css";
+import "../components/ResultContainer.css";
 
 class SearchResult extends Component {
     state = {
@@ -19,7 +21,7 @@ class SearchResult extends Component {
         this.loadMarkets();
         this.getCoordinates();
     };
-    
+
 
     loadMarkets = () => {
         API.getMarkets()
@@ -36,9 +38,9 @@ class SearchResult extends Component {
     };
 
     // converts address into coordinates -Simone
-    
+
     getCoordinates = () => {
-        API.geocodeAddress("1420 Eckles Ave, St Paul, MN 55108") 
+        API.geocodeAddress("1420 Eckles Ave, St Paul, MN 55108")
             .then(res => {
                 console.log(res.data);
                 let coords = res.data.results[0].geometry.location;
@@ -55,42 +57,58 @@ class SearchResult extends Component {
 
     render() {
         return (
-            <div className="container">
-                <br />
-                <br />
-                <h1 className="searchHeader">SEARCH RESULTS</h1>
-                <hr />
-                <div className="row">
-                    <div className="col-md-6">
 
-                        <div className="container">
-                            <div className="col-md-12">
-                                {this.state.markets.map(market => (
-                                    <div className="row" key={market._id}>
-                                        <ResultContainer
-                                            id={market._id}
-                                            marketName={market.marketName}
-                                            address={market.address}
-                                            city={market.city}
-                                            state={market.state}
-                                            zip={market.zip}
+
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-12">
+                        <div className="card gardenCard resultCard">
+                            <div className="card-header gardenCardHeader">
+                                <h2 className="gardenHeader">SEARCH RESULTS</h2>
+                            </div>
+
+
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col-md-4">
+                                        <ul class="list-group list-group-flush">
+
+                                            {this.state.markets.map(market => (
+                                                <li class="list-group-item" key={market._id}>
+                                                    <ResultContainer
+                                                        id={market._id}
+                                                        marketName={market.marketName}
+                                                        address={market.address}
+                                                        city={market.city}
+                                                        state={market.state}
+                                                        zip={market.zip}
+                                                    />
+                                                </li>
+                                            ))}
+
+                                        </ul>
+                                    </div>
+                                    <div className="col-md-8 mapDiv">
+                                        <MapContainer
+                                            lat={this.state.lat}
+                                            lng={this.state.lng}
                                         />
                                     </div>
-                                ))}
+
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <br />
-                    <div className="col-md-6 mapDiv">
-                        <MapContainer
-                            lat={this.state.lat}
-                            lng={this.state.lng}
-                        />
+
+
                     </div>
                 </div>
-            </div >
-        )
+</div>
+
+
+
+
+                )
     }
 }
-
+ 
 export default SearchResult;

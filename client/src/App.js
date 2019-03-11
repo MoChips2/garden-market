@@ -57,6 +57,8 @@ class App extends Component {
               <Route exact path="/market" component={Market} />
               {/* The following line will take user to a specific market by id */}
               <Route exact path="/markets/:id" component={Market} />
+              <Route exact path="/register" component={Register} />
+
               <Route component={NoMatch} />
             </Switch>
           </div>
