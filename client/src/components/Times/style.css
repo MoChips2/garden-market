@@ -1,21 +1,25 @@
 .schedule {
     font-size: 22px;
+    color: #569e4d;
+    padding: 10px;
+    padding-left: 15px
 
 }
 
-.card-header {
+.market-card-header {
     background-color: #79cc6e;
     color: white;
     padding-top:5px;
     padding-bottom: 0;
 }
 
-.card-body {
+.market-card-body {
     color: #569e4d;
     padding: 10px;
     padding-left: 15px
 }
 
-.card {
+.market-card {
     border-color: #79cc6e;
+    margin-top: 20px;
 }

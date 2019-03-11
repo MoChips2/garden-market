@@ -50,12 +50,12 @@ class Register extends Component {
       <div className="container">
         <div className="row">
           <div className="col-md-8 mx-auto">
-            <div className="card loginCard">
-              <div className="card-header loginCardHeader">
-                <h2 className="loginHeader">REGISTER</h2>
+            <div className="card gardenCard">
+              <div className="card-header gardenCardHeader">
+                <h2 className="gardenHeader">REGISTER</h2>
               </div>
-              <div className="card-body loginCardBody">
-                <h5 className="card-title loginCardTitle">
+              <div className="card-body gardenCardBody">
+                <h5 className="card-title gardenCardTitle">
                   Already have an account? &nbsp; <Link to="/login" className="registerLink">LOGIN</Link>
                 </h5>
                 <form noValidate onSubmit={this.onSubmit}>
@@ -115,8 +115,8 @@ class Register extends Component {
                     <label htmlFor="password2" className="label">Confirm Password</label>
                     <span className="red-text">{errors.password2}</span>
                   </div>
-                  <div className="loginBtnDiv">
-                    <button type="submit" className="btn btn-primary loginBtn">LOGIN</button>
+                  <div className="gardenBtnDiv">
+                    <button type="submit" className="btn btn-primary gardenBtn">LOGIN</button>
                   </div>
                 </form>
               </div>

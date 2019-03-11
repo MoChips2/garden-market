@@ -2,22 +2,23 @@ body {
     background-color: rgb(243, 246, 243);
 }
 
-.loginCard {
+.gardenCard {
     margin-top: 100px;
     border-color: rgb(45, 47, 45);
     border-radius: 5px;
 }
 
-.loginCardHeader {
+.gardenCardHeader {
     background-color: rgb(45, 47, 45);
     padding: 10px;
+    color: white;
 }
-.loginCardBody {
+.gardenCardBody {
     padding-left: 35px;
     padding-right: 35px;
 }
 
-.loginCardTitle {
+.gardenCardTitle {
     font-size: 2rem;
     color: rgb(45, 47, 45);
     padding-bottom: 30px;
@@ -33,7 +34,7 @@ body {
     color: #ff0000;
 }
 
-.loginHeader {
+.gardenHeader {
     font-size: 3rem;
     padding-left: 25px;
 }
@@ -42,18 +43,18 @@ body {
     color: red;
 }
 
-.loginBtnDiv {
+.gardenBtnDiv {
     text-align: right;
 }
 
-.loginBtn {
+.gardenBtn {
     width: 120px;
     background-color: rgb(45, 47, 45);
     border-color: rgb(45, 47, 45);
     margin-bottom: 20px;
 }
 
-.loginBtn:hover {
+.gardenBtn:hover {
     background-color: #4296db;
     border-color: #4296db;
 }

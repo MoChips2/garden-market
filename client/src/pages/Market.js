@@ -56,7 +56,6 @@ class Market extends Component {
                         <MarketTitle
                             marketName={this.state.markets.marketName}
                             organizer={this.state.markets.organizer}
-                            img={this.state.markets.img}
                         />
                     </div>
                 </div>

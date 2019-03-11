@@ -9,7 +9,10 @@ export class MapContainer extends Component {
   render() {
     const style = {
       height: "100%",
-      position: "relative"
+      margin: "20px",
+      marginRight: "30px",
+      position: "relative",
+      borderRadius: "3px"
     }
 
     return (

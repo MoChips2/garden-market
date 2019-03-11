@@ -48,12 +48,12 @@ class Login extends Component {
       <div className="container">
         <div className="row">
           <div className="col-md-8 mx-auto">
-            <div className="card loginCard">
-              <div className="card-header loginCardHeader">
-                <h2 className="loginHeader">LOGIN</h2>
+            <div className="card gardenCard">
+              <div className="card-header gardenCardHeader">
+                <h2 className="gardenHeader">LOGIN</h2>
               </div>
-              <div className="card-body loginCardBody">
-                <h5 className="card-title loginCardTitle">
+              <div className="card-body gardenCardBody">
+                <h5 className="card-title gardenCardTitle">
                   Don't have an account? &nbsp; <Link to="/register" className="registerLink">REGISTER</Link>
                 </h5>
                 <form noValidate onSubmit={this.onSubmit}>
@@ -91,8 +91,8 @@ class Login extends Component {
                       {errors.passwordincorrect}
                     </span>
                   </div>
-                  <div className="loginBtnDiv">
-                    <button type="submit" className="btn btn-primary loginBtn">LOGIN</button>
+                  <div className="gardenBtnDiv">
+                    <button type="submit" className="btn btn-primary gardenBtn">LOGIN</button>
                   </div>
                 </form>
               </div>
