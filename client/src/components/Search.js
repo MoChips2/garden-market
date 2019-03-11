@@ -3,16 +3,15 @@ import "../components/Search.css";
 function Search() {
 
     return (
-        <div className="col-md-4">
-            <div className="form searchDiv">
-                <div className="form-group">
-                    <label>FIND A MARKET CLOSE TO YOU</label>
-                    <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" />
-                </div>
-
-                <button type="submit" className="btn btn-danger addressSearchBtn">Search</button>
-            </div >
-        </div>
+        <div className="col-md-12 mx-auto searchDiv">
+            <label className="searchMessage">FIND A MARKET NEAR YOU</label>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Address" />
+                <span class="input-group-btn">
+                    <button class="btn btn-danger addressSearchBtn" type="button">SEARCH</button>
+                </span>
+            </div>
+        </div >
     )
 }
 

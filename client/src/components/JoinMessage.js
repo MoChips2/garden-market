@@ -24,12 +24,12 @@ class JoinMessage extends Component {
     render() {
         return (
             <form>
-                <div className="form-group col-md-2">
+                <div className="form-group">
                     <label>Email</label>
                     <input type="text" className="form-control" name="email" value={this.state.email} onChange={this.handleInputChange} />
                 </div>
-                <div className="form-row">
-                    <div className="form-group col-md-4">
+                <div className="form-row joinMessage">
+                    <div className="form-group">
                         <label>Send a private message to {this.props.organizer} with your name, where you live, what you grow and why you'd like to join {this.props.marketName}.</label>
                         <textarea className="form-control" name="message" rows="3" value={this.state.message} onChange={this.handleInputChange}></textarea>
                         <button type="submit" className="btn btn-primary" onClick={this.handleFormSubmit}>Submit</button>
