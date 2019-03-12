@@ -14,12 +14,13 @@ const marketSchema = new Schema({
     img: String,
     startMonth: String,
     endMonth: String,
-    days: Array,
+    days: [],
     startTime: String,
     endTime: String,
     members: String,
+    messages: [],
     // members : [Users],
-    products: Array
+    products: []
 });
 
 const Market = mongoose.model("Market", marketSchema);

@@ -128,7 +128,10 @@ class Market extends Component {
                         <div className="container">
                             <div className="row">
                                 <div className="col-md-12">
-                                    <MessageBoard />
+                                    <MessageBoard 
+                                    messages={this.state.markets.messages}
+                                    id={this.state.markets._id}
+                                    />
                                 </div>
                             </div>
                         </div>

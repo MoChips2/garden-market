@@ -8,9 +8,11 @@ export class MapContainer extends Component {
 
   render() {
     const style = {
-      height: "100%",
-      margin: "20px",
-      marginRight: "30px",
+      height: "600px",
+      width: "90%",
+      margin: "auto",
+      marginTop: "25px",
+      paddingBottom: "20px",
       position: "relative",
       borderRadius: "3px"
     }

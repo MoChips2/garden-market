@@ -361,4 +361,4 @@ class UpdateMarket extends Component {
     }
 }
 
-export default NewMarket;
+export default UpdateMarket;

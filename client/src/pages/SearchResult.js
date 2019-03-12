@@ -82,7 +82,7 @@ class SearchResult extends Component {
                                             ))}
                                         </ul>
                                     </div>
-                                    <div className="col-md-8 mapDiv">
+                                    <div className="col-md-8">
                                         <MapContainer
                                             lat={this.state.lat}
                                             lng={this.state.lng}

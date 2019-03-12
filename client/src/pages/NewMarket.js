@@ -95,8 +95,8 @@ class NewMarket extends Component {
         }
     }
     render() {
-        const userName = this.props.auth.user.name;
-        console.log(this.props.auth)
+        // const userName = this.props.auth.user.name;
+        // console.log(this.props.auth)
         return (
             <div>
                 <div className="container new-market-container">
@@ -117,7 +117,7 @@ class NewMarket extends Component {
                                         <div className="form-row">
                                             <div className="form-group col-md-12">
                                                 <label>Organizer Name</label>
-                                                <input type="text" className="form-control" name="organizer" placeholder="Johnny Appleseed" value={userName} onChange={this.handleInputChange} />
+                                                <input type="text" className="form-control" name="organizer" placeholder="Johnny Appleseed" value={this.state.organizer} onChange={this.handleInputChange} />
                                             </div>
                                         </div>
                                         <div className="form-row">
@@ -384,14 +384,14 @@ class NewMarket extends Component {
     }
 }
 
-NewMarket.propTypes = {
-    auth: PropTypes.object.isRequired
-};
-const mapStateToProps = state => ({
-    auth: state.auth
-});
-export default connect(
-    mapStateToProps
-)(NewMarket);
+// NewMarket.propTypes = {
+//     auth: PropTypes.object.isRequired
+// };
+// const mapStateToProps = state => ({
+//     auth: state.auth
+// });
+// export default connect(
+//     mapStateToProps
+// )(NewMarket);
 
-// export default NewMarket;
+export default NewMarket;
