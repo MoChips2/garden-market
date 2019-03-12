@@ -57,8 +57,6 @@ class SearchResult extends Component {
 
     render() {
         return (
-
-
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">
@@ -66,13 +64,10 @@ class SearchResult extends Component {
                             <div className="card-header gardenCardHeader">
                                 <h2 className="gardenHeader">SEARCH RESULTS</h2>
                             </div>
-
-
                             <div className="container">
                                 <div className="row">
                                     <div className="col-md-4">
                                         <ul class="list-group list-group-flush">
-
                                             {this.state.markets.map(market => (
                                                 <li class="list-group-item" key={market._id}>
                                                     <ResultContainer
@@ -85,7 +80,6 @@ class SearchResult extends Component {
                                                     />
                                                 </li>
                                             ))}
-
                                         </ul>
                                     </div>
                                     <div className="col-md-8 mapDiv">
@@ -94,21 +88,16 @@ class SearchResult extends Component {
                                             lng={this.state.lng}
                                         />
                                     </div>
-
                                 </div>
                             </div>
                         </div>
-
-
+                        <br />
+                        <br />
                     </div>
                 </div>
-</div>
-
-
-
-
-                )
+            </div>
+        )
     }
 }
- 
+
 export default SearchResult;

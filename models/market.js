@@ -15,9 +15,9 @@ const marketSchema = new Schema({
     startMonth: String,
     endMonth: String,
     days: [],
-    startTime: "",
-    endTime: "",
-    members: "",
+    startTime: String,
+    endTime: String,
+    members: String,
     // members : [Users],
     products: []
 });

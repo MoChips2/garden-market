@@ -15,6 +15,24 @@
 }
 
 th {
-    background-color: #343a40;
+    background-color: rgb(45, 47, 45);
     color: white;
+}
+
+.editBtn {
+    background-color: rgb(45, 47, 45);
+    border-color: rgb(45, 47, 45);
+}
+
+.editBtn:hover {
+    background-color: #ff8f8f;
+    border-color: #ff8f8f;
+}
+
+.editTable {
+    background-color: white;
+}
+
+td {
+    font-size: 1.2rem;
 }
