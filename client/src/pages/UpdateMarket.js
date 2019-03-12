@@ -80,12 +80,6 @@ class UpdateMarket extends Component {
                 members: this.state.members
             }).then(this.props.history.push("markets/" + myid)
             )
-            console.log("worked!")
-            console.log({startMonth: this.state.startMonth,
-                endMonth: this.state.endMonth,
-                days: this.state.days,
-                startTime: this.state.startTime,
-                endTime: this.state.endTime});
         }
     }
     render() {

@@ -55,11 +55,16 @@ body {
 }
 
 .gardenBtn:hover {
-    background-color: #4296db;
-    border-color: #4296db;
+    background-color: #ff8f8f;
+    border-color: #ff8f8f;
 }
 
 .label {
     color: rgb(45, 47, 45);
     font-size: 1.25rem;
+    margin-bottom: 0;
+}
+
+.form-control {
+    margin-bottom: 25px;
 }
