@@ -59,8 +59,13 @@ class NewMarket extends Component {
 
 
     handleFormSubmit = event => {
+        console.log("this.state.organizer:" + this.state.organizer);
+
         event.preventDefault();
-        if (this.state.marketName && this.state.organizer && this.state.email) {
+        const userName = this.props.auth.user.name;
+        console.log("this.state.organizer after:" + userName);
+
+        if (this.state.marketName && this.state.email) {
             var myid = mongoose.Types.ObjectId();
             console.log(myid.toString())
 
@@ -96,6 +101,8 @@ class NewMarket extends Component {
     }
     render() {
         const userName = this.props.auth.user.name;
+        const email = this.props.auth.user.email;
+
         console.log(this.props.auth)
         return (
             <div>
@@ -117,13 +124,13 @@ class NewMarket extends Component {
                                         <div className="form-row">
                                             <div className="form-group col-md-12">
                                                 <label>Organizer Name</label>
-                                                <input type="text" className="form-control" name="organizer" placeholder="Johnny Appleseed" value={userName} onChange={this.handleInputChange} />
+                                                <input type="text" className="form-control" name="organizer" placeholder="Johnny Appleseed" value={userName} onChange={this.handleInputChange} disabled/>
                                             </div>
                                         </div>
                                         <div className="form-row">
                                             <div className="form-group col-md-12">
                                                 <label>Email address</label>
-                                                <input type="email" className="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email" value={this.state.email} onChange={this.handleInputChange} />
+                                                <input type="email" className="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email" value={email} onChange={this.handleInputChange} disabled />
                                                 <small name="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                                             </div>
                                         </div>

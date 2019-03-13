@@ -50,6 +50,7 @@ router.post("/register", (req, res) => {
 // @access Public
 router.post("/login", (req, res) => {
   // Form validation
+  console.log("payload")
 const { errors, isValid } = validateLoginInput(req.body);
 // Check validation
   if (!isValid) {
@@ -69,8 +70,11 @@ User.findOne({email:email}).then(user => {
         // Create JWT Payload
         const payload = {
           id: user.id,
-          name: user.name
+          name: user.name,
+          email: user.email
         };
+        console.log("payload")
+        console.log(payload)
 // Sign token
         jwt.sign(
           payload,
