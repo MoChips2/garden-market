@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import API from "../utils/API";
-// import PropTypes from "prop-types";
-// import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import Geocode from "react-geocode";
 const mongoose = require("mongoose");
-
+Geocode.setApiKey('AIzaSyDz7pF2K0HzwVHeQdXk3e-ALsHBnDClEbM');
+Geocode.enableDebug();
 
 class NewMarket extends Component {
     state = {
@@ -22,10 +24,29 @@ class NewMarket extends Component {
         days: [],
         startTime: "",
         endTime: "",
-        members: ""
-
+        members: "",
+        location_lat: "",
+        location_lng: ""
     };
-
+    componentDidUpdate(nextProps, nextState) {
+        console.log(this.state.address);
+        if (this.state.address !== nextState.address) {
+            Geocode.fromAddress(this.state.address).then(
+                response => {
+                    const { lat, lng } = response.results[0].geometry.location;
+                    console.log("lat  :" + lat, lng);
+                    console.log("Status for Message" + response.status);
+                    this.setState({
+                        location_lat: lat,
+                        location_lng: lng
+                    });
+                },
+                error => {
+                    console.error("Error:" + error);
+                }
+            );
+        }
+    };
     handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({
@@ -81,7 +102,9 @@ class NewMarket extends Component {
                 days: this.state.days,
                 startTime: this.state.startTime,
                 endTime: this.state.endTime,
-                members: this.state.members
+                members: this.state.members,
+                location_lat: this.state.location_lat,
+                location_lng: this.state.location_lng
             }).then(this.props.history.push("markets/" + myid)
             )
             console.log("worked!")
@@ -94,6 +117,7 @@ class NewMarket extends Component {
             });
         }
     }
+
     render() {
         // const userName = this.props.auth.user.name;
         // console.log(this.props.auth)

@@ -12,40 +12,46 @@ class SearchResult extends Component {
         address: "",
         city: "",
         state: "",
-        zip: "",
+        zip: 0,
         lat: 0,
         lng: 0,
+        isLoaded: false
     };
 
     componentDidMount() {
         this.loadMarkets();
-        this.getCoordinates();
     };
 
+    // to center map, homepage search should center the map
+    
 
     loadMarkets = () => {
         API.getMarkets()
-            .then(res =>
-                this.setState({
-                    markets: res.data,
-                    marketName: "",
-                    address: "",
-                    city: "",
-                    state: "",
-                    zip: ""
-                }))
-            .catch(err => console.log(err));
-    };
-
-    // converts address into coordinates -Simone
-
-    getCoordinates = () => {
-        API.geocodeAddress("1420 Eckles Ave, St Paul, MN 55108")
             .then(res => {
-                console.log(res.data);
+                    console.log(res.data)
+                    this.setState({
+                        markets: res.data,
+                        marketName: res.data[1].marketName,
+                        address: res.data[1].address,
+                        city: res.data[1].city,
+                        state: res.data[1].state,
+                        zip: res.data[1].zip,
+                        isLoaded: true
+                    })
+                        // converts address into coordinates -Simone
+                    let promiseArray = []
+                    this.state.markets.forEach((market) => {
+                        let address = `${market.address} ${market.city}, ${market.state} ${market.zip}`
+                        promiseArray.push(API.geocodeAddress(address))
+                    })
+                    return Promise.all(promiseArray)
+            })
+            .then(res => {
+                console.log("---geocode results---")
+                console.log(res);
                 let coords = res.data.results[0].geometry.location;
                 let lat = coords.lat;
-                let lng = coords.lng
+                let lng = coords.lng;
                 console.log(lat, lng);
                 this.setState({
                     lat: lat,
@@ -54,6 +60,24 @@ class SearchResult extends Component {
             })
             .catch(err => console.log(err));
     };
+
+    // converts address into coordinates -Simone
+    // getCoordinates = () => {
+    //     API.geocodeAddress(this.address)
+    //         .then(res => {
+    //             console.log("---geocode results---")
+    //             console.log(res.data);
+    //             let coords = res.data.results[0].geometry.location;
+    //             let lat = coords.lat;
+    //             let lng = coords.lng
+    //             console.log(lat, lng);
+    //             this.setState({
+    //                 lat: lat,
+    //                 lng: lng
+    //             })
+    //         })
+    //         .catch(err => console.log(err))
+    // };
 
     render() {
         return (
