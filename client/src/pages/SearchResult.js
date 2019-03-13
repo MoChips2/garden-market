@@ -13,8 +13,7 @@ class SearchResult extends Component {
         city: "",
         state: "",
         zip: 0,
-        lat: 0,
-        lng: 0,
+        coords: [],
         isLoaded: false
     };
 
@@ -28,34 +27,31 @@ class SearchResult extends Component {
     loadMarkets = () => {
         API.getMarkets()
             .then(res => {
-                    console.log(res.data)
-                    this.setState({
-                        markets: res.data,
-                        marketName: res.data[0].marketName,
-                        address: res.data[0].address,
-                        city: res.data[0].city,
-                        state: res.data[0].state,
-                        zip: res.data[0].zip,
-                        isLoaded: true
-                    })
-                        // converts address into coordinates -Simone
-                    let promiseArray = []
-                    this.state.markets.forEach((market) => {
-                        let address = `${market.address} ${market.city}, ${market.state} ${market.zip}`
-                        promiseArray.push(API.geocodeAddress(address))
-                    })
-                    return Promise.all(promiseArray)
+                console.log(res.data)
+                this.setState({
+                    markets: res.data,
+                    marketName: "",
+                    address: "",
+                    city: "",
+                    state: "",
+                    zip: "",
+                    isLoaded: true
+                })
+                // converts address into coordinates -Simone
+                let promiseArray = []
+                this.state.markets.forEach((market) => {
+                    let address = `${market.address} ${market.city}, ${market.state} ${market.zip}`
+                    promiseArray.push(API.geocodeAddress(address))
+                })
+                return Promise.all(promiseArray)
             })
             .then(res => {
-                console.log("---geocode results---")
-                console.log(res);
-                let coords = res.data.results[0].geometry.location;
-                let lat = coords.lat;
-                let lng = coords.lng;
-                console.log(lat, lng);
-                this.setState({
-                    lat: lat,
-                    lng: lng
+                res.map(coord => {
+                  //  console.log("---geocode results---")
+                  //  console.log(res);
+                    let coords = coord.data.results[0].geometry.location;
+                    this.state.coords.push(coords);
+                    console.log(this.state.coords);
                 })
             })
             .catch(err => console.log(err));
@@ -108,8 +104,6 @@ class SearchResult extends Component {
                                     </div>
                                     <div className="col-md-8 mapDiv">
                                         <MapContainer
-                                            lat={this.state.lat}
-                                            lng={this.state.lng}
                                         />
                                     </div>
                                 </div>
