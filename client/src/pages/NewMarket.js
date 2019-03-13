@@ -22,9 +22,33 @@ class NewMarket extends Component {
         days: [],
         startTime: "",
         endTime: "",
-        members: ""
-
+        members: "",
+        fields: {},
+           errors: {}
     };
+
+    handleValidation(){
+        let fields = this.state.fields;
+        let errors = {};
+        let formIsValid = true;
+
+        //Name
+        if(!fields["marketName"]){
+           formIsValid = false;
+           errors["marketName"] = "Cannot be empty";
+        }
+
+        if(typeof fields["marketName"] !== "undefined"){
+           if(!fields["marketName"].match(/^[a-zA-Z]+$/)){
+              formIsValid = false;
+              errors["marketName"] = "Only letters";
+           }        
+        }
+
+
+       this.setState({errors: errors});
+       return formIsValid;
+   }
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -58,51 +82,63 @@ class NewMarket extends Component {
     }
 
 
+       handleChange(field, e){         
+        let fields = this.state.fields;
+        fields[field] = e.target.value;        
+        this.setState({fields});
+    }
+
+    
+
     handleFormSubmit = event => {
-        console.log("this.state.organizer:" + this.state.organizer);
-
         event.preventDefault();
-        const userName = this.props.auth.user.name;
-        console.log("this.state.organizer after:" + userName);
+        if(this.handleValidation()){
+            console.log("this.state.organizer:" + this.state.organizer);
+            const userName = this.props.auth.user.name;
+            console.log("this.state.organizer after:" + userName);
+    
+            // if (this.state.marketName && this.state.email) {
+                var myid = mongoose.Types.ObjectId();
+                console.log(myid.toString())
+    
+                API.saveMarket({
+                    _id: myid,
+                    marketName: this.state.marketName,
+                    organizer: this.state.organizer,
+                    email: this.state.email,
+                    products: this.state.products,
+                    address: this.state.address,
+                    state: this.state.state,
+                    city: this.state.city,
+                    zip: this.state.zip,
+                    about: this.state.about,
+                    img: this.state.img,
+                    startMonth: this.state.startMonth,
+                    endMonth: this.state.endMonth,
+                    days: this.state.days,
+                    startTime: this.state.startTime,
+                    endTime: this.state.endTime,
+                    members: this.state.members
+                }).then(this.props.history.push("markets/" + myid)
+                )
+                console.log("worked!")
+                console.log({
+                    startMonth: this.state.startMonth,
+                    endMonth: this.state.endMonth,
+                    days: this.state.days,
+                    startTime: this.state.startTime,
+                    endTime: this.state.endTime
+                });
+            // }
+         }else{
+            console.log("Form has errors.");
+         }
 
-        if (this.state.marketName && this.state.email) {
-            var myid = mongoose.Types.ObjectId();
-            console.log(myid.toString())
-
-            API.saveMarket({
-                _id: myid,
-                marketName: this.state.marketName,
-                organizer: this.state.organizer,
-                email: this.state.email,
-                products: this.state.products,
-                address: this.state.address,
-                state: this.state.state,
-                city: this.state.city,
-                zip: this.state.zip,
-                about: this.state.about,
-                img: this.state.img,
-                startMonth: this.state.startMonth,
-                endMonth: this.state.endMonth,
-                days: this.state.days,
-                startTime: this.state.startTime,
-                endTime: this.state.endTime,
-                members: this.state.members
-            }).then(this.props.history.push("markets/" + myid)
-            )
-            console.log("worked!")
-            console.log({
-                startMonth: this.state.startMonth,
-                endMonth: this.state.endMonth,
-                days: this.state.days,
-                startTime: this.state.startTime,
-                endTime: this.state.endTime
-            });
-        }
+        
     }
     render() {
         const userName = this.props.auth.user.name;
         const email = this.props.auth.user.email;
-
         console.log(this.props.auth)
         return (
             <div>
@@ -115,11 +151,15 @@ class NewMarket extends Component {
                                 </div>
                                 <div className="card-body gardenCardBody">
                                     <form>
+                                    <fieldset>
                                         <div className="form-row">
+                                        
                                             <div className="form-group col-md-12">
                                                 <label>Market Name</label>
-                                                <input type="text" className="form-control" name="marketName" placeholder="Example Market" value={this.state.marketName} onChange={this.handleInputChange} />
+                                                <input type="text" className="form-control" name="marketName" placeholder="Example Market" value={this.state.fields["marketName"]} onChange={this.handleChange.bind(this, "marketName")} />
+                                                <span style={{color: "red"}}>{this.state.errors["marketName"]}</span>
                                             </div>
+                                            
                                         </div>
                                         <div className="form-row">
                                             <div className="form-group col-md-12">
@@ -261,7 +301,7 @@ class NewMarket extends Component {
                                             </div>
                                         </div>
 
-                                        <div className="form-group">
+                                        {/* <div className="form-group">
                                             <label>Choose all that apply:</label>
                                             <div className="form-check">
                                                 <input className="form-check-input" type="checkbox" name="days" value="Sunday " onChange={this.onChangeDays.bind(this)} />
@@ -291,9 +331,9 @@ class NewMarket extends Component {
                                                 <input className="form-check-input" type="checkbox" name="days" value="Saturday " onChange={this.onChangeDays.bind(this)} />
                                                 <label className="form-check-label">Saturday</label>
                                             </div>
-                                        </div>
+                                        </div> */}
                                         <div className="row">
-                                            <div className="col">
+                                            {/* <div className="col">
                                                 <label className="my-1 mr-2">Starting Time</label>
                                                 <select name="startTime" className="custom-select my-1 mr-sm-2" id="startTime" value={this.state.startTime} onChange={this.handleInputChange}>
                                                     <option>Choose...</option>
@@ -325,7 +365,7 @@ class NewMarket extends Component {
                                                     <option value="6:00pm">6:00pm</option>
                                                     <option value="7:00pm">7:00pm</option>
                                                 </select>
-                                            </div>
+                                            </div> */}
                                         </div>
                                         <div className="form-group">
                                             <label>Choose all that apply:</label>
@@ -380,6 +420,7 @@ class NewMarket extends Component {
                                             </div>
                                         </div>
                                         <button type="submit" className="btn btn-primary" onClick={this.handleFormSubmit}>Submit</button>
+                                        </fieldset>
                                     </form>
                                 </div>
                             </div>
