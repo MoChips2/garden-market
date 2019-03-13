@@ -20,15 +20,10 @@ class SearchResult extends Component {
 
     componentDidMount() {
         this.loadMarkets();
-        // this.getCoordinates();
     };
 
-
     // to center map, homepage search should center the map
-
-
-    // to center map, homepage search should center the map
-
+    
 
     loadMarkets = () => {
         API.getMarkets()
@@ -56,7 +51,7 @@ class SearchResult extends Component {
                 console.log(res);
                 let coords = res.data.results[0].geometry.location;
                 let lat = coords.lat;
-                let lng = coords.lng
+                let lng = coords.lng;
                 console.log(lat, lng);
                 this.setState({
                     lat: lat,
