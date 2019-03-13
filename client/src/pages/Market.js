@@ -24,7 +24,8 @@ class Market extends Component {
     };
 
     state = {
-        markets: {}
+        markets: {},
+        message: ""
     };
 
     componentDidMount() {
@@ -37,16 +38,29 @@ class Market extends Component {
             .then(res =>
                 this.setState({
                     markets: res.data,
-                    products: res.data.products
+                    products: res.data.products,
+                    message: res.data.messages.message
                 }))
 
             .catch(err => console.log(err));
     };
 
+    // render() {
+    //     return (
+    //         <ul>
+    //             {this.state.markets.messages.map(message => (
+    //                 <li key={message._id}>{message.message}</li>
+    //             ))}
+    //         </ul>
+    //     )
+    // }
+
     render() {
         const { user } = this.props.auth;
-
-        console.log(this.state.products);
+        console.log(user)
+        console.log("123")
+        // console.log(this.state.markets.messages.map());
+        console.log("456")
 
         return (
 
@@ -59,6 +73,7 @@ class Market extends Component {
                         />
                     </div>
                 </div>
+               
                 <div className="row marketRow">
                     <div className="col-md-6">
                         <div className="container">
@@ -116,9 +131,9 @@ class Market extends Component {
                             </div>
                             <div className="row">
                                 <div className="col-md-12">
-                                    <MembersList 
-                                    members={this.state.markets.members}
-                                    organizer={this.state.markets.organizer}
+                                    <MembersList
+                                        members={this.state.markets.members}
+                                        organizer={this.state.markets.organizer}
                                     />
                                 </div>
                             </div>
@@ -128,9 +143,11 @@ class Market extends Component {
                         <div className="container">
                             <div className="row">
                                 <div className="col-md-12">
-                                    <MessageBoard 
-                                    messages={this.state.markets.messages}
-                                    id={this.state.markets._id}
+                                    <MessageBoard
+                                        // message={this.state.markets.messages.message}
+                                        messages={this.state.markets.messages}
+                                        id={this.state.markets._id}
+
                                     />
                                 </div>
                             </div>

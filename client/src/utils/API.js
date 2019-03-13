@@ -26,6 +26,19 @@ export default {
         return axios.put(`/api/markets/${id}`, updatedMarketData);
     },
 
+    pushMessage: function(id, message) {
+        console.log("API line: 30");
+        console.log(id)
+        console.log(message)
+        console.log("API line: 33")
+        return axios.post(`/api/markets/${id}`, message)
+    },
+
+    getPublicMessages: function(id) {
+        console.log(id)
+        return axios.get("api/markets/" + id);
+    },
+
     geocodeAddress: function(address) {
         console.log("searching for: " + address);
         return axios.get("https://maps.googleapis.com/maps/api/geocode/json", {

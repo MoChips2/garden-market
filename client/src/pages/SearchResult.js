@@ -67,9 +67,9 @@ class SearchResult extends Component {
                             <div className="container">
                                 <div className="row">
                                     <div className="col-md-4">
-                                        <ul class="list-group list-group-flush">
+                                        <ul className="list-group list-group-flush">
                                             {this.state.markets.map(market => (
-                                                <li class="list-group-item" key={market._id}>
+                                                <li className="list-group-item" key={market._id}>
                                                     <ResultContainer
                                                         id={market._id}
                                                         marketName={market.marketName}
