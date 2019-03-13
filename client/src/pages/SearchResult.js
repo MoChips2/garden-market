@@ -27,6 +27,9 @@ class SearchResult extends Component {
     // to center map, homepage search should center the map
 
 
+    // to center map, homepage search should center the map
+
+
     loadMarkets = () => {
         API.getMarkets()
             .then(res => {
