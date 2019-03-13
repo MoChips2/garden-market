@@ -31,11 +31,11 @@ class SearchResult extends Component {
                     console.log(res.data)
                     this.setState({
                         markets: res.data,
-                        marketName: res.data[1].marketName,
-                        address: res.data[1].address,
-                        city: res.data[1].city,
-                        state: res.data[1].state,
-                        zip: res.data[1].zip,
+                        marketName: res.data[0].marketName,
+                        address: res.data[0].address,
+                        city: res.data[0].city,
+                        state: res.data[0].state,
+                        zip: res.data[0].zip,
                         isLoaded: true
                     })
                         // converts address into coordinates -Simone
