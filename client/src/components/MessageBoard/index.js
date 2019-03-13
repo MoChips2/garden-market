@@ -15,17 +15,17 @@ class MessageBoard extends Component {
     //     this.loadPublicMessages();
     // }
 
-    loadPublicMessages = () => {
+    // loadPublicMessages = () => {
 
-        API.getPublicMessages(this.props.id)
+    //     API.getPublicMessages(this.props.id)
 
-            .then(res =>
-                this.setState({
-                    publicMessages: res.data,
-                }))
+    //         .then(res =>
+    //             this.setState({
+    //                 publicMessages: res.data,
+    //             }))
 
-            .catch(err => console.log(err));
-    };
+    //         .catch(err => console.log(err));
+    // };
 
 
     handleInputChange = event => {
@@ -65,7 +65,7 @@ class MessageBoard extends Component {
 
                     <ul className="list-group list-group-flush">
                        
-                       
+                       <li className="list-group-item public-list">Dummy Data</li>
                         {/* {this.state.publicMessages.map(message => (
                             <li className="list-group-item public-list">{message.message}</li>
                             ))} */}
@@ -79,4 +79,3 @@ class MessageBoard extends Component {
 
 export default MessageBoard;
 
-{/* <p className="postName">George &nbsp; 6-19-2019</p> */}

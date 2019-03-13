@@ -3,8 +3,8 @@ import API from "../utils/API";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
-
-// import ProductList from "../components/ProductList";
+// import { Link } from "react-router-dom";
+// // import ProductList from "../components/ProductList";
 import JoinBtn from "../components/JoinBtn";
 import AboutMarket from "../components/AboutMarket";
 import Times from "../components/Times/index";
@@ -15,6 +15,7 @@ import MessageBoard from "../components/MessageBoard";
 import Image from "../components/Image";
 import MembersList from "../components/MembersList";
 import "../components/Market.css";
+import JoinMessage from "../components/JoinMessage";
 
 class Market extends Component {
 
@@ -56,11 +57,8 @@ class Market extends Component {
     // }
 
     render() {
-        const { user } = this.props.auth;
-        console.log(user)
-        console.log("123")
-        // console.log(this.state.markets.messages.map());
-        console.log("456")
+        // const { user } = this.props.auth;
+        // console.log(user)
 
         return (
 
@@ -73,7 +71,7 @@ class Market extends Component {
                         />
                     </div>
                 </div>
-               
+
                 <div className="row marketRow">
                     <div className="col-md-6">
                         <div className="container">
@@ -93,7 +91,12 @@ class Market extends Component {
                             </div>
                             <div className="row">
                                 <div className="col-md-12">
-                                    <JoinBtn />
+                                    {/* <JoinBtn
+                                        id={this.state.markets._id}
+                                    /> */}
+                                    <JoinMessage
+                                        id={this.state.markets._id}
+                                    />
                                 </div>
                             </div>
                         </div>

@@ -69,6 +69,10 @@ class EditContainer extends Component {
 
 
     render() {
+
+        console.log(this.props.joinMessages)
+
+
         return (
             <div className="container">
                 <div className="row">
@@ -368,6 +372,13 @@ class EditContainer extends Component {
                                 </tr>
                             </tbody>
                         </table>
+                        <div className="joinMessagesDiv">
+                            <ul>
+                                {/* {this.props.joinMessages.map(message => (
+                                    <li>{message.message}<span className="joinName">{message.name}</span></li>
+                                ))} */}
+                            </ul>
+                        </div>
                         <br />
                         <br />
                     </div>

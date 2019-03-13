@@ -40,11 +40,22 @@ module.exports = {
   },
   addMessage: function (req, res) {
     console.log("marketController line: 42")
-    console.log(req.body)
+    console.log(req.body.messages)
+    console.log(req.body.sender)
     db.Market
-      .update({ _id: req.params.id }, { $push: { messages: {message: req.body.messages, sender: req.body.sender }}})
+      .updateOne({ _id: req.params.id }, { $push: { messages: {message: req.body.messages, sender: req.body.sender }}})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+  addJoin: function (req, res) {
+    console.log("marketController addJoin ")
+    console.log(req.body.name)
+    console.log(req.body.email)
+    console.log(req.body.message)
+    db.Market
+    .updateOne({ _id: req.params.id }, { $push: { joinMessages: {name: req.body.name, email: req.body.email, message: req.body.message }}})
+    .then(dbModel => res.json(dbModel))
+    .catch(err => res.status(422).json(err));
   },
   findMessage: function (req, res) {
     console.log(req.params)

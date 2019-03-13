@@ -17,7 +17,7 @@ export default {
     },
 
     getOneMarket: function(id) {
-        console.log("getting market by id: " + id);
+        // console.log("getting market by id: " + id);
         return axios.get("/api/markets/" + id);
     },
     updateMarket: function(id, updatedMarketData) {
@@ -32,6 +32,14 @@ export default {
         console.log(message)
         console.log("API line: 33")
         return axios.post(`/api/markets/${id}`, message)
+    },
+
+    sendJoin: function(id, joinMessage) {
+        console.log("API line: 38");
+        console.log(id)
+        console.log(joinMessage)
+        console.log("API line: 41")
+        return axios.post(`/api/markets/join/${id}`, joinMessage)
     },
 
     getPublicMessages: function(id) {

@@ -19,6 +19,7 @@ const marketSchema = new Schema({
     endTime: String,
     members: String,
     messages: [],
+    joinMessages: [],
     // members : [Users],
     products: Array,
     location_lat:Number,

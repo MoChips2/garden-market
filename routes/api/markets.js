@@ -12,5 +12,7 @@ router.route("/:id")
   .put(marketController.update)
   .post(marketController.addMessage)
   .get(marketController.findMessage)
-
+  
+router.route("/join/:id")
+  .post(marketController.addJoin)
 module.exports = router;

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/API";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
+// import PropTypes from "prop-types";
+// import { connect } from "react-redux";
 import Geocode from "react-geocode";
 const mongoose = require("mongoose");
 Geocode.setApiKey('AIzaSyDz7pF2K0HzwVHeQdXk3e-ALsHBnDClEbM');

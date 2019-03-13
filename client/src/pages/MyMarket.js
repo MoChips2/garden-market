@@ -46,6 +46,7 @@ class MyMarket extends Component {
                             days={this.state.markets.days}
                             startTime={this.state.markets.startTime}
                             endTime={this.state.markets.endTime}
+                            joinMessages={this.state.markets.joinMessages}
                         />
                     </div>
                 </div>
