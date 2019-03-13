@@ -19,7 +19,9 @@ const marketSchema = new Schema({
     endTime: String,
     members: String,
     // members : [Users],
-    products: Array
+    products: Array,
+    location_lat:Number,
+    location_lng:Number
 });
 
 const Market = mongoose.model("Market", marketSchema);
