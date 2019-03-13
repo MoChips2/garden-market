@@ -7,10 +7,20 @@ export class MapContainer extends Component {
 
 
   render() {
+    // const style = {
+    //   height: "100%",
+    //   margin: "20px",
+    //   marginRight: "30px",
+    //   position: "relative",
+    //   borderRadius: "3px"
+    // }
+
     const style = {
-      height: "100%",
-      margin: "20px",
-      marginRight: "30px",
+      height: "600px",
+      width: "90%",
+      margin: "auto",
+      marginTop: "25px",
+      paddingBottom: "20px",
       position: "relative",
       borderRadius: "3px"
     }
@@ -33,7 +43,7 @@ export class MapContainer extends Component {
           position={{ lat: 44.9738, lng: -93.2578 }}
         />
         <Marker
-          title={"U of M"}
+          title={this.props.name}
           position={{ lat: this.props.lat, lng: this.props.lng }}
         />
       </Map>
