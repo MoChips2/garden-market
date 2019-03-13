@@ -38,6 +38,7 @@ class SearchResult extends Component {
                         zip: res.data[1].zip,
                         isLoaded: true
                     })
+                        // converts address into coordinates -Simone
                     let promiseArray = []
                     this.state.markets.forEach((market) => {
                         let address = `${market.address} ${market.city}, ${market.state} ${market.zip}`
