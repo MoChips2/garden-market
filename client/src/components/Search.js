@@ -1,5 +1,8 @@
 import React from "react";
 import "../components/Search.css";
+import { Link } from 'react-router-dom';
+import SearchResult from "../pages/SearchResult";
+
 // function Search() {
 class Search extends React.Component {
     state = {
@@ -17,6 +20,9 @@ class Search extends React.Component {
         console.log("Search address :" + this.state.address);
         if(this.state.address != null){
             // this.props.history.push("/searchresult");
+            window.open(
+                "searchresult",
+              )
         }
     }
     render() {
