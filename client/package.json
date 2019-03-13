@@ -5,6 +5,7 @@
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
+    "address-validator": "^0.2.3",
     "axios": "^0.18.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
@@ -27,6 +28,7 @@
     "react-scripts": "^2.1.1",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
+    "underscore": "^1.9.1",
     "validator": "^10.11.0"
   },
   "scripts": {

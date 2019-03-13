@@ -21,7 +21,7 @@ const marketSchema = new Schema({
         street: String,
         city: String,
         state: String,
-        zip: Number,
+        zip: String,
         country: String,
     },
     coords: {

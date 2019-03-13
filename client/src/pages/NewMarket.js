@@ -1,9 +1,14 @@
 import React, { Component } from "react";
+import Geocode from "react-geocode";
 import axios from "axios";
 import API from "../utils/API";
 const mongoose = require("mongoose");
 const APP_ID_HERE = 'IJMnFWRcCVoHjEFzN4ON';
 const APP_CODE_HERE = 'D6MSE7e5KHI7s5cf-RZ3ow';
+// set Google Maps Geocoding API for purposes of quota management. Its optional but recommended.
+Geocode.setApiKey('AIzaSyDz7pF2K0HzwVHeQdXk3e-ALsHBnDClEbM');
+Geocode.enableDebug();
+
 
 class NewMarket extends Component {
     state = {
@@ -72,23 +77,41 @@ class NewMarket extends Component {
             var myid = mongoose.Types.ObjectId();
             console.log(myid.toString())
             //Address Validation code
-            const isValid = this.addressValidation(this.state);
-            console.log("Address Validation:" + this.state.coords.lat + "Value" + isValid);
+            var inputAddress = this.state.address;
+            var localLat,localIng;
+            console.log("Input Address " + inputAddress);
+            this.Geocode.fromAddress(inputAddress).then(
+                response => {
+                  const { lat, lng } = response.results[0].geometry.location;
+                  console.log("lat  :" + lat, lng);
+                  console.log("Status for Message" + response.status);
+                //   this.setState({
+                //       address:(response.results[0].address_components[3].long_name),
+                //       coords:(lat,lng)});
+
+                localLat = lat;
+                localIng = lng;
+                      //return response.results[0].geometry.location;
+                },
+                error => {
+                  console.error("Error:" + error);
+                }
+              );//API Key should be working to get it work
+              console.log("Coords:" + localLat + localIng);
             //Address Validation end
             API.saveMarket({
-                _id: myid,
+                //_id: myid,
                 marketName: this.state.marketName,
-                organizer: this.state.organizer,
-                email: this.state.email,
-                products: this.state.products,
-
                 about: this.state.about,
+                organizer: this.state.organizer,
+                email: this.state.email, 
                 img: this.state.img,
                 startMonth: this.state.startMonth,
                 endMonth: this.state.endMonth,
                 days: this.state.days,
                 startTime: this.state.startTime,
                 endTime: this.state.endTime,
+                products: this.state.products,  
                 members: this.state.members,
                 address: {
                     street: this.state.address.street,
@@ -97,14 +120,11 @@ class NewMarket extends Component {
                     zip: this.state.address.zip,
                     country: this.state.address.country,
                 },
-                query: this.state.query,
-                locationId: this.state.locationId,
-                isChecked: false,
                 coords: {
                     lat: this.state.coords.lat,
                     lon: this.state.coords.lon,
                 },
-            }).then(this.props.history.push("markets/" + myid)
+            }).then(//then(this.props.history.push("markets/" + myid)
             )
             console.log("worked!")
             console.log({
@@ -116,66 +136,124 @@ class NewMarket extends Component {
             });
         }
     }
+    //On Query
+    // onQuery() {
+    //     const query = this.state.address;
+    
+    //     if (!query.length > 0) {
+    //      console.log("No Query");
+    //     }
+    
+    //     const self = this;
+    //     axios.get('https://autocomplete.geocoder.api.here.com/6.2/suggest.json',
+    //       {'params': {
+    //         'app_id': APP_ID_HERE,
+    //         'app_code': APP_CODE_HERE,
+    //         'query': query,
+    //         'maxresults': 1,
+    //       }}).then(function (response) {
+    //           if (response.data.suggestions.length > 0) {
+    //             const id = response.data.suggestions[0].locationId;
+    //             const address = response.data.suggestions[0].address;
+    //             self.setState({
+    //               'address' : address,
+    //               'query' : query,
+    //               'locationId': id
+    //             })
+    //           } else {
+    //             // const state = self.getInitialState();
+    //             // self.setState(state);
+    //             console.log("Set Init status");
+    //           }
+    //       });
+    //   }
     //Shilpa Address validation -
-    addressValidation = (val) => {
-        console.log(val.address);
-        const self = this;
-        let params = {
-            app_id: APP_ID_HERE,
-            app_code: APP_CODE_HERE,
-        }
-        if (this.state.locationId.length > 0) {
-            params['locationId'] = this.state.locationId;
-        } else {
-            params['searchtext'] = this.state.address.street
-                + this.state.address.city
-                + this.state.address.state
-                + this.state.address.postalCode
-                + this.state.address.country;
-        }
-        console.log(params);
 
-        axios.get('https://geocoder.api.here.com/6.2/geocode.json',
-            { 'params': params }
-        ).then(function (response) {
-            const view = response.data.Response.View
+    // addressValidation = (val) => {
+    //     console.log("Val.Address" + val.address);
+    //     const self = this;
+    //     const query = val.address;
+    //     let params = {
+    //         app_id: APP_ID_HERE,
+    //         app_code: APP_CODE_HERE,
+    //     }
+    //     axios.get('https://autocomplete.geocoder.api.here.com/6.2/suggest.json',
+    //       {'params': {
+    //         'app_id': APP_ID_HERE,
+    //         'app_code': APP_CODE_HERE,
+    //         'query': query,
+    //         'maxresults': 1,
+    //       }}).then(function (response) {
+    //           if (response.data.suggestions.length > 0) {
+    //             const id = response.data.suggestions[0].locationId;
+    //             const address = response.data.suggestions[0].address;
+    //             self.setState({
+    //               'address' : address,
+    //               'query' : query,
+    //               'locationId': id
+    //             })
+    //           } else {
+    //             // const state = self.getInitialState();
+    //             // self.setState(state);
+    //             console.log("Set Init status");
+    //           }
+    //       });
+    //     console.log("On Query called");
+        
+    //     console.log("val.locationId.length" + self.locationId.length);
+
+    //     if (val.locationId.length > 0) {
+    //         params['locationId'] = self.locationId;
+    //     } else {
+    //         params['searchtext'] = self.address.street
+    //             + self.address.city
+    //             + self.address.state
+    //             + self.address.postalCode
+    //             + self.address.country;
+    //     }
+    //     console.log("Param:" + params['searchtext']);
+
+    //     axios.get('https://geocoder.api.here.com/6.2/geocode.json',
+    //         { 'params': params }
+    //     ).then(function (response) {
+    //         const view = response.data.Response.View
          
-            if (view.length > 0 && view[0].Result.length > 0) {
-                const location = view[0].Result[0].Location;
-                console.log("location:" + location.Address.Label + location.DisplayPosition.Latitude);
-                self.setState({
-                    isChecked: 'true',
-                    locationId: '',
-                    query: location.Address.Label,
-                    address: {
-                        street: location.Address.HouseNumber + ' ' + location.Address.Street,
-                        city: location.Address.City,
-                        state: location.Address.State,
-                        zip: location.Address.PostalCode,
-                        country: location.Address.Country
-                    },
-                    coords: {
-                        lat: location.DisplayPosition.Latitude,
-                        lon: location.DisplayPosition.Longitude
-                    }
-                });
-                return true;
-            } else {
-                self.setState({
-                    isChecked: true,
-                    coords: null,
-                });
-                return false;
-            }
-        }).catch(function (error) {
-                console.log('caught failed query');
-                self.setState({
-                    isChecked: true,
-                    coords: null,
-                });
-                return false;
-            });
-    }
+    //         if (view.length > 0 && view[0].Result.length > 0) {
+    //             const location = view[0].Result[0].Location;
+    //             console.log("location:" + location.Address.Label + location.DisplayPosition.Latitude);
+    //             self.setState({
+    //                 isChecked: 'true',
+    //                 locationId: '',
+    //                 query: location.Address.Label,
+    //                 address: {
+    //                     street: location.Address.HouseNumber + ' ' + location.Address.Street,
+    //                     city: location.Address.City,
+    //                     state: location.Address.State,
+    //                     zip: location.Address.PostalCode,
+    //                     country: location.Address.Country
+    //                 },
+    //                 coords: {
+    //                     lat: location.DisplayPosition.Latitude,
+    //                     lon: location.DisplayPosition.Longitude
+    //                 }
+    //             });
+    //             return self;
+    //         } else {
+    //             self.setState({
+    //                 isChecked: true,
+    //                 coords: null,
+    //             });
+    //             return self;
+    //         }
+    //     }).catch(function (error) {
+    //             console.log('caught failed query');
+    //             self.setState({
+    //                 isChecked: true,
+    //                 coords: null,
+    //             });
+    //             return self;
+    //         });
+    // }
     /////////////////////////////
     render() {
         return (
@@ -208,17 +286,17 @@ class NewMarket extends Component {
                                 <div className="form-row">
                                     <div className="form-group col-md-12">
                                         <label>Address</label>
-                                        <input type="text" className="form-control" name="address" placeholder="1234 Main St" value={this.state.address} onChange={this.handleInputChange} />
+                                        <input type="text" className="form-control" name="address" placeholder="1234 Main St" value={this.state.address.street} onChange={this.handleInputChange} />
                                     </div>
                                 </div>
                                 <div className="form-row">
                                     <div className="form-group col-md-8">
                                         <label>City</label>
-                                        <input type="text" className="form-control" name="city" value={this.state.city} onChange={this.handleInputChange} />
+                                        <input type="text" className="form-control" name="city" value={this.state.address.city} onChange={this.handleInputChange} />
                                     </div>
                                     <div className="form-group col-md-2">
                                         <label>State</label>
-                                        <select name="state" className="form-control" value={this.state.state} onChange={this.handleInputChange}>
+                                        <select name="state" className="form-control" value={this.state.address.state} onChange={this.handleInputChange}>
                                             <option>Choose...</option>
                                             <option value="AL">AL</option>
                                             <option value="AK">AK</option>
@@ -274,7 +352,7 @@ class NewMarket extends Component {
                                     </div>
                                     <div className="form-group col-md-2">
                                         <label>Zip</label>
-                                        <input type="text" className="form-control" name="zip" value={this.state.zip} onChange={this.handleInputChange} />
+                                        <input type="text" className="form-control" name="zip" value={this.state.address.zip} onChange={this.handleInputChange} />
                                     </div>
                                     <div className="form-group col-md-2">
                                         <label>Members</label>

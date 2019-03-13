@@ -6,6 +6,7 @@ export default {
     // },
 
     saveMarket: function(marketData) {
+        console.log("marketData" + marketData)
         return axios.post("/api/markets", marketData);
     },
     getMarkets: function() {
