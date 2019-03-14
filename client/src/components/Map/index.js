@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
-import googleAPI from "./key";
 
 
 export class MapContainer extends Component {
@@ -29,23 +28,11 @@ export class MapContainer extends Component {
       <Map
         google={this.props.google}
         style={style}
-        zoom={12}
+        zoom={14}
         initialCenter={{ lat: 44.9778, lng: -93.2650 }}
+        {...this.props}
       >
-        <Marker
-          title={"MPLS"}
-          name={"MPLS"}
-          position={{ lat: 44.9778, lng: -93.2650 }}
-        />
-        <Marker
-          title={"US Bank Stadium"}
-          name={"Vikings Stadium"}
-          position={{ lat: 44.9738, lng: -93.2578 }}
-        />
-        <Marker
-          title={this.props.name}
-          position={{ lat: this.props.lat, lng: this.props.lng }}
-        />
+        {this.props.children}
       </Map>
     );
   }
@@ -55,3 +42,5 @@ export class MapContainer extends Component {
 export default GoogleApiWrapper({
   apiKey: "AIzaSyCkb1B8yUakYSWHYbogPL28_aN95F99qhY"
 })(MapContainer)
+
+// marker takes coordinates
