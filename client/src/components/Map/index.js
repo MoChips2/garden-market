@@ -28,33 +28,12 @@ export class MapContainer extends Component {
       <Map
         google={this.props.google}
         style={style}
-        zoom={13}
+        zoom={14}
         initialCenter={{ lat: 44.9778, lng: -93.2650 }}
         {...this.props}
       >
         {this.props.children}
       </Map>
-      // <Map
-      //   google={this.props.google}
-      //   style={style}
-      //   zoom={13}
-      //   initialCenter={{ lat: 44.9778, lng: -93.2650 }}
-      // >
-      //   <Marker
-      //     title={"MPLS"}
-      //     name={"MPLS"}
-      //     position={{ lat: 44.9778, lng: -93.2650 }}
-      //   />
-      //   <Marker
-      //     title={"US Bank Stadium"}
-      //     name={"Vikings Stadium"}
-      //     position={{ lat: 44.9738, lng: -93.2578 }}
-      //   />
-      //   <Marker
-      //     title={this.props.name}
-      //     position={{ lat: this.props.lat, lng: this.props.lng }}
-      //   />
-      // </Map>
     );
   }
 }
