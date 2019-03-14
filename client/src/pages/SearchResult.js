@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import ResultContainer from "../components/ResultContainer";
-import MapContainer from "../components/Map";
+import MapContainer from "../components/Map/index";
+import { Map, Marker } from "google-maps-react";
 import "../components/auth/Login.css";
 import "../components/ResultContainer.css";
 
@@ -22,7 +23,7 @@ class SearchResult extends Component {
     };
 
     // to center map, homepage search should center the map
-    
+
 
     loadMarkets = () => {
         API.getMarkets()
@@ -35,6 +36,8 @@ class SearchResult extends Component {
                     city: "",
                     state: "",
                     zip: "",
+                    coords: [],
+                    place_id: [],
                     isLoaded: true
                 })
                 // converts address into coordinates -Simone
@@ -46,34 +49,24 @@ class SearchResult extends Component {
                 return Promise.all(promiseArray)
             })
             .then(res => {
+                var coordsArray = [];
                 res.map(coord => {
-                  //  console.log("---geocode results---")
-                  //  console.log(res);
+                    console.log("---geocode results---")
+                    console.log(res);
                     let coords = coord.data.results[0].geometry.location;
-                    this.state.coords.push(coords);
-                    console.log(this.state.coords);
+                    let id = coord.data.results[0].place_id;
+                    Object.assign(coords, { id: id})
+                    coordsArray.push(coords);
+                    return coordsArray;
                 })
+                this.setState({
+                    coords: coordsArray
+                })
+                console.log(this.state.coords);
             })
             .catch(err => console.log(err));
     };
 
-    // converts address into coordinates -Simone
-    // getCoordinates = () => {
-    //     API.geocodeAddress(this.address)
-    //         .then(res => {
-    //             console.log("---geocode results---")
-    //             console.log(res.data);
-    //             let coords = res.data.results[0].geometry.location;
-    //             let lat = coords.lat;
-    //             let lng = coords.lng
-    //             console.log(lat, lng);
-    //             this.setState({
-    //                 lat: lat,
-    //                 lng: lng
-    //             })
-    //         })
-    //         .catch(err => console.log(err))
-    // };
 
     render() {
         return (
@@ -103,8 +96,24 @@ class SearchResult extends Component {
                                         </ul>
                                     </div>
                                     <div className="col-md-8 mapDiv">
-                                        <MapContainer
-                                        />
+                                        <MapContainer>
+                                                <Marker
+                                                    title={"MPLS"}
+                                                    name={"MPLS"}
+                                                    position={{ lat: 44.9778, lng: -93.2650 }}
+                                                />
+                                                <Marker
+                                                    title={"US Bank Stadium"}
+                                                    name={"Vikings Stadium"}
+                                                    position={{ lat: 44.9738, lng: -93.2578 }}
+                                                />
+                                                {this.state.coords.map(coord => (
+                                                <Marker
+                                                    key={coord.id}
+                                                    position={{ lat: coord.lat, lng: coord.lng }}
+                                                />
+                                                ))}
+                                        </MapContainer>
                                     </div>
                                 </div>
                             </div>
