@@ -16,6 +16,7 @@ import Image from "../components/Image";
 import MembersList from "../components/MembersList";
 import "../components/Market.css";
 import JoinMessage from "../components/JoinMessage";
+import PrivateMessages from "../components/PrivateMessages";
 
 class Market extends Component {
 
@@ -33,6 +34,10 @@ class Market extends Component {
         this.loadOneMarket();
     }
 
+    componentDidUpdate() {
+        this.loadOneMarket();
+    }
+
     loadOneMarket = () => {
         API.getOneMarket(this.props.match.params.id)
 
@@ -42,23 +47,12 @@ class Market extends Component {
                     products: res.data.products,
                     message: res.data.messages.message
                 }))
+                
 
             .catch(err => console.log(err));
     };
 
-    // render() {
-    //     return (
-    //         <ul>
-    //             {this.state.markets.messages.map(message => (
-    //                 <li key={message._id}>{message.message}</li>
-    //             ))}
-    //         </ul>
-    //     )
-    // }
-
     render() {
-        // const { user } = this.props.auth;
-        // console.log(user)
 
         return (
 
@@ -95,6 +89,14 @@ class Market extends Component {
                                         id={this.state.markets._id}
                                     /> */}
                                     <JoinMessage
+                                        id={this.state.markets._id}
+                                    />
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <PrivateMessages
+                                        joinMessages={this.state.markets.joinMessages}
                                         id={this.state.markets._id}
                                     />
                                 </div>
@@ -147,10 +149,9 @@ class Market extends Component {
                             <div className="row">
                                 <div className="col-md-12">
                                     <MessageBoard
-                                        // message={this.state.markets.messages.message}
+
                                         messages={this.state.markets.messages}
                                         id={this.state.markets._id}
-
                                     />
                                 </div>
                             </div>
@@ -159,7 +160,7 @@ class Market extends Component {
                 </div>
                 <br />
                 <br />
-            </div>
+            </div >
         )
     }
 }

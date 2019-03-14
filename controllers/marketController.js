@@ -4,7 +4,6 @@ module.exports = {
   findAll: function (req, res) {
     console.log("inside findAll")
     db.Market
-      // .find({marketName: "asdfad"})
       .find()
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
@@ -38,12 +37,13 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  
   addMessage: function (req, res) {
     console.log("marketController line: 42")
     console.log(req.body.messages)
     console.log(req.body.sender)
     db.Market
-      .updateOne({ _id: req.params.id }, { $push: { messages: {message: req.body.messages, sender: req.body.sender }}})
+      .updateOne({ _id: req.params.id }, { $push: { messages: { $each: [ {message: req.body.messages, sender: req.body.sender} ], $position: 0 }}})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -53,7 +53,7 @@ module.exports = {
     console.log(req.body.email)
     console.log(req.body.message)
     db.Market
-    .updateOne({ _id: req.params.id }, { $push: { joinMessages: {name: req.body.name, email: req.body.email, message: req.body.message }}})
+    .updateOne({ _id: req.params.id }, { $push: { joinMessages: { $each: [ {name: req.body.name, email: req.body.email, message: req.body.message } ], $position: 0 }}})
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
   },

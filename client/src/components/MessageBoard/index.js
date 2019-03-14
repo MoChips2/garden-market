@@ -1,34 +1,20 @@
 import React, { Component } from "react";
 import "./style.css";
 import API from "../../utils/API";
+import MessageList from "../../components/MessageList";
 
 class MessageBoard extends Component {
 
+    constructor(props) {
+        super(props);
+    }
     state = {
         messages: [],
-        sender: "",
-        publicMessages: {}
-
+        sender: ""
     }
 
-    // componentDidMount() {
-    //     this.loadPublicMessages();
-    // }
-
-    // loadPublicMessages = () => {
-
-    //     API.getPublicMessages(this.props.id)
-
-    //         .then(res =>
-    //             this.setState({
-    //                 publicMessages: res.data,
-    //             }))
-
-    //         .catch(err => console.log(err));
-    // };
-
-
     handleInputChange = event => {
+        event.preventDefault();
         const { name, value } = event.target;
         this.setState({
             [name]: value
@@ -37,11 +23,11 @@ class MessageBoard extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        console.log({ messages: this.state.messages })
         var id = event.target.id;
         API.pushMessage(id, { messages: this.state.messages, sender: this.state.sender })
-
+        
     }
+
 
 
     render() {
@@ -61,18 +47,11 @@ class MessageBoard extends Component {
                             </div>
                         </form>
                     </div>
-
-
-                    <ul className="list-group list-group-flush">
-                       
-                       <li className="list-group-item public-list">Dummy Data</li>
-                        {/* {this.state.publicMessages.map(message => (
-                            <li className="list-group-item public-list">{message.message}</li>
-                            ))} */}
-                    </ul>
+                    <MessageList
+                        messages={this.props.messages}
+                    />
                 </div>
             </div>
-
         )
     }
 }

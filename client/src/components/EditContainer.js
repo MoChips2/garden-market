@@ -66,12 +66,17 @@ class EditContainer extends Component {
         // .then(updateField(id))  
     }
 
-
+    componentDidMount = () => {
+        console.log('props are:')
+        console.log(this.props);
+        console.log('state is');
+        console.log(this.state);
+    }
 
     render() {
 
-        console.log(this.props.joinMessages)
-
+        console.log(this.props)
+        const joinMessages = this.props.joinMessages;
 
         return (
             <div className="container">
@@ -374,6 +379,7 @@ class EditContainer extends Component {
                         </table>
                         <div className="joinMessagesDiv">
                             <ul>
+                                <li>{this.props.joinMessages}</li>
                                 {/* {this.props.joinMessages.map(message => (
                                     <li>{message.message}<span className="joinName">{message.name}</span></li>
                                 ))} */}
