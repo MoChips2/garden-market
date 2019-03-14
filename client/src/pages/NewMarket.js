@@ -3,8 +3,10 @@ import API from "../utils/API";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Geocode from "react-geocode";
+require("dotenv").config();
+var keys = require('../components/Map/key');
 const mongoose = require("mongoose");
-Geocode.setApiKey('AIzaSyDz7pF2K0HzwVHeQdXk3e-ALsHBnDClEbM');
+//Geocode.setApiKey(keys.googleAPI);
 Geocode.enableDebug();
 
 class NewMarket extends Component {
@@ -28,9 +30,10 @@ class NewMarket extends Component {
         location_lat: "",
         location_lng: ""
     };
-    componentDidUpdate(nextProps, nextState) {
+    componentDidUpdate(perpProps, prepState) {
         console.log(this.state.address);
-        if (this.state.address !== nextState.address) {
+        if (this.state.address !== prepState.address) {
+            Geocode.setApiKey("AIzaSyDz7pF2K0HzwVHeQdXk3e-ALsHBnDClEbM");
             Geocode.fromAddress(this.state.address).then(
                 response => {
                     const { lat, lng } = response.results[0].geometry.location;

@@ -1,4 +1,6 @@
 import axios from "axios";
+require("dotenv").config();
+var keys = require('../components/Map/key');
 
 export default {
     // search: function(query) {
@@ -31,7 +33,8 @@ export default {
         return axios.get("https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/geocode/json", {
             params:{
                 address: address,
-                key: "AIzaSyCkb1B8yUakYSWHYbogPL28_aN95F99qhY"
+                // key: "AIzaSyCkb1B8yUakYSWHYbogPL28_aN95F99qhY"
+                key:keys.googleAPI
             }
         })
     }
