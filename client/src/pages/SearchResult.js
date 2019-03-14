@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import ResultContainer from "../components/ResultContainer";
 import MapContainer from "../components/Map/index";
-import { Marker, InfoWindow } from "google-maps-react";
 import "../components/auth/Login.css";
 import "../components/ResultContainer.css";
 
