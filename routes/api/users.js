@@ -66,6 +66,8 @@ User.findOne({email:email}).then(user => {
 // Check password
     bcrypt.compare(password, user.password).then(isMatch => {
       if (isMatch) {
+
+        console.log("matched!")
         // User matched
         // Create JWT Payload
         const payload = {
@@ -92,7 +94,7 @@ User.findOne({email:email}).then(user => {
       } else {
         return res
           .status(400)
-          .json({ passwordincorrect: "Password incorrect" });
+          .json({ passwordincorrect: "Password1 incorrect" });
       }
     });
   });
