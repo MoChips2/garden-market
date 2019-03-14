@@ -1,6 +1,6 @@
 import React from "react";
 import "../components/Search.css";
-import { Link } from 'react-router-dom';
+import { withRouter } from "react-router-dom";
 import SearchResult from "../pages/SearchResult";
 
 // function Search() {
@@ -19,10 +19,10 @@ class Search extends React.Component {
         event.preventDefault();
         console.log("Search address :" + this.state.address);
         if(this.state.address != null){
-            // this.props.history.push("/searchresult");
-            window.open(
-                "searchresult",
-              )
+            this.props.history.push("/searchresult");
+            // window.open(
+            //     "searchresult",
+            //   )
         }
     }
     render() {
@@ -41,4 +41,4 @@ class Search extends React.Component {
     }
 }
 
-export default Search;
+export default withRouter(Search);
