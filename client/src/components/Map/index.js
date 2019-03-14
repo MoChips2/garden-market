@@ -1,18 +1,60 @@
 import React, { Component } from "react";
-import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
+import { Map, Marker, InfoWindow, GoogleApiWrapper } from "google-maps-react";
+import API from "../../utils/API";
 
 
 export class MapContainer extends Component {
 
+  state = {
+    markets: [],
+    marketName: "",
+    address: "",
+    city: "",
+    state: "",
+    zip: 0,
+    coords: [],
+    showingInfoWindow: false,
+    activeMarker: {},
+    selectedPlace: {}
+  };
+
+  componentDidMount() {
+    this.loadMarkets();
+  };
+
+  onMarkerClick = (props, marker, e) =>
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true
+    });
+
+  onClose = props => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      });
+    }
+  };
+
+  loadMarkets = () => {
+    API.getMarkets()
+      .then(res => {
+        console.log(res.data)
+        this.setState({
+          markets: res.data,
+          marketName: "",
+          address: "",
+          city: "",
+          state: "",
+          zip: "",
+          coords: [],
+        })
+      })
+  }
 
   render() {
-    // const style = {
-    //   height: "100%",
-    //   margin: "20px",
-    //   marginRight: "30px",
-    //   position: "relative",
-    //   borderRadius: "3px"
-    // }
 
     const style = {
       height: "600px",
@@ -28,19 +70,31 @@ export class MapContainer extends Component {
       <Map
         google={this.props.google}
         style={style}
-        zoom={14}
+        zoom={12}
         initialCenter={{ lat: 44.9778, lng: -93.2650 }}
-        {...this.props}
       >
-        {this.props.children}
+        {this.state.markets.map(market => (
+          <Marker
+            key={market._id}
+            onClick={this.onMarkerClick}
+            name={market.marketName}
+            position={{ lat: market.location_lat, lng: market.location_lng }}
+          />
+        ))}
+        <InfoWindow
+          marker={this.state.activeMarker}
+          visible={this.state.showingInfoWindow}
+          onClose={this.onClose}
+        >
+          <div>
+            <h5>{this.state.selectedPlace.name}</h5>
+          </div>
+        </InfoWindow>
       </Map>
     );
   }
 }
 
-
 export default GoogleApiWrapper({
   apiKey: "AIzaSyCkb1B8yUakYSWHYbogPL28_aN95F99qhY"
 })(MapContainer)
-
-// marker takes coordinates
