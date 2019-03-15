@@ -84,7 +84,7 @@ class NewMarket extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        if (this.state.marketName && this.state.organizer && this.state.email) {
+        if (this.state.marketName && this.state.email) {
             var myid = mongoose.Types.ObjectId();
             console.log(myid.toString())
 
