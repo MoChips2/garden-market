@@ -1,16 +1,67 @@
 import React, { Component } from "react";
-import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
-import googleAPI from "./key";
+import { Map, Marker, InfoWindow, GoogleApiWrapper } from "google-maps-react";
+import API from "../../utils/API";
 
 
 export class MapContainer extends Component {
 
+  state = {
+    markets: [],
+    marketName: "",
+    address: "",
+    city: "",
+    state: "",
+    zip: 0,
+    coords: [],
+    showingInfoWindow: false,
+    activeMarker: {},
+    selectedPlace: {}
+  };
+
+  componentDidMount() {
+    this.loadMarkets();
+  };
+
+  onMarkerClick = (props, marker, e) =>
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true
+    });
+
+  onClose = props => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      });
+    }
+  };
+
+  loadMarkets = () => {
+    API.getMarkets()
+      .then(res => {
+        console.log(res.data)
+        this.setState({
+          markets: res.data,
+          marketName: "",
+          address: "",
+          city: "",
+          state: "",
+          zip: "",
+          coords: [],
+        })
+      })
+  }
 
   render() {
+
     const style = {
-      height: "100%",
-      margin: "20px",
-      marginRight: "30px",
+      height: "600px",
+      width: "90%",
+      margin: "auto",
+      marginTop: "25px",
+      paddingBottom: "20px",
       position: "relative",
       borderRadius: "3px"
     }
@@ -19,28 +70,30 @@ export class MapContainer extends Component {
       <Map
         google={this.props.google}
         style={style}
-        zoom={12}
+        zoom={9}
         initialCenter={{ lat: 44.9778, lng: -93.2650 }}
       >
-        <Marker
-          title={"MPLS"}
-          name={"MPLS"}
-          position={{ lat: 44.9778, lng: -93.2650 }}
-        />
-        <Marker
-          title={"US Bank Stadium"}
-          name={"Vikings Stadium"}
-          position={{ lat: 44.9738, lng: -93.2578 }}
-        />
-        <Marker
-          title={"U of M"}
-          position={{ lat: this.props.lat, lng: this.props.lng }}
-        />
+        {this.state.markets.map(market => (
+          <Marker
+            key={market._id}
+            onClick={this.onMarkerClick}
+            name={market.marketName}
+            position={{ lat: market.location_lat, lng: market.location_lng }}
+          />
+        ))}
+        <InfoWindow
+          marker={this.state.activeMarker}
+          visible={this.state.showingInfoWindow}
+          onClose={this.onClose}
+        >
+          <div>
+            <h5>{this.state.selectedPlace.name}</h5>
+          </div>
+        </InfoWindow>
       </Map>
     );
   }
 }
-
 
 export default GoogleApiWrapper({
   apiKey: "AIzaSyCkb1B8yUakYSWHYbogPL28_aN95F99qhY"

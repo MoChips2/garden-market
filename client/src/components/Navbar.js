@@ -43,6 +43,10 @@ onLogoutClick = e => {
                     <Link className="nav-link" to="/mymarket/5c7c2bdf6489ba0000387807">My Market</Link>
 
                     </li>
+                    <li className={window.location.pathname === "/map" ? "active" : ""} style={{display: isLoggedIn?"block":"none"}}>
+                    <Link className="nav-link" to="/map">Address</Link>
+
+                    </li>
                   
                 </ul>
       
