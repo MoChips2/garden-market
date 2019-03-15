@@ -17,6 +17,8 @@ onLogoutClick = e => {
 
  render() {
     const isLoggedIn = this.props.auth.isAuthenticated;
+    const userName = this.props.auth.user.name;
+    console.log(userName)
     return (
         
         <nav className="navbar navbar-expand-lg navbar-default bg-default">
@@ -56,9 +58,12 @@ onLogoutClick = e => {
                     <li className={window.location.pathname === "/register" ? "active" : ""} style={{display: isLoggedIn?"none":"block"}}>
                         <Link className="nav-link" to="/register">Register</Link>
                     </li>
+                    <li  style={{display: isLoggedIn?"block":"none"}} className = "userName"  > HEY {userName}
+                    </li>
                     <li className={window.location.pathname === "/" ? "active" : ""} style={{display: isLoggedIn?"block":"none"}} >
                         <Link className="nav-link" to="/" onClick={this.onLogoutClick}>Logout</Link>
                     </li>
+ 
                 </ul>
 
             </div>

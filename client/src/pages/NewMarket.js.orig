@@ -3,14 +3,13 @@ import API from "../utils/API";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Geocode from "react-geocode";
-import { Link, withRouter } from "react-router-dom";
 require("dotenv").config();
 var keys = require('../components/Map/key');
 const mongoose = require("mongoose");
 //Geocode.setApiKey(keys.googleAPI);
 Geocode.enableDebug();
 
-class EditContainer extends Component {
+class NewMarket extends Component {
     state = {
         marketName: "",
         organizer: "",
@@ -28,13 +27,78 @@ class EditContainer extends Component {
         startTime: "",
         endTime: "",
         members: "",
-        location_lat: "",
-        location_lng: "",
+<<<<<<< HEAD
         fields: {},
            errors: {}
-
     };
- componentDidUpdate(perpProps, prepState) {
+
+    handleValidation(){
+        let fields = this.state.fields;
+        let errors = {};
+        let formIsValid = true;
+
+        //Name
+        if(!fields["marketName"]){
+           formIsValid = false;
+           errors["marketName"] = "Cannot be empty";
+        }
+
+        if(typeof fields["marketName"] !== "undefined"){
+           if(!fields["marketName"].match(/^[a-zA-Z]+$/)){
+              formIsValid = false;
+              errors["marketName"] = "Only letters";
+           }        
+        }
+
+        //address
+        if(!fields["address"]){
+            formIsValid = false;
+            errors["address"] = "Cannot be empty";
+         }
+ 
+         if(typeof fields["address"] !== "undefined"){
+            if(!fields["address"].match(/^[a-zA-Z]+$/)){
+               formIsValid = false;
+               errors["address"] = "Only letters";
+            }        
+         }
+
+         //city
+        if(!fields["city"]){
+            formIsValid = false;
+            errors["city"] = "Cannot be empty";
+         }
+ 
+         if(typeof fields["city"] !== "undefined"){
+            if(!fields["city"].match(/^[a-zA-Z]+$/)){
+               formIsValid = false;
+               errors["city"] = "Only letters";
+            }        
+         }
+
+
+              //state
+        if(!fields["city"]){
+            formIsValid = false;
+            errors["city"] = "Cannot be empty";
+         }
+ 
+         if(typeof fields["city"] !== "undefined"){
+            if(!fields["city"].match(/^[a-zA-Z]+$/)){
+               formIsValid = false;
+               errors["city"] = "Only letters";
+            }        
+         }
+
+       this.setState({errors: errors});
+       return formIsValid;
+   }
+
+=======
+        location_lat: "",
+        location_lng: ""
+    };
+    componentDidUpdate(perpProps, prepState) {
         console.log(this.state.address);
         if (this.state.address !== prepState.address) {
             Geocode.setApiKey("AIzaSyDz7pF2K0HzwVHeQdXk3e-ALsHBnDClEbM");
@@ -54,74 +118,7 @@ class EditContainer extends Component {
             );
         }
     };
-handleValidation(){
-        let fields = this.state.fields;
-        let errors = {};
-        let formIsValid = true;
-
-        //Name
-        if(Object.keys(fields).indexOf("marketName")!=-1){
-            if(!fields["marketName"] ){
-                formIsValid = false;
-                errors["marketName"] = "Cannot be empty";
-             }
-        }
-      
-
-        //address
-        if(Object.keys(fields).indexOf("address")!=-1){
-
-        if(!fields["address"]){
-            formIsValid = false;
-            errors["address"] = "Cannot be empty";
-         }
-        }
-         //city
-         if(Object.keys(fields).indexOf("city")!=-1){
-        if(!fields["city"]){
-            formIsValid = false;
-            errors["city"] = "Cannot be empty";
-         }
-        }
- 
-        if(Object.keys(fields).indexOf("city")!=-1){
-         if(typeof fields["city"] !== "undefined"){
-            if(!fields["city"].match(/^[a-zA-Z]+$/)){
-               formIsValid = false;
-               errors["city"] = "Only letters";
-            }        
-         }
-        }
-
-        //state
-        if(Object.keys(fields).indexOf("state")!=-1){
-        if(!fields["state"]){
-            formIsValid = false;
-            errors["state"] = "Cannot be empty";
-         }
-        }
-                 //Zip
-                 if(Object.keys(fields).indexOf("zip")!=-1){
-        if(!fields["zip"]){
-            formIsValid = false;
-            errors["zip"] = "Cannot be empty";
-         }
-        }
-
-        if(Object.keys(fields).indexOf("zip")!=-1){
-         if(typeof fields["zip"] !== "undefined"){
-            if(!fields["zip"].match(/^[0-9]+$/)){
-               formIsValid = false;
-               errors["zip"] = "Only numbers";
-            }        
-         }
-        }
-
-
-       this.setState({errors: errors});
-       return formIsValid;
-}
-
+>>>>>>> f30c361d23af86c785e5bb41832ba3354ac1e0c2
     handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({
@@ -164,63 +161,34 @@ handleValidation(){
 
     handleFormSubmit = event => {
         event.preventDefault();
-       if(this.handleValidation()){
+        if(this.handleValidation()){
             console.log("this.state.organizer:" + this.state.organizer);
             const userName = this.props.auth.user.name;
-            var email = this.props.auth.user.email;
             console.log("this.state.organizer after:" + userName);
-            console.log("this.email after:");
-            console.log(email);
     
             // if (this.state.marketName && this.state.email) {
                 var myid = mongoose.Types.ObjectId();
                 console.log(myid.toString())
-                API.updateMarket(this.props.id, { 
-                    marketName: this.state.fields.marketName,
-                    organizer: this.props.auth.user.name,
-                    email: email,
-                    products: this.state.fields.products,
-                    address: this.state.fields.address,
-                    state: this.state.fields.state,
-                    city: this.state.fields.city,
-                    zip: this.state.fields.zip,
-                    about: this.state.fields.about,
-                    img: this.state.fields.img,
-                    startMonth: this.state.fields.startMonth,
-                    endMonth: this.state.fields.endMonth,
-                    days: this.state.fields.days,
-                    startTime: this.state.fields.startTime,
-                    endTime: this.state.fields.endTime,
-                    members: this.state.fields.members,
-                    location_lat: this.state.fields.location_lat,
-                    location_lng: this.state.fields.location_lng
-                
-                
-                })
-
-
-                // API.updateMarket({
-                //     _id: myid,
-                //     marketName: this.state.fields.marketName,
-                //     organizer: this.props.auth.user.name,
-                //     email: email,
-                //     products: this.state.fields.products,
-                //     address: this.state.fields.address,
-                //     state: this.state.fields.state,
-                //     city: this.state.fields.city,
-                //     zip: this.state.fields.zip,
-                //     about: this.state.fields.about,
-                //     img: this.state.fields.img,
-                //     startMonth: this.state.fields.startMonth,
-                //     endMonth: this.state.fields.endMonth,
-                //     days: this.state.fields.days,
-                //     startTime: this.state.fields.startTime,
-                //     endTime: this.state.fields.endTime,
-                //     members: this.state.fields.members,
-                // location_lat: this.state.fields.location_lat,
-                // location_lng: this.state.fields.location_lng
-                // })
-                .then(this.props.history.push("/markets/" + this.props.id)
+    
+                API.saveMarket({
+                    _id: myid,
+                    marketName: this.state.marketName,
+                    organizer: this.state.organizer,
+                    email: this.state.email,
+                    products: this.state.products,
+                    address: this.state.address,
+                    state: this.state.state,
+                    city: this.state.city,
+                    zip: this.state.zip,
+                    about: this.state.about,
+                    img: this.state.img,
+                    startMonth: this.state.startMonth,
+                    endMonth: this.state.endMonth,
+                    days: this.state.days,
+                    startTime: this.state.startTime,
+                    endTime: this.state.endTime,
+                    members: this.state.members
+                }).then(this.props.history.push("markets/" + myid)
                 )
                 console.log("worked!")
                 console.log({
@@ -235,14 +203,47 @@ handleValidation(){
             console.log("Form has errors.");
          }
 
+<<<<<<< HEAD
         
-    }   
-     render() {
+=======
+            API.saveMarket({
+                _id: myid,
+                marketName: this.state.marketName,
+                organizer: this.state.organizer,
+                email: this.state.email,
+                products: this.state.products,
+                address: this.state.address,
+                state: this.state.state,
+                city: this.state.city,
+                zip: this.state.zip,
+                about: this.state.about,
+                img: this.state.img,
+                startMonth: this.state.startMonth,
+                endMonth: this.state.endMonth,
+                days: this.state.days,
+                startTime: this.state.startTime,
+                endTime: this.state.endTime,
+                members: this.state.members,
+                location_lat: this.state.location_lat,
+                location_lng: this.state.location_lng
+            }).then(this.props.history.push("markets/" + myid)
+            )
+            console.log("worked!")
+            console.log({
+                startMonth: this.state.startMonth,
+                endMonth: this.state.endMonth,
+                days: this.state.days,
+                startTime: this.state.startTime,
+                endTime: this.state.endTime
+            });
+        }
+>>>>>>> f30c361d23af86c785e5bb41832ba3354ac1e0c2
+    }
+
+    render() {
         const userName = this.props.auth.user.name;
         const email = this.props.auth.user.email;
-        console.log(this.props)
-        //this.state.fields["marketName"] = this.props.marketName;
-
+        console.log(this.props.auth)
         return (
             <div>
                 <div className="container new-market-container">
@@ -250,7 +251,7 @@ handleValidation(){
                         <div className="col-md-8 mx-auto">
                             <div className="card gardenCard">
                                 <div className="card-header gardenCardHeader">
-                                    <h2 className="gardenHeader">EDIT MARKET</h2>
+                                    <h2 className="gardenHeader">NEW MARKET</h2>
                                 </div>
                                 <div className="card-body gardenCardBody">
                                     <form>
@@ -259,7 +260,7 @@ handleValidation(){
                                         
                                             <div className="form-group col-md-12">
                                                 <label>Market Name</label>
-                                                <input type="text" className="form-control" name="marketName" placeholder="Example Market" value={this.state.fields["marketName"]}  defaultValue={this.props.marketName} onChange={this.handleChange.bind(this, "marketName")} />
+                                                <input type="text" className="form-control" name="marketName" placeholder="Example Market" value={this.state.fields["marketName"]} onChange={this.handleChange.bind(this, "marketName")} />
                                                 <span style={{color: "red"}}>{this.state.errors["marketName"]}</span>
                                             </div>
                                             
@@ -280,19 +281,19 @@ handleValidation(){
                                         <div className="form-row">
                                             <div className="form-group col-md-12">
                                                 <label>Address</label>
-                                                <input type="text" className="form-control" name="address" placeholder="1234 Main St" value={this.state.fields["address"]}  defaultValue={this.props.address} onChange={this.handleChange.bind(this, "address")} />
+                                                <input type="text" className="form-control" name="address" placeholder="1234 Main St" value={this.state.fields["address"]}  onChange={this.handleChange.bind(this, "address")} />
                                                 <span style={{color: "red"}}>{this.state.errors["address"]}</span>
                                             </div>
                                         </div>
                                         <div className="form-row">
                                             <div className="form-group col-md-8">
                                                 <label>City</label>
-                                                <input type="text" className="form-control" name="city" value={this.state.fields["city"]} defaultValue={this.props.city}  onChange={this.handleChange.bind(this, "city")} />
+                                                <input type="text" className="form-control" name="city" value={this.state.fields["city"]} onChange={this.handleChange.bind(this, "city")} />
                                                 <span style={{color: "red"}}>{this.state.errors["city"]}</span>
                                             </div>
                                             <div className="form-group col-md-2">
                                                 <label>State</label>
-                                                <select name="state" className="form-control" value={this.state.fields["state"]}  defaultValue={this.props.state}  onChange={this.handleChange.bind(this, "state")}>
+                                                <select name="state" className="form-control" value={this.state.fields["state"]} onChange={this.handleChange.bind(this, "state")}>
                                                     <option>Choose...</option>
                                                     <option value="AL">AL</option>
                                                     <option value="AK">AK</option>
@@ -345,34 +346,33 @@ handleValidation(){
                                                     <option value="WI">WI</option>
                                                     <option value="WY">WY</option>
                                                 </select>
-                                                <span style={{color: "red"}}>{this.state.errors["state"]}</span>
+                                                <span style={{color: "red"}}>{this.state.errors["marketName"]}</span>
                                             </div>
                                             <div className="form-group col-md-2">
                                                 <label>Zip</label>
-                                                <input type="text" className="form-control" name="zip" value={this.state.fields["zip"]} defaultValue={this.props.zip}  onChange={this.handleChange.bind(this, "zip")} />
-                                                <span style={{color: "red"}}>{this.state.errors["zip"]}</span>
+                                                <input type="text" className="form-control" name="zip" value={this.state.zip} onChange={this.handleInputChange} />
                                             </div>
                                             <div className="form-group col-md-2">
                                                 <label>Members</label>
-                                                <input type="text" className="form-control" name="members" value={this.state.members}  defaultValue={this.props.members} onChange={this.handleInputChange} />
+                                                <input type="text" className="form-control" name="members" value={this.state.members} onChange={this.handleInputChange} />
                                             </div>
                                         </div>
                                         <div className="form-row">
                                             <div className="form-group col-md-12">
                                                 <label>Tell us about your market:</label>
-                                                <textarea className="form-control" name="about" rows="3" value={this.state.about} defaultValue={this.props.about}  onChange={this.handleInputChange}></textarea>
+                                                <textarea className="form-control" name="about" rows="3" value={this.state.about} onChange={this.handleInputChange}></textarea>
                                             </div>
                                         </div>
                                         <div className="form-row">
                                             <div className="form-group col-md-12">
                                                 <label>Link to an image of your garden or market:</label>
-                                                <input className="form-control" name="img" value={this.state.img} defaultValue={this.props.img}  onChange={this.handleInputChange} />
+                                                <input className="form-control" name="img" value={this.state.img} onChange={this.handleInputChange} />
                                             </div>
                                         </div>
                                         <div className="row">
                                             <div className="col">
                                                 <label className="my-1 mr-2">Starting Month</label>
-                                                <select name="startMonth" className="custom-select my-1 mr-sm-2" id="startMonth" value={this.state.startMonth} defaultValue={this.props.startMonth}  onChange={this.handleInputChange}>
+                                                <select name="startMonth" className="custom-select my-1 mr-sm-2" id="startMonth" value={this.state.startMonth} onChange={this.handleInputChange}>
                                                     <option>Choose...</option>
                                                     <option value="January">January</option>
                                                     <option value="February">February</option>
@@ -390,7 +390,7 @@ handleValidation(){
                                             </div>
                                             <div className="col">
                                                 <label className="my-1 mr-2">Ending Month</label>
-                                                <select name="endMonth" className="custom-select my-1 mr-sm-2" id="endMonth" value={this.state.endMonth}  defaultValue={this.props.endMonth}  onChange={this.handleInputChange}>
+                                                <select name="endMonth" className="custom-select my-1 mr-sm-2" id="endMonth" value={this.state.endMonth} onChange={this.handleInputChange}>
                                                     <option>Choose...</option>
                                                     <option value="January">January</option>
                                                     <option value="February">February</option>
@@ -539,7 +539,7 @@ handleValidation(){
     }
 }
 
-EditContainer.propTypes = {
+NewMarket.propTypes = {
     auth: PropTypes.object.isRequired
 };
 const mapStateToProps = state => ({
@@ -547,6 +547,6 @@ const mapStateToProps = state => ({
 });
 export default connect(
     mapStateToProps
-)(withRouter(EditContainer));
+)(NewMarket);
 
 // export default NewMarket;
