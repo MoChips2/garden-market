@@ -44,16 +44,21 @@ class Market extends Component {
             .catch(err => console.log(err));
     };
 
-    isOwner =() =>{
-        const { userName } = this.props.auth.user.name;
-        const { email } = this.props.auth.user.email;
-        console.log(email)
-        return true;
-    }
+    // isOwner =() =>{
+    //     const { userName } = this.props.auth.user.name;
+    //     const { email } = this.props.auth.user.email;
+    //     console.log(email)
+    //     return true;
+    // }
 
 
     render() {
-     // const isOwners = isOwner("a")
+     
+        var isOwner = false;
+        if(this.props.auth.user.name ==this.state.markets.organizer){
+            isOwner = true;
+        }
+        
         return (
 
             <div className="container-fluid">
@@ -89,7 +94,7 @@ class Market extends Component {
                             </div>
 
                             <div className="row">
-                                <div className="col-md-12" >
+                                <div className="col-md-12" style={{display: isOwner?"block":"none"}} >
                                     <EditMarket
                                     id ={this.state.markets._id}
                                     />
