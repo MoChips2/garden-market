@@ -6,6 +6,7 @@ import { logoutUser } from "../actions/authActions";
 
 // import ProductList from "../components/ProductList";
 import JoinBtn from "../components/JoinBtn";
+import EditMarket from "../components/EditMarket";
 import AboutMarket from "../components/AboutMarket";
 import Times from "../components/Times/index";
 import Products from "../components/Products";
@@ -43,11 +44,16 @@ class Market extends Component {
             .catch(err => console.log(err));
     };
 
+    isOwner =() =>{
+        const { userName } = this.props.auth.user.name;
+        const { email } = this.props.auth.user.email;
+        console.log(email)
+        return true;
+    }
+
+
     render() {
-        const { user } = this.props.auth;
-
-        console.log(this.state.products);
-
+      const isOwners = isOwner("a")
         return (
 
             <div className="container-fluid">
@@ -81,6 +87,15 @@ class Market extends Component {
                                     <JoinBtn />
                                 </div>
                             </div>
+
+                            <div className="row">
+                                <div className="col-md-12" style={{display: isOwners?"none":"block"}}>
+                                    <EditMarket
+                                    id ={this.state.markets._id}
+                                    />
+                                </div>
+                            </div>
+                            
                         </div>
                     </div>
 

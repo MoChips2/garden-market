@@ -45,6 +45,45 @@ class NewMarket extends Component {
            }        
         }
 
+        //address
+        if(!fields["address"]){
+            formIsValid = false;
+            errors["address"] = "Cannot be empty";
+         }
+ 
+         if(typeof fields["address"] !== "undefined"){
+            if(!fields["address"].match(/^[a-zA-Z]+$/)){
+               formIsValid = false;
+               errors["address"] = "Only letters";
+            }        
+         }
+
+         //city
+        if(!fields["city"]){
+            formIsValid = false;
+            errors["city"] = "Cannot be empty";
+         }
+ 
+         if(typeof fields["city"] !== "undefined"){
+            if(!fields["city"].match(/^[a-zA-Z]+$/)){
+               formIsValid = false;
+               errors["city"] = "Only letters";
+            }        
+         }
+
+
+              //state
+        if(!fields["city"]){
+            formIsValid = false;
+            errors["city"] = "Cannot be empty";
+         }
+ 
+         if(typeof fields["city"] !== "undefined"){
+            if(!fields["city"].match(/^[a-zA-Z]+$/)){
+               formIsValid = false;
+               errors["city"] = "Only letters";
+            }        
+         }
 
        this.setState({errors: errors});
        return formIsValid;
@@ -177,17 +216,19 @@ class NewMarket extends Component {
                                         <div className="form-row">
                                             <div className="form-group col-md-12">
                                                 <label>Address</label>
-                                                <input type="text" className="form-control" name="address" placeholder="1234 Main St" value={this.state.address} onChange={this.handleInputChange} />
+                                                <input type="text" className="form-control" name="address" placeholder="1234 Main St" value={this.state.fields["address"]}  onChange={this.handleChange.bind(this, "address")} />
+                                                <span style={{color: "red"}}>{this.state.errors["address"]}</span>
                                             </div>
                                         </div>
                                         <div className="form-row">
                                             <div className="form-group col-md-8">
                                                 <label>City</label>
-                                                <input type="text" className="form-control" name="city" value={this.state.city} onChange={this.handleInputChange} />
+                                                <input type="text" className="form-control" name="city" value={this.state.fields["city"]} onChange={this.handleChange.bind(this, "city")} />
+                                                <span style={{color: "red"}}>{this.state.errors["city"]}</span>
                                             </div>
                                             <div className="form-group col-md-2">
                                                 <label>State</label>
-                                                <select name="state" className="form-control" value={this.state.state} onChange={this.handleInputChange}>
+                                                <select name="state" className="form-control" value={this.state.fields["state"]} onChange={this.handleChange.bind(this, "state")}>
                                                     <option>Choose...</option>
                                                     <option value="AL">AL</option>
                                                     <option value="AK">AK</option>
@@ -240,6 +281,7 @@ class NewMarket extends Component {
                                                     <option value="WI">WI</option>
                                                     <option value="WY">WY</option>
                                                 </select>
+                                                <span style={{color: "red"}}>{this.state.errors["marketName"]}</span>
                                             </div>
                                             <div className="form-group col-md-2">
                                                 <label>Zip</label>

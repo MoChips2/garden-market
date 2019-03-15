@@ -13,3 +13,8 @@
 .navbar-default .navbar-nav > li > a {
     color: white;
 }
+
+.userName {
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+}
