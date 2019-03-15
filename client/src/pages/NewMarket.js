@@ -30,7 +30,7 @@ class NewMarket extends Component {
         location_lat: "",
         location_lng: "",
         fields: {},
-           errors: {}
+        errors: {}
 
     };
  componentDidUpdate(perpProps, prepState) {

@@ -7,7 +7,8 @@ import EditContainer from "../components/EditContainer";
 class MyMarket extends Component {
 
     state = {
-        markets: {}
+        markets: {},
+        joinMessages: []
         
     };
 
@@ -24,6 +25,14 @@ class MyMarket extends Component {
                     products: res.data.products
                 }))
     }
+
+    // loadMessages = () => {
+    //     API.getPublicMessages(this.props.match.params.id)
+    //     .then(res =>
+    //         this.setState({
+    //             joinMessages: res.data
+    //         }))
+    // }
 
     render() {
         return (
@@ -46,7 +55,11 @@ class MyMarket extends Component {
                             days={this.state.markets.days}
                             startTime={this.state.markets.startTime}
                             endTime={this.state.markets.endTime}
+                            // joinMessages={this.state.markets.joinMessages}
                         />
+                        {/* <JoinMessages 
+                        
+                        /> */}
                     </div>
                 </div>
             </div>

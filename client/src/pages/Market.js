@@ -3,8 +3,8 @@ import API from "../utils/API";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
-
-// import ProductList from "../components/ProductList";
+// import { Link } from "react-router-dom";
+// // import ProductList from "../components/ProductList";
 import JoinBtn from "../components/JoinBtn";
 import EditMarket from "../components/EditMarket";
 import AboutMarket from "../components/AboutMarket";
@@ -16,6 +16,8 @@ import MessageBoard from "../components/MessageBoard";
 import Image from "../components/Image";
 import MembersList from "../components/MembersList";
 import "../components/Market.css";
+import JoinMessage from "../components/JoinMessage";
+import PrivateMessages from "../components/PrivateMessages";
 
 class Market extends Component {
 
@@ -25,24 +27,32 @@ class Market extends Component {
     };
 
     state = {
-        markets: {}
+        markets: {},
+        message: ""
     };
 
     componentDidMount() {
         this.loadOneMarket();
     }
 
-    loadOneMarket = () => {
-        API.getOneMarket(this.props.match.params.id)
+// The code below works to update immediately but it doesn't stop. Infinite Loop.
+    // componentDidUpdate() {
+    //     this.loadOneMarket();
+    // }
 
+    loadOneMarket = () => {
+        console.log("step 1")
+        API.getOneMarket(this.props.match.params.id)
             .then(res =>
                 this.setState({
                     markets: res.data,
-                    products: res.data.products
+                    products: res.data.products,
+                    message: res.data.messages.message
                 }))
-
+            
             .catch(err => console.log(err));
     };
+    
 
     // isOwner =() =>{
     //     const { userName } = this.props.auth.user.name;
@@ -55,7 +65,7 @@ class Market extends Component {
     render() {
      
         var isOwner = false;
-        if(this.props.auth.user.name ==this.state.markets.organizer){
+        if(this.props.auth.user.name === this.state.markets.organizer){
             isOwner = true;
         }
         
@@ -70,6 +80,7 @@ class Market extends Component {
                         />
                     </div>
                 </div>
+
                 <div className="row marketRow">
                     <div className="col-md-6">
                         <div className="container">
@@ -89,7 +100,20 @@ class Market extends Component {
                             </div>
                             <div className="row">
                                 <div className="col-md-12">
-                                    <JoinBtn />
+                                    {/* <JoinBtn
+                                        id={this.state.markets._id}
+                                    /> */}
+                                    <JoinMessage
+                                        id={this.state.markets._id}
+                                    />
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <PrivateMessages
+                                        joinMessages={this.state.markets.joinMessages}
+                                        id={this.state.markets._id}
+                                    />
                                 </div>
                             </div>
 
@@ -136,9 +160,9 @@ class Market extends Component {
                             </div>
                             <div className="row">
                                 <div className="col-md-12">
-                                    <MembersList 
-                                    members={this.state.markets.members}
-                                    organizer={this.state.markets.organizer}
+                                    <MembersList
+                                        members={this.state.markets.members}
+                                        organizer={this.state.markets.organizer}
                                     />
                                 </div>
                             </div>
@@ -148,7 +172,10 @@ class Market extends Component {
                         <div className="container">
                             <div className="row">
                                 <div className="col-md-12">
-                                    <MessageBoard />
+                                    <MessageBoard
+                                        messages={this.state.markets.messages}
+                                        id={this.state.markets._id}
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -156,7 +183,7 @@ class Market extends Component {
                 </div>
                 <br />
                 <br />
-            </div>
+            </div >
         )
     }
 }

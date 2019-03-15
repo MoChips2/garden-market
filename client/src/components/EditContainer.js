@@ -60,7 +60,7 @@ handleValidation(){
         let formIsValid = true;
 
         //Name
-        if(Object.keys(fields).indexOf("marketName")!=-1){
+        if(Object.keys(fields).indexOf("marketName")!== -1){
             if(!fields["marketName"] ){
                 formIsValid = false;
                 errors["marketName"] = "Cannot be empty";
@@ -69,7 +69,7 @@ handleValidation(){
       
 
         //address
-        if(Object.keys(fields).indexOf("address")!=-1){
+        if(Object.keys(fields).indexOf("address")!==-1){
 
         if(!fields["address"]){
             formIsValid = false;
@@ -77,14 +77,14 @@ handleValidation(){
          }
         }
          //city
-         if(Object.keys(fields).indexOf("city")!=-1){
+         if(Object.keys(fields).indexOf("city")!==-1){
         if(!fields["city"]){
             formIsValid = false;
             errors["city"] = "Cannot be empty";
          }
         }
  
-        if(Object.keys(fields).indexOf("city")!=-1){
+        if(Object.keys(fields).indexOf("city")!==-1){
          if(typeof fields["city"] !== "undefined"){
             if(!fields["city"].match(/^[a-zA-Z]+$/)){
                formIsValid = false;
@@ -94,21 +94,21 @@ handleValidation(){
         }
 
         //state
-        if(Object.keys(fields).indexOf("state")!=-1){
+        if(Object.keys(fields).indexOf("state")!==-1){
         if(!fields["state"]){
             formIsValid = false;
             errors["state"] = "Cannot be empty";
          }
         }
                  //Zip
-                 if(Object.keys(fields).indexOf("zip")!=-1){
+                 if(Object.keys(fields).indexOf("zip")!==-1){
         if(!fields["zip"]){
             formIsValid = false;
             errors["zip"] = "Cannot be empty";
          }
         }
 
-        if(Object.keys(fields).indexOf("zip")!=-1){
+        if(Object.keys(fields).indexOf("zip")!==-1){
          if(typeof fields["zip"] !== "undefined"){
             if(!fields["zip"].match(/^[0-9]+$/)){
                formIsValid = false;
@@ -526,6 +526,55 @@ handleValidation(){
                                                 </div>
                                             </div>
                                         </div>
+                                    {/* </td>
+                                    <td><button type="submit" className="btn btn-dark editBtn" id={this.props.id} onClick={this.handleFormSubmit} name={'days'}>Submit</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Start Time</td>
+                                    <td className="current">{this.props.startTime}</td>
+                                    <td>
+                                        <select name="startTime" className="custom-select my-1 mr-sm-2" value={this.state.startTime} onChange={this.handleInputChange}>
+                                            <option>Choose...</option>
+                                            <option value="5:00am">5:00am</option>
+                                            <option value="6:00am">6:00am</option>
+                                            <option value="7:00am">7:00am</option>
+                                            <option value="8:00am">8:00am</option>
+                                            <option value="9:00am">9:00am</option>
+                                            <option value="10:00am">10:00am</option>
+                                            <option value="11:00am">11:00am</option>
+                                            <option value="12:00 noon">12:00 noon</option>
+                                            <option value="1:00pm">1:00pm</option>
+                                        </select>
+                                    </td>
+                                    <td><button type="submit" className="btn btn-dark editBtn" id={this.props.id} onClick={this.handleFormSubmit} name={'startTime'}>Submit</button></td>
+                                </tr>
+                                <tr>
+                                    <td>End Time</td>
+                                    <td className="current">{this.props.endTime}</td>
+                                    <td>
+                                        <select name="endTime" className="custom-select my-1 mr-sm-2" value={this.state.endTime} onChange={this.handleInputChange}>
+                                            <option>Choose...</option>
+                                            <option value="8:00am">8:00am</option>
+                                            <option value="9:00am">9:00am</option>
+                                            <option value="10:00am">10:00am</option>
+                                            <option value="11:00am">11:00am</option>
+                                            <option value="12:00 noon">12:00 noon</option>
+                                            <option value="1:00pm">1:00pm</option>
+                                            <option value="2:00pm">2:00pm</option>
+                                            <option value="3:00pm">3:00pm</option>
+                                            <option value="4:00pm">4:00pm</option>
+                                            <option value="5:00pm">5:00pm</option>
+                                            <option value="6:00pm">6:00pm</option>
+                                            <option value="7:00pm">7:00pm</option>
+                                        </select>
+                                    </td>
+                                    <td><button type="submit" className="btn btn-dark editBtn" id={this.props.id} onClick={this.handleFormSubmit} name={'endTime'}>Submit</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <br />
+                        <br /> */}
                                         <button type="submit" className="btn btn-primary" onClick={this.handleFormSubmit}>Submit</button>
                                         </fieldset>
                                     </form>
