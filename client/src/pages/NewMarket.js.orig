@@ -27,33 +27,12 @@ class NewMarket extends Component {
         startTime: "",
         endTime: "",
         members: "",
-        location_lat: "",
-        location_lng: "",
+<<<<<<< HEAD
         fields: {},
            errors: {}
+    };
 
-    };
- componentDidUpdate(perpProps, prepState) {
-        console.log(this.state.address);
-        if (this.state.address !== prepState.address) {
-            Geocode.setApiKey("AIzaSyDz7pF2K0HzwVHeQdXk3e-ALsHBnDClEbM");
-            Geocode.fromAddress(this.state.address).then(
-                response => {
-                    const { lat, lng } = response.results[0].geometry.location;
-                    console.log("lat  :" + lat, lng);
-                    console.log("Status for Message" + response.status);
-                    this.setState({
-                        location_lat: lat,
-                        location_lng: lng
-                    });
-                },
-                error => {
-                    console.error("Error:" + error);
-                }
-            );
-        }
-    };
-handleValidation(){
+    handleValidation(){
         let fields = this.state.fields;
         let errors = {};
         let formIsValid = true;
@@ -114,6 +93,32 @@ handleValidation(){
        this.setState({errors: errors});
        return formIsValid;
    }
+
+=======
+        location_lat: "",
+        location_lng: ""
+    };
+    componentDidUpdate(perpProps, prepState) {
+        console.log(this.state.address);
+        if (this.state.address !== prepState.address) {
+            Geocode.setApiKey("AIzaSyDz7pF2K0HzwVHeQdXk3e-ALsHBnDClEbM");
+            Geocode.fromAddress(this.state.address).then(
+                response => {
+                    const { lat, lng } = response.results[0].geometry.location;
+                    console.log("lat  :" + lat, lng);
+                    console.log("Status for Message" + response.status);
+                    this.setState({
+                        location_lat: lat,
+                        location_lng: lng
+                    });
+                },
+                error => {
+                    console.error("Error:" + error);
+                }
+            );
+        }
+    };
+>>>>>>> f30c361d23af86c785e5bb41832ba3354ac1e0c2
     handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({
@@ -182,9 +187,7 @@ handleValidation(){
                     days: this.state.days,
                     startTime: this.state.startTime,
                     endTime: this.state.endTime,
-                    members: this.state.members,
-                location_lat: this.state.location_lat,
-                location_lng: this.state.location_lng
+                    members: this.state.members
                 }).then(this.props.history.push("markets/" + myid)
                 )
                 console.log("worked!")
@@ -200,9 +203,44 @@ handleValidation(){
             console.log("Form has errors.");
          }
 
+<<<<<<< HEAD
         
-    }   
-     render() {
+=======
+            API.saveMarket({
+                _id: myid,
+                marketName: this.state.marketName,
+                organizer: this.state.organizer,
+                email: this.state.email,
+                products: this.state.products,
+                address: this.state.address,
+                state: this.state.state,
+                city: this.state.city,
+                zip: this.state.zip,
+                about: this.state.about,
+                img: this.state.img,
+                startMonth: this.state.startMonth,
+                endMonth: this.state.endMonth,
+                days: this.state.days,
+                startTime: this.state.startTime,
+                endTime: this.state.endTime,
+                members: this.state.members,
+                location_lat: this.state.location_lat,
+                location_lng: this.state.location_lng
+            }).then(this.props.history.push("markets/" + myid)
+            )
+            console.log("worked!")
+            console.log({
+                startMonth: this.state.startMonth,
+                endMonth: this.state.endMonth,
+                days: this.state.days,
+                startTime: this.state.startTime,
+                endTime: this.state.endTime
+            });
+        }
+>>>>>>> f30c361d23af86c785e5bb41832ba3354ac1e0c2
+    }
+
+    render() {
         const userName = this.props.auth.user.name;
         const email = this.props.auth.user.email;
         console.log(this.props.auth)

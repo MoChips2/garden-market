@@ -53,7 +53,7 @@ class Market extends Component {
 
 
     render() {
-      const isOwners = isOwner("a")
+     // const isOwners = isOwner("a")
         return (
 
             <div className="container-fluid">
@@ -89,7 +89,7 @@ class Market extends Component {
                             </div>
 
                             <div className="row">
-                                <div className="col-md-12" style={{display: isOwners?"none":"block"}}>
+                                <div className="col-md-12" >
                                     <EditMarket
                                     id ={this.state.markets._id}
                                     />
