@@ -39,7 +39,7 @@ class SearchResult extends Component {
 
     getCenter = () => {
         //Shilpa results redirected from Search.js
-     //   console.log("Search Routes :" + this.props.location.state.address.place_id); //coords from User Search box)
+        console.log("Search Routes :" + this.props.location.state.address.place_id); //coords from User Search box)
         console.log("Search Routes :" + this.props.location.state.address.geometry.location.lat); //coords from User Search box)
         if (this.props.location.state.address != null) {
             let id = this.props.location.state.address.place_id;
