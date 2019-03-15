@@ -1,13 +1,11 @@
 import React from "react";
 import "../components/Search.css";
 import { withRouter } from "react-router-dom";
-import SearchResult from "../pages/SearchResult";
+import API from "../utils/API";
 
-// function Search() {
 class Search extends React.Component {
     state = {
-        address: "",
-        value: ""
+        address: ""
     }
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -18,11 +16,13 @@ class Search extends React.Component {
     handleFormSubmit = event => {
         event.preventDefault();
         console.log("Search address :" + this.state.address);
-        if(this.state.address != null){
-            this.props.history.push("/searchresult");
-            // window.open(
-            //     "searchresult",
-            //   )
+        if (this.state.address != null) {
+            API.geocodeAddress(this.state.address).then(res => {
+                console.log(res.data.results[0].geometry.location);
+                this.props.history.push(
+                    '/searchresult',{address:res.data.results[0]}
+                                      )
+            });
         }
     }
     render() {
@@ -41,4 +41,4 @@ class Search extends React.Component {
     }
 }
 
-export default withRouter(Search);
+    export default withRouter(Search);

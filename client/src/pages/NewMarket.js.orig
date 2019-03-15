@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/API";
-// import PropTypes from "prop-types";
-// import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import Geocode from "react-geocode";
 require("dotenv").config();
 var keys = require('../components/Map/key');
@@ -27,13 +27,78 @@ class NewMarket extends Component {
         startTime: "",
         endTime: "",
         members: "",
-        location_lat: "",
-        location_lng: "",
+<<<<<<< HEAD
         fields: {},
            errors: {}
-
     };
- componentDidUpdate(perpProps, prepState) {
+
+    handleValidation(){
+        let fields = this.state.fields;
+        let errors = {};
+        let formIsValid = true;
+
+        //Name
+        if(!fields["marketName"]){
+           formIsValid = false;
+           errors["marketName"] = "Cannot be empty";
+        }
+
+        if(typeof fields["marketName"] !== "undefined"){
+           if(!fields["marketName"].match(/^[a-zA-Z]+$/)){
+              formIsValid = false;
+              errors["marketName"] = "Only letters";
+           }        
+        }
+
+        //address
+        if(!fields["address"]){
+            formIsValid = false;
+            errors["address"] = "Cannot be empty";
+         }
+ 
+         if(typeof fields["address"] !== "undefined"){
+            if(!fields["address"].match(/^[a-zA-Z]+$/)){
+               formIsValid = false;
+               errors["address"] = "Only letters";
+            }        
+         }
+
+         //city
+        if(!fields["city"]){
+            formIsValid = false;
+            errors["city"] = "Cannot be empty";
+         }
+ 
+         if(typeof fields["city"] !== "undefined"){
+            if(!fields["city"].match(/^[a-zA-Z]+$/)){
+               formIsValid = false;
+               errors["city"] = "Only letters";
+            }        
+         }
+
+
+              //state
+        if(!fields["city"]){
+            formIsValid = false;
+            errors["city"] = "Cannot be empty";
+         }
+ 
+         if(typeof fields["city"] !== "undefined"){
+            if(!fields["city"].match(/^[a-zA-Z]+$/)){
+               formIsValid = false;
+               errors["city"] = "Only letters";
+            }        
+         }
+
+       this.setState({errors: errors});
+       return formIsValid;
+   }
+
+=======
+        location_lat: "",
+        location_lng: ""
+    };
+    componentDidUpdate(perpProps, prepState) {
         console.log(this.state.address);
         if (this.state.address !== prepState.address) {
             Geocode.setApiKey("AIzaSyDz7pF2K0HzwVHeQdXk3e-ALsHBnDClEbM");
@@ -53,59 +118,7 @@ class NewMarket extends Component {
             );
         }
     };
-handleValidation(){
-        let fields = this.state.fields;
-        let errors = {};
-        let formIsValid = true;
-
-        //Name
-        if(!fields["marketName"]){
-           formIsValid = false;
-           errors["marketName"] = "Cannot be empty";
-        }
-
-        //address
-        if(!fields["address"]){
-            formIsValid = false;
-            errors["address"] = "Cannot be empty";
-         }
-
-         //city
-        if(!fields["city"]){
-            formIsValid = false;
-            errors["city"] = "Cannot be empty";
-         }
- 
-         if(typeof fields["city"] !== "undefined"){
-            if(!fields["city"].match(/^[a-zA-Z]+$/)){
-               formIsValid = false;
-               errors["city"] = "Only letters";
-            }        
-         }
-
-        //state
-        if(!fields["state"]){
-            formIsValid = false;
-            errors["state"] = "Cannot be empty";
-         }
-
-                 //Zip
-        if(!fields["zip"]){
-            formIsValid = false;
-            errors["zip"] = "Cannot be empty";
-         }
-
-         if(typeof fields["zip"] !== "undefined"){
-            if(!fields["zip"].match(/^[0-9]+$/)){
-               formIsValid = false;
-               errors["zip"] = "Only numbers";
-            }        
-         }
-
-
-       this.setState({errors: errors});
-       return formIsValid;
-   }
+>>>>>>> f30c361d23af86c785e5bb41832ba3354ac1e0c2
     handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({
@@ -151,10 +164,7 @@ handleValidation(){
         if(this.handleValidation()){
             console.log("this.state.organizer:" + this.state.organizer);
             const userName = this.props.auth.user.name;
-            var email = this.props.auth.user.email;
             console.log("this.state.organizer after:" + userName);
-            console.log("this.email after:");
-            console.log(email);
     
             // if (this.state.marketName && this.state.email) {
                 var myid = mongoose.Types.ObjectId();
@@ -162,24 +172,22 @@ handleValidation(){
     
                 API.saveMarket({
                     _id: myid,
-                    marketName: this.state.fields.marketName,
-                    organizer: this.props.auth.user.name,
-                    email: email,
-                    products: this.state.fields.products,
-                    address: this.state.fields.address,
-                    state: this.state.fields.state,
-                    city: this.state.fields.city,
-                    zip: this.state.fields.zip,
-                    about: this.state.fields.about,
-                    img: this.state.fields.img,
-                    startMonth: this.state.fields.startMonth,
-                    endMonth: this.state.fields.endMonth,
-                    days: this.state.fields.days,
-                    startTime: this.state.fields.startTime,
-                    endTime: this.state.fields.endTime,
-                    members: this.state.fields.members,
-                location_lat: this.state.fields.location_lat,
-                location_lng: this.state.fields.location_lng
+                    marketName: this.state.marketName,
+                    organizer: this.state.organizer,
+                    email: this.state.email,
+                    products: this.state.products,
+                    address: this.state.address,
+                    state: this.state.state,
+                    city: this.state.city,
+                    zip: this.state.zip,
+                    about: this.state.about,
+                    img: this.state.img,
+                    startMonth: this.state.startMonth,
+                    endMonth: this.state.endMonth,
+                    days: this.state.days,
+                    startTime: this.state.startTime,
+                    endTime: this.state.endTime,
+                    members: this.state.members
                 }).then(this.props.history.push("markets/" + myid)
                 )
                 console.log("worked!")
@@ -195,9 +203,44 @@ handleValidation(){
             console.log("Form has errors.");
          }
 
+<<<<<<< HEAD
         
-    }   
-     render() {
+=======
+            API.saveMarket({
+                _id: myid,
+                marketName: this.state.marketName,
+                organizer: this.state.organizer,
+                email: this.state.email,
+                products: this.state.products,
+                address: this.state.address,
+                state: this.state.state,
+                city: this.state.city,
+                zip: this.state.zip,
+                about: this.state.about,
+                img: this.state.img,
+                startMonth: this.state.startMonth,
+                endMonth: this.state.endMonth,
+                days: this.state.days,
+                startTime: this.state.startTime,
+                endTime: this.state.endTime,
+                members: this.state.members,
+                location_lat: this.state.location_lat,
+                location_lng: this.state.location_lng
+            }).then(this.props.history.push("markets/" + myid)
+            )
+            console.log("worked!")
+            console.log({
+                startMonth: this.state.startMonth,
+                endMonth: this.state.endMonth,
+                days: this.state.days,
+                startTime: this.state.startTime,
+                endTime: this.state.endTime
+            });
+        }
+>>>>>>> f30c361d23af86c785e5bb41832ba3354ac1e0c2
+    }
+
+    render() {
         const userName = this.props.auth.user.name;
         const email = this.props.auth.user.email;
         console.log(this.props.auth)
@@ -303,12 +346,11 @@ handleValidation(){
                                                     <option value="WI">WI</option>
                                                     <option value="WY">WY</option>
                                                 </select>
-                                                <span style={{color: "red"}}>{this.state.errors["state"]}</span>
+                                                <span style={{color: "red"}}>{this.state.errors["marketName"]}</span>
                                             </div>
                                             <div className="form-group col-md-2">
                                                 <label>Zip</label>
-                                                <input type="text" className="form-control" name="zip" value={this.state.fields["zip"]} onChange={this.handleChange.bind(this, "zip")} />
-                                                <span style={{color: "red"}}>{this.state.errors["zip"]}</span>
+                                                <input type="text" className="form-control" name="zip" value={this.state.zip} onChange={this.handleInputChange} />
                                             </div>
                                             <div className="form-group col-md-2">
                                                 <label>Members</label>

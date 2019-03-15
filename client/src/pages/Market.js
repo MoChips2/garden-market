@@ -6,6 +6,7 @@ import { logoutUser } from "../actions/authActions";
 // import { Link } from "react-router-dom";
 // // import ProductList from "../components/ProductList";
 import JoinBtn from "../components/JoinBtn";
+import EditMarket from "../components/EditMarket";
 import AboutMarket from "../components/AboutMarket";
 import Times from "../components/Times/index";
 import Products from "../components/Products";
@@ -53,8 +54,21 @@ class Market extends Component {
     };
     
 
-    render() {
+    // isOwner =() =>{
+    //     const { userName } = this.props.auth.user.name;
+    //     const { email } = this.props.auth.user.email;
+    //     console.log(email)
+    //     return true;
+    // }
 
+
+    render() {
+     
+        var isOwner = false;
+        if(this.props.auth.user.name ==this.state.markets.organizer){
+            isOwner = true;
+        }
+        
         return (
 
             <div className="container-fluid">
@@ -102,6 +116,15 @@ class Market extends Component {
                                     />
                                 </div>
                             </div>
+
+                            <div className="row">
+                                <div className="col-md-12" style={{display: isOwner?"block":"none"}} >
+                                    <EditMarket
+                                    id ={this.state.markets._id}
+                                    />
+                                </div>
+                            </div>
+                            
                         </div>
                     </div>
 

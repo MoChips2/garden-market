@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import ResultContainer from "../components/ResultContainer";
 import MapContainer from "../components/Map/index";
-import { Map, Marker, InfoWindow } from "google-maps-react";
 import "../components/auth/Login.css";
 import "../components/ResultContainer.css";
 
@@ -14,16 +13,12 @@ class SearchResult extends Component {
 		city: "",
 		state: "",
 		zip: 0,
-		coords: [],
-		isLoaded: false
+		coords: []
 	};
 
 	componentDidMount() {
 		this.loadMarkets();
 	};
-
-	// to center map, homepage search should center the map
-
 
 	loadMarkets = () => {
 		API.getMarkets()
@@ -37,8 +32,6 @@ class SearchResult extends Component {
 					state: "",
 					zip: "",
 					coords: [],
-					place_id: [],
-					isLoaded: true
 				})
 				// converts address into coordinates -Simone
 				let promiseArray = []
@@ -50,12 +43,16 @@ class SearchResult extends Component {
 			})
 			.then(res => {
 				var coordsArray = [];
+				//Shilpa results redirected from Search.js
+				console.log("Search Routes :" + this.props.location.state.address.place_id);//coords from User Search box)
+				console.log("Search Routes :" + this.props.location.state.address.geometry.location.lat);//coords from User Search box)
 				res.map(coord => {
 					console.log("---geocode results---")
 					console.log(res);
 					let coords = coord.data.results[0].geometry.location;
 					let id = coord.data.results[0].place_id;
-					Object.assign(coords, { id: id})
+					Object.assign(coords, { id: id});
+					//put sime logic so coordsArray should get nearby areas in searched address range 
 					coordsArray.push(coords);
 					return coordsArray;
 				})
@@ -65,7 +62,7 @@ class SearchResult extends Component {
 				console.log(this.state.coords);
 			})
 			.catch(err => console.log(err));
-	};
+    };
 
 
 	render() {
@@ -80,9 +77,9 @@ class SearchResult extends Component {
 							<div className="container">
 								<div className="row">
 									<div className="col-md-4">
-										<ul class="list-group list-group-flush">
+										<ul className="list-group list-group-flush">
 											{this.state.markets.map(market => (
-												<li class="list-group-item" key={market._id}>
+												<li className="list-group-item" key={market._id}>
 													<ResultContainer
 														id={market._id}
 														marketName={market.marketName}
@@ -96,25 +93,7 @@ class SearchResult extends Component {
 										</ul>
 									</div>
 									<div className="col-md-8 mapDiv">
-										<MapContainer>
-												<Marker
-													title={"MPLS"}
-													name={"MPLS"}
-													position={{ lat: 44.9778, lng: -93.2650 }}
-												/>
-												<Marker
-													title={"US Bank Stadium"}
-													name={"Vikings Stadium"}
-													position={{ lat: 44.9738, lng: -93.2578 }}
-												/>
-											  {this.state.markets.map(market => (
-												<Marker
-													key={market._id}
-													title={market.marketName}
-													position={{ lat: market.location_lat, lng: market.location_lng }}
-												/>
-												))}
-										</MapContainer>
+										<MapContainer/>
 									</div>
 								</div>
 							</div>
