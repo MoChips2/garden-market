@@ -41,7 +41,6 @@ class SearchResult extends Component {
         //Shilpa results redirected from Search.js
         console.log("Search Routes :" + this.props.location.state.address.place_id); //coords from User Search box)
         console.log("Search Routes :" + this.props.location.state.address.geometry.location.lat); //coords from User Search box)
-        if (this.props.location.state.address != null) {
             let id = this.props.location.state.address.place_id;
             let searchedCoord = this.props.location.state.address.geometry.location;
             Object.assign(searchedCoord, { id: id });
@@ -49,14 +48,6 @@ class SearchResult extends Component {
             this.setState({
                 coords: searchedCoord
             })
-        } else {
-            this.setState({
-                coords: {
-                    lat: 44.977753,
-                    lng: -93.2650108
-                }
-            })
-        }
     }
 
     render() {
