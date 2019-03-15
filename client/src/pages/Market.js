@@ -65,7 +65,7 @@ class Market extends Component {
     render() {
      
         var isOwner = false;
-        if(this.props.auth.user.name ==this.state.markets.organizer){
+        if(this.props.auth.user.name === this.state.markets.organizer){
             isOwner = true;
         }
         

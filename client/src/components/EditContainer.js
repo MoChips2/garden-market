@@ -60,7 +60,7 @@ handleValidation(){
         let formIsValid = true;
 
         //Name
-        if(Object.keys(fields).indexOf("marketName")!=-1){
+        if(Object.keys(fields).indexOf("marketName")!== -1){
             if(!fields["marketName"] ){
                 formIsValid = false;
                 errors["marketName"] = "Cannot be empty";
@@ -69,7 +69,7 @@ handleValidation(){
       
 
         //address
-        if(Object.keys(fields).indexOf("address")!=-1){
+        if(Object.keys(fields).indexOf("address")!==-1){
 
         if(!fields["address"]){
             formIsValid = false;
@@ -77,14 +77,14 @@ handleValidation(){
          }
         }
          //city
-         if(Object.keys(fields).indexOf("city")!=-1){
+         if(Object.keys(fields).indexOf("city")!==-1){
         if(!fields["city"]){
             formIsValid = false;
             errors["city"] = "Cannot be empty";
          }
         }
  
-        if(Object.keys(fields).indexOf("city")!=-1){
+        if(Object.keys(fields).indexOf("city")!==-1){
          if(typeof fields["city"] !== "undefined"){
             if(!fields["city"].match(/^[a-zA-Z]+$/)){
                formIsValid = false;
@@ -94,21 +94,21 @@ handleValidation(){
         }
 
         //state
-        if(Object.keys(fields).indexOf("state")!=-1){
+        if(Object.keys(fields).indexOf("state")!==-1){
         if(!fields["state"]){
             formIsValid = false;
             errors["state"] = "Cannot be empty";
          }
         }
                  //Zip
-                 if(Object.keys(fields).indexOf("zip")!=-1){
+                 if(Object.keys(fields).indexOf("zip")!==-1){
         if(!fields["zip"]){
             formIsValid = false;
             errors["zip"] = "Cannot be empty";
          }
         }
 
-        if(Object.keys(fields).indexOf("zip")!=-1){
+        if(Object.keys(fields).indexOf("zip")!==-1){
          if(typeof fields["zip"] !== "undefined"){
             if(!fields["zip"].match(/^[0-9]+$/)){
                formIsValid = false;

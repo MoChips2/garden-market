@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/API";
-// import PropTypes from "prop-types";
-// import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import Geocode from "react-geocode";
 require("dotenv").config();
 var keys = require('../components/Map/key');
@@ -30,7 +30,7 @@ class NewMarket extends Component {
         location_lat: "",
         location_lng: "",
         fields: {},
-           errors: {}
+        errors: {}
 
     };
  componentDidUpdate(perpProps, prepState) {
