@@ -6,8 +6,7 @@ import API from "../utils/API";
 // function Search() {
 class Search extends React.Component {
     state = {
-        address: "",
-        value: ""
+        address: ""
     }
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -23,10 +22,9 @@ class Search extends React.Component {
             API.geocodeAddress(this.state.address).then(res => {
                 console.log(res.data.results[0].geometry.location);
                 this.props.history.push(
-                    '/searchresult',{address:res.data.results[0].geometry.location}
+                    '/searchresult',{address:res.data.results[0]}
                                       )
             });
-            console.log("promiseGeoLocation--Exit");
         }
     }
         render() {

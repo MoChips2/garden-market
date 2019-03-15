@@ -43,7 +43,8 @@ class SearchResult extends Component {
 			})
 			.then(res => {
 				var coordsArray = [];
-				coordsArray.push(this.props.location.address);//coords from User Search box
+				console.log("Search Routes :" + this.props.location.state.address.place_id);//coords from User Search box)
+				console.log("Search Routes :" + this.props.location.state.address.geometry.location.lat);//coords from User Search box)
 				res.map(coord => {
 					console.log("---geocode results---")
 					console.log(res);
