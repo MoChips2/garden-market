@@ -44,10 +44,10 @@ export default {
         return axios.post(`/api/markets/join/${id}`, joinMessage)
     },
 
-    getPublicMessages: function(id) {
-        console.log(id)
-        return axios.get("api/markets/" + id);
-    },
+    // getPublicMessages: function(id) {
+    //     console.log(id)
+    //     return axios.get("api/markets/" + id);
+    // },
 
     geocodeAddress: function(address) {
         console.log("searching for: " + address);

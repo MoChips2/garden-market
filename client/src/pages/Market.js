@@ -35,6 +35,7 @@ class Market extends Component {
     }
 
     componentDidUpdate() {
+        // if (this.state.message)
         this.loadOneMarket();
     }
 

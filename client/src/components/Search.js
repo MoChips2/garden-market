@@ -29,10 +29,10 @@ class Search extends React.Component {
         return (
             <div className="col-md-12 mx-auto searchDiv">
                 <label className="searchMessage">FIND A MARKET NEAR YOU</label>
-                <div class="input-group">
-                    <input type="text" class="form-control" name="address" placeholder="Roseville MN" value={this.state.address} onChange={this.handleInputChange} />
-                    <span class="input-group-btn">
-                        <button class="btn btn-danger addressSearchBtn" type="button" onClick={this.handleFormSubmit}>
+                <div className="input-group">
+                    <input type="text" className="form-control" name="address" placeholder="Roseville MN" value={this.state.address} onChange={this.handleInputChange} />
+                    <span className="input-group-btn">
+                        <button className="btn btn-danger addressSearchBtn" type="button" onClick={this.handleFormSubmit}>
                         SEARCH</button>
                     </span>
                 </div>
