@@ -19,10 +19,13 @@ class Search extends React.Component {
         event.preventDefault();
         console.log("Search address :" + this.state.address);
         if (this.state.address != null) {
-            let promiseGeoLocation;
-            API.geocodeAddress(this.state.address).then(
-                this.props.history.push("/searchresult")
-            );
+            //let promiseGeoLocation = API.geocodeAddress(this.state.address);
+            API.geocodeAddress(this.state.address).then(res => {
+                console.log(res.data.results[0].geometry.location);
+                this.props.history.push(
+                    '/searchresult',{address:res.data.results[0].geometry.location}
+                                      )
+            });
             console.log("promiseGeoLocation--Exit");
         }
     }
