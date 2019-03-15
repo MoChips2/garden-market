@@ -3,7 +3,6 @@ import "../components/Search.css";
 import { withRouter } from "react-router-dom";
 import API from "../utils/API";
 
-// function Search() {
 class Search extends React.Component {
     state = {
         address: ""
@@ -18,7 +17,6 @@ class Search extends React.Component {
         event.preventDefault();
         console.log("Search address :" + this.state.address);
         if (this.state.address != null) {
-            //let promiseGeoLocation = API.geocodeAddress(this.state.address);
             API.geocodeAddress(this.state.address).then(res => {
                 console.log(res.data.results[0].geometry.location);
                 this.props.history.push(

@@ -43,6 +43,7 @@ class SearchResult extends Component {
 			})
 			.then(res => {
 				var coordsArray = [];
+				//Shilpa results redirected from Search.js
 				console.log("Search Routes :" + this.props.location.state.address.place_id);//coords from User Search box)
 				console.log("Search Routes :" + this.props.location.state.address.geometry.location.lat);//coords from User Search box)
 				res.map(coord => {
@@ -50,7 +51,8 @@ class SearchResult extends Component {
 					console.log(res);
 					let coords = coord.data.results[0].geometry.location;
 					let id = coord.data.results[0].place_id;
-					Object.assign(coords, { id: id})
+					Object.assign(coords, { id: id});
+					//put sime logic so coordsArray should get nearby areas in searched address range 
 					coordsArray.push(coords);
 					return coordsArray;
 				})
