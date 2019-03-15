@@ -3,10 +3,6 @@ require("dotenv").config();
 var keys = require('../components/Map/key');
 
 export default {
-    // search: function(query) {
-
-    //     return axios.get(query)
-    // },
 
     saveMarket: function(marketData) {
 
@@ -19,6 +15,7 @@ export default {
     },
 
     getOneMarket: function(id) {
+        console.log("step 2")
         // console.log("getting market by id: " + id);
         return axios.get("/api/markets/" + id);
     },
@@ -29,10 +26,8 @@ export default {
     },
 
     pushMessage: function(id, message) {
-        console.log("API line: 30");
         console.log(id)
         console.log(message)
-        console.log("API line: 33")
         return axios.post(`/api/markets/${id}`, message)
     },
 
@@ -45,8 +40,8 @@ export default {
     },
 
     // getPublicMessages: function(id) {
-    //     console.log(id)
-    //     return axios.get("api/markets/" + id);
+    //     console.log(id) // this keeps running
+    //     return axios.get(`api/markets/messages/${id}`);
     // },
 
     geocodeAddress: function(address) {

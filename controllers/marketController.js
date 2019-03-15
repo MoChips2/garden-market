@@ -59,7 +59,7 @@ module.exports = {
   },
   findMessage: function (req, res) {
     console.log(req.params)
-    db.Market.messages
+    db.Market
       .find()
       .sort({date: -1})
       .then(dbModel => res.json(dbModel))

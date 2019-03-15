@@ -34,24 +34,24 @@ class Market extends Component {
         this.loadOneMarket();
     }
 
-    componentDidUpdate() {
-        // if (this.state.message)
-        this.loadOneMarket();
-    }
+// The code below works to update immediately but it doesn't stop. Infinite Loop.
+    // componentDidUpdate() {
+    //     this.loadOneMarket();
+    // }
 
     loadOneMarket = () => {
+        console.log("step 1")
         API.getOneMarket(this.props.match.params.id)
-
             .then(res =>
                 this.setState({
                     markets: res.data,
                     products: res.data.products,
                     message: res.data.messages.message
                 }))
-                
-
+            
             .catch(err => console.log(err));
     };
+    
 
     render() {
 
@@ -150,7 +150,6 @@ class Market extends Component {
                             <div className="row">
                                 <div className="col-md-12">
                                     <MessageBoard
-
                                         messages={this.state.markets.messages}
                                         id={this.state.markets._id}
                                     />

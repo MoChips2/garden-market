@@ -13,21 +13,6 @@ class MessageBoard extends Component {
         sender: ""
     }
 
-
-    // loadOneMarket = () => {
-    //     API.getOneMarket(this.props.match.params.id)
-
-    //         .then(res =>
-    //             this.setState({
-    //                 markets: res.data,
-    //                 products: res.data.products,
-    //                 message: res.data.messages.message
-    //             }))
-
-
-    //         .catch(err => console.log(err));
-    // };
-
     handleInputChange = event => {
         event.preventDefault();
         const { name, value } = event.target;
@@ -39,18 +24,8 @@ class MessageBoard extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         var id = event.target.id;
-        API.pushMessage(id, { messages: this.state.messages, sender: this.state.sender })
-        .then(API.getOneMarket(this.props.id))
-        .then(res =>
-            this.setState({
-                messages: res.data.messages,
-                sender: res.data.sender
-            }))
-            .catch(err => console.log(err));
-    };
-
-
-
+        API.pushMessage(id, { messages: this.state.messages, sender: this.state.sender })        
+    }
 
     render() {
         return (
