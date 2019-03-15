@@ -10,7 +10,6 @@ function ResultContainer(props) {
             <Link className="resultName" to={"/markets/" + props.id}><h1 className="resultName">{props.marketName}</h1></Link>
             <h2 className="resultAddress">{props.address}</h2>
             <h2 className="resultAddress">{props.city}, {props.state} &nbsp;{props.zip}</h2>
-            <Link to={"/mymarket/" + props.id}><h6 className="myMarket">edit market</h6></Link>
         </div>
 
     )

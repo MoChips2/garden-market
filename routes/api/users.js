@@ -50,6 +50,7 @@ router.post("/register", (req, res) => {
 // @access Public
 router.post("/login", (req, res) => {
   // Form validation
+  console.log("payload")
 const { errors, isValid } = validateLoginInput(req.body);
 // Check validation
   if (!isValid) {
@@ -65,12 +66,17 @@ User.findOne({email:email}).then(user => {
 // Check password
     bcrypt.compare(password, user.password).then(isMatch => {
       if (isMatch) {
+
+        console.log("matched!")
         // User matched
         // Create JWT Payload
         const payload = {
           id: user.id,
-          name: user.name
+          name: user.name,
+          email: user.email
         };
+        console.log("payload")
+        console.log(payload)
 // Sign token
         jwt.sign(
           payload,
@@ -88,7 +94,7 @@ User.findOne({email:email}).then(user => {
       } else {
         return res
           .status(400)
-          .json({ passwordincorrect: "Password incorrect" });
+          .json({ passwordincorrect: "Password1 incorrect" });
       }
     });
   });
