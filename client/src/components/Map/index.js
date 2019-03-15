@@ -70,9 +70,19 @@ export class MapContainer extends Component {
       <Map
         google={this.props.google}
         style={style}
-        zoom={9}
-        initialCenter={{ lat: 44.9778, lng: -93.2650 }}
+        zoom={15}
+        initialCenter={{
+          lat: this.props.lat,
+          lng: this.props.lng
+        }}
       >
+        <Marker
+          position={{ lat: this.props.lat, lng: this.props.lng }}
+          icon={{ 
+            url: "http://chittagongit.com//images/google-map-marker-icon/google-map-marker-icon-17.jpg",
+            scaledSize: new window.google.maps.Size(25,40)
+          }}
+        />
         {this.state.markets.map(market => (
           <Marker
             key={market._id}
