@@ -24,7 +24,8 @@ class MessageBoard extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         var id = event.target.id;
-        API.pushMessage(id, { messages: this.state.messages, sender: this.state.sender })        
+        API.pushMessage(id, { messages: this.state.messages, sender: this.state.sender })
+        .then(this.sender.value="")    
     }
 
     render() {

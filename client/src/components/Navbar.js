@@ -58,7 +58,7 @@ onLogoutClick = e => {
                     <li className={window.location.pathname === "/register" ? "active" : ""} style={{display: isLoggedIn?"none":"block"}}>
                         <Link className="nav-link" to="/register">Register</Link>
                     </li>
-                    <li  style={{display: isLoggedIn?"block":"none"}} className = "userName"  > HEY {userName}
+                    <li  style={{display: isLoggedIn?"block":"none"}} className = "nav-link userName">{userName} &nbsp; |
                     </li>
                     <li className={window.location.pathname === "/" ? "active" : ""} style={{display: isLoggedIn?"block":"none"}} >
                         <Link className="nav-link" to="/" onClick={this.onLogoutClick}>Logout</Link>
