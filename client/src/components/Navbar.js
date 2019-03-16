@@ -36,7 +36,10 @@ onLogoutClick = e => {
                     <li className={window.location.pathname === "/newmarket" ? "active" : ""} style={{display: isLoggedIn?"block":"none"}}>
                         <Link className="nav-link" to="/newmarket">NewMarket</Link>
                     </li>
-                    <li className={window.location.pathname === "/searchresult" ? "active" : ""}>
+                    <li className={window.location.pathname === "/newmarket" ? "active" : ""} style={{display: isLoggedIn?"block":"none"}}>
+                        <Link className="nav-link" to="/About" >About</Link>
+                    </li>
+                    {/* <li className={window.location.pathname === "/searchresult" ? "active" : ""}>
                         <Link className="nav-link" to="/searchresult">Search Result</Link>
                     </li>
                     <li className={window.location.pathname === "/mymarket" ? "active" : ""} style={{display: isLoggedIn?"block":"none"}}>
@@ -46,7 +49,7 @@ onLogoutClick = e => {
                     <li className={window.location.pathname === "/map" ? "active" : ""} style={{display: isLoggedIn?"block":"none"}}>
                     <Link className="nav-link" to="/map">Address</Link>
 
-                    </li>
+                    </li> */}
                   
                 </ul>
       
