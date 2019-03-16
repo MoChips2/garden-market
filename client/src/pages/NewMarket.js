@@ -34,17 +34,20 @@ class NewMarket extends Component {
 
     };
  componentDidUpdate(perpProps, prepState) {
-        console.log(this.state.address);
-        if (this.state.address !== prepState.address) {
+        //console.log("Shilpa" + this.state.fields.address);
+       if (this.state.fields.address !== prepState.address) {
+            //console.log("Shilpa Inside" + this.state.fields.address);
             Geocode.setApiKey("AIzaSyDz7pF2K0HzwVHeQdXk3e-ALsHBnDClEbM");
-            Geocode.fromAddress(this.state.address).then(
+            Geocode.fromAddress(this.state.fields.address).then(
                 response => {
                     const { lat, lng } = response.results[0].geometry.location;
-                    console.log("lat  :" + lat, lng);
+                    //console.log("lat  :" + lat, lng);
                     console.log("Status for Message" + response.status);
+                    const tempFix = this.state.fields.address;
                     this.setState({
                         location_lat: lat,
-                        location_lng: lng
+                        location_lng: lng,
+                        address: tempFix
                     });
                 },
                 error => {
@@ -103,7 +106,8 @@ handleValidation(){
          }
 
 
-       this.setState({errors: errors});
+       this.setState({
+           errors: errors});
        return formIsValid;
    }
     handleInputChange = event => {
@@ -178,8 +182,8 @@ handleValidation(){
                     startTime: this.state.fields.startTime,
                     endTime: this.state.fields.endTime,
                     members: this.state.fields.members,
-                location_lat: this.state.fields.location_lat,
-                location_lng: this.state.fields.location_lng
+                location_lat: this.state.location_lat,
+                location_lng: this.state.location_lng
                 }).then(this.props.history.push("markets/" + myid)
                 )
                 console.log("worked!")
@@ -312,19 +316,19 @@ handleValidation(){
                                             </div>
                                             <div className="form-group col-md-2">
                                                 <label>Members</label>
-                                                <input type="text" className="form-control" name="members" value={this.state.members} onChange={this.handleInputChange} />
+                                                <input type="text" className="form-control" name="members" value={this.state.fields["members"]} onChange={this.handleChange.bind(this, "members")} />
                                             </div>
                                         </div>
                                         <div className="form-row">
                                             <div className="form-group col-md-12">
                                                 <label>Tell us about your market:</label>
-                                                <textarea className="form-control" name="about" rows="3" value={this.state.about} onChange={this.handleInputChange}></textarea>
+                                                <textarea className="form-control" name="about" rows="3" value={this.state.fields["about"]} onChange={this.handleChange.bind(this, "about")}></textarea>
                                             </div>
                                         </div>
                                         <div className="form-row">
                                             <div className="form-group col-md-12">
                                                 <label>Link to an image of your garden or market:</label>
-                                                <input className="form-control" name="img" value={this.state.img} onChange={this.handleInputChange} />
+                                                <input className="form-control" name="img" value={this.state.fields["img"]} onChange={this.handleChange.bind(this, "img")} />
                                             </div>
                                         </div>
                                         <div className="row">
