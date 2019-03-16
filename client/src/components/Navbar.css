@@ -18,3 +18,7 @@
     color: white;
     /* font-family: 'Courier New', Courier, monospace; */
 }
+
+#disabledLink {
+    color: grey;
+}

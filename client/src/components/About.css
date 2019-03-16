@@ -2,5 +2,17 @@
     font-weight: lighter;
     margin-top: 25px;
     text-align: justify;
+    color: white;
+    font-size: 1.5rem;
     
+}
+
+.aboutHomeDiv {
+    margin-top: 100px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+
+    background-color: rgb(45, 47, 45);
+    border-radius: 3px;
 }
