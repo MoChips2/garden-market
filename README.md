@@ -7,7 +7,7 @@ Green Street was created by:
 <a href="https://github.com/shilpipawar">Shilpa Pawar</a>: controls, login, register, logout
 <a href="https://github.com/prajbhandary">Pranab Rajbhandary</a>: models, login, register, logout
 <a href="https://github.com/MoChips2">Simone Medhanie</a>: controls, Google Maps, Google Geocoding
-<a href="hhtps://github.com/nickila">Brian Nickila</a>: visuals, controls, UI/UX, layout
+<a href="htps://github.com/nickila">Brian Nickila</a>: visuals, controls, UI/UX, layout
 
 Please visit our GitHub Repo at https://github.com/MoChips2/garden-market
 Please visit our website at http://green-street.herokuapp.com/
