@@ -1,6 +1,6 @@
 import axios from "axios";
 require("dotenv").config();
-var keys = require('../components/Map/key');
+// var keys = require('../components/Map/key');
 
 export default {
 
