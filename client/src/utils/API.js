@@ -46,7 +46,7 @@ export default {
 
     geocodeAddress: function(address) {
         console.log("searching for: " + address);
-        return axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
+        return axios.get("https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/geocode/json", {
             // https://cors-anywhere.herokuapp.com/    (I removed this from before the link above to force the search button to work.)
             params:{
                 address: address,
