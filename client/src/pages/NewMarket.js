@@ -164,7 +164,7 @@ handleValidation(){
                     marketName: this.state.fields.marketName,
                     organizer: this.props.auth.user.name,
                     email: email,
-                    products: this.state.fields.products,
+                    products: this.state.products,
                     address: this.state.fields.address,
                     state: this.state.fields.state,
                     city: this.state.fields.city,
@@ -173,7 +173,7 @@ handleValidation(){
                     img: this.state.fields.img,
                     startMonth: this.state.fields.startMonth,
                     endMonth: this.state.fields.endMonth,
-                    days: this.state.fields.days,
+                    days: this.state.days,
                     startTime: this.state.fields.startTime,
                     endTime: this.state.fields.endTime,
                     members: this.state.fields.members,
@@ -364,26 +364,27 @@ handleValidation(){
                                                 </select>
                                             </div>
                                         </div>
+                                        </fieldset>
                                         <div className="form-group">
                                             <label>Choose all that apply:</label>
                                             <div className="form-check">
-                                                <input className="form-check-input" type="checkbox" name="days" value="Sunday " onChange={this.handleChange.bind(this, "days")} />
+                                                <input className="form-check-input" type="checkbox" name="days" value="Sunday " onChange={this.onChangeDays.bind(this)} />
                                                 <label className="form-check-label">Sunday</label>
                                             </div>
                                             <div className="form-check">
-                                                <input className="form-check-input" type="checkbox" name="days" value="Monday " onChange={this.handleChange.bind(this, "days")} />
+                                                <input className="form-check-input" type="checkbox" name="days" value="Monday " onChange={this.onChangeDays.bind(this)} />
                                                 <label className="form-check-label">Monday</label>
                                             </div>
                                             <div className="form-check">
-                                                <input className="form-check-input" type="checkbox" name="days" value="Tuesday " onChange={this.handleChange.bind(this, "days")}/>
+                                                <input className="form-check-input" type="checkbox" name="days" value="Tuesday " onChange={this.onChangeDays.bind(this)}/>
                                                 <label className="form-check-label">Tuesday</label>
                                             </div>
                                             <div className="form-check">
-                                                <input className="form-check-input" type="checkbox" name="days" value="Wednesday " onChange={this.handleChange.bind(this, "days")} />
+                                                <input className="form-check-input" type="checkbox" name="days" value="Wednesday " onChange={this.onChangeDays.bind(this)} />
                                                 <label className="form-check-label">Wednesday</label>
                                             </div>
                                             <div className="form-check">
-                                                <input className="form-check-input" type="checkbox" name="days" value="Thursday " onChange={this.handleChange.bind(this, "days")} />
+                                                <input className="form-check-input" type="checkbox" name="days" value="Thursday " onChange={this.onChangeDays.bind(this)} />
                                                 <label className="form-check-label">Thursday</label>
                                             </div>
                                             <div className="form-check">
@@ -395,6 +396,7 @@ handleValidation(){
                                                 <label className="form-check-label">Saturday</label>
                                             </div>
                                         </div>  
+                                        <fieldset>
                                         <div className="row">
                                             <div className="col">
                                                 <label className="my-1 mr-2">Starting Time</label>
@@ -430,58 +432,60 @@ handleValidation(){
                                                 </select>
                                             </div> 
                                         </div>
+                                        </fieldset>
                                         <div className="form-group">
                                             <label>Choose all that apply:</label>
                                             <div className="row">
                                                 <div className="col">
                                                     <div className="form-check">
-                                                        <input className="form-check-input" type="checkbox" name="products" value="VEGETABLES "  onChange={this.handleChange.bind(this, "products")} />
+                                                        <input className="form-check-input" type="checkbox" name="products" value="VEGETABLES "  onChange={this.onChange.bind(this)} />
                                                         <label className="form-check-label">Veggies</label>
                                                     </div>
                                                     <div className="form-check">
-                                                        <input className="form-check-input" type="checkbox" name="products" value="FRUIT " onChange={this.handleChange.bind(this, "products")} />
+                                                        <input className="form-check-input" type="checkbox" name="products" value="FRUIT " onChange={this.onChange.bind(this)} />
                                                         <label className="form-check-label">Fruits</label>
                                                     </div>
                                                     <div className="form-check">
-                                                        <input className="form-check-input" type="checkbox" name="products" value="EGGS " onChange={this.handleChange.bind(this, "products")} />
+                                                        <input className="form-check-input" type="checkbox" name="products" value="EGGS " onChange={this.onChange.bind(this)} />
                                                         <label className="form-check-label">Eggs</label>
                                                     </div>
                                                     <div className="form-check">
-                                                        <input className="form-check-input" type="checkbox" name="products" value="MEAT " onChange={this.handleChange.bind(this, "products")} />
+                                                        <input className="form-check-input" type="checkbox" name="products" value="MEAT " onChange={this.onChange.bind(this)} />
                                                         <label className="form-check-label">Meat</label>
                                                     </div>
                                                 </div>
                                                 <div className="col">
                                                     <div className="form-check">
-                                                        <input className="form-check-input" type="checkbox" name="products" value="DAIRY " onChange={this.handleChange.bind(this, "products")} />
+                                                        <input className="form-check-input" type="checkbox" name="products" value="DAIRY " onChange={this.onChange.bind(this)} />
                                                         <label className="form-check-label">Dairy</label>
                                                     </div>
                                                     <div className="form-check">
-                                                        <input className="form-check-input" type="checkbox" name="products" value="HONEY " onChange={this.handleChange.bind(this, "products")} />
+                                                        <input className="form-check-input" type="checkbox" name="products" value="HONEY " onChange={this.onChange.bind(this)}/>
                                                         <label className="form-check-label">Honey</label>
                                                     </div>
                                                     <div className="form-check">
-                                                        <input className="form-check-input" type="checkbox" name="products" value="CRAFTS " onChange={this.handleChange.bind(this, "products")} />
+                                                        <input className="form-check-input" type="checkbox" name="products" value="CRAFTS " onChange={this.onChange.bind(this)} />
                                                         <label className="form-check-label">Crafts</label>
                                                     </div>
                                                     <div className="form-check">
-                                                        <input className="form-check-input" type="checkbox" name="products" value="BREAD " onChange={this.handleChange.bind(this, "products")} />
+                                                        <input className="form-check-input" type="checkbox" name="products" value="BREAD " onChange={this.onChange.bind(this)} />
                                                         <label className="form-check-label">Bread</label>
                                                     </div>
 
                                                 </div>
                                                 <div className="col">
                                                     <div className="form-check">
-                                                        <input className="form-check-input" type="checkbox" name="products" value="MUSIC " onChange={this.handleChange.bind(this, "products")} />
+                                                        <input className="form-check-input" type="checkbox" name="products" value="MUSIC " onChange={this.onChange.bind(this)} />
                                                         <label className="form-check-label">Music</label>
                                                     </div>
                                                     <div className="form-check">
-                                                        <input className="form-check-input" type="checkbox" name="products" value="OTHER " onChange={this.handleChange.bind(this, "products")} />
+                                                        <input className="form-check-input" type="checkbox" name="products" value="OTHER " onChange={this.onChange.bind(this)} />
                                                         <label className="form-check-label">Other</label>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <fieldset>
                                         <button type="submit" className="btn btn-primary" onClick={this.handleFormSubmit}>Submit</button>
                                      </fieldset>
                                     </form>
