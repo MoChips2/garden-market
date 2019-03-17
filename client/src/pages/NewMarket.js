@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Geocode from "react-geocode";
 require("dotenv").config();
-var keys = require('../components/Map/key');
+// var keys = require('../components/Map/key');
 const mongoose = require("mongoose");
 //Geocode.setApiKey(keys.googleAPI);
 Geocode.enableDebug();

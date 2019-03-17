@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
 // import { Link } from "react-router-dom";
 // // import ProductList from "../components/ProductList";
-import JoinBtn from "../components/JoinBtn";
+// import JoinBtn from "../components/JoinBtn";
 import EditMarket from "../components/EditMarket";
 import AboutMarket from "../components/AboutMarket";
 import Times from "../components/Times/index";
