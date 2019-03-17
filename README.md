@@ -1,29 +1,6 @@
-# Create React Express App
+# GREEN STREET
+## A Front Yard Market Revolution
 
-## About This Boilerplate
+Green Street is dedicated to solving the complex crisis of food deserts around the world by thinking small. If every city block had a collection of backyard gardeners growing fresh fruits, vegetables, honey and eggs, access to fresh food would be everywhere. Green Street provides the network and space to establish connections between gardeners and the neighbors that surround them. Front yard markets provide a community with fresh food, economic opportunity and a strong social structure. Front yard markets provide a safe space for neighbors to interact and share ideas and for families to see where their food comes from. We believe in these values. If you do too, please search for a Green Street market in your neighborhood or JOIN Green Street and start a revolution today.
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
-
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
-
-## Starting the app locally
-
-Start by installing front and backend dependencies. While in this directory, run the following command:
-
-```
-npm install
-```
-
-This should install node modules within the server and the client folder.
-
-After both installations complete, run the following command in your terminal:
-
-```
-npm start
-```
-
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
-
-## Deployment (Heroku)
-
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
+Green Street was created by <a href="https://github.com/shilpipawar">Shilpa Pawar</a>, <a href="https://github.com/prajbhandary">Pranab Rajbhandary</a>, <a href="https://github.com/MoChips2">Simone Medhanie</a> and <a href="hhtps://github.com/nickila">Brian Nickila</a>.
