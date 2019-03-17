@@ -1,6 +1,7 @@
 import React from "react";
 import "../pages/Home.css";
 import Search from "../components/Search";
+import "./Carousel.css";
 
 function Carousel() {
     return (

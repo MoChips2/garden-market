@@ -7,6 +7,7 @@ import "./App.css";
 import { Provider } from "react-redux";
 import store from "./store";
 import Home from "./pages/Home";
+import About from "./components/About";
 // import Login from "./pages/Login";
 import SearchResult from "./pages/SearchResult";
 import Market from "./pages/Market";
@@ -57,6 +58,7 @@ class App extends Component {
               {/* <Route exact path="/joinmarket/:id" component={Join} /> */}
               {/* The following line won't exist in final version. Just for testing purposes using a generic market. */}
               <Route exact path="/market" component={Market} />
+              <Route exact path="/about" component={About} />
               {/* The following line will take user to a specific market by id */}
               <Route exact path="/markets/:id" component={Market} />
               <Route exact path="/register" component={Register} />

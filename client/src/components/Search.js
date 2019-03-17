@@ -16,7 +16,7 @@ class Search extends React.Component {
     handleFormSubmit = event => {
         event.preventDefault();
         console.log("Search address :" + this.state.address);
-        if (this.state.address != null) {
+        if (this.state.address !== null) {
             API.geocodeAddress(this.state.address).then(res => {
                 console.log(res.data.results[0].geometry.location);
                 this.props.history.push(

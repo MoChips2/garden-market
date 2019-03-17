@@ -39,7 +39,7 @@ class MessageBoard extends Component {
         event.preventDefault();
         console.log({ messages: this.state.messages })
         var id = event.target.id;
-        API.pushMessage(id, { messages: this.state.messages, sender: this.state.sender })
+        API.pushMessage(id, { messages: this.state.messages, sender: this.state.sender })    
     }
 
 

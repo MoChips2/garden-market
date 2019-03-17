@@ -109,7 +109,7 @@ class Market extends Component {
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-md-12">
+                                <div className="col-md-12" style={{display: isOwner?"block":"none"}}>
                                     <PrivateMessages
                                         joinMessages={this.state.markets.joinMessages}
                                         id={this.state.markets._id}

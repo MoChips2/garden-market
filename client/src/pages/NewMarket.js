@@ -34,17 +34,20 @@ class NewMarket extends Component {
 
     };
  componentDidUpdate(perpProps, prepState) {
-        console.log(this.state.address);
-        if (this.state.address !== prepState.address) {
+        //console.log("Shilpa" + this.state.fields.address);
+       if (this.state.fields.address !== prepState.address) {
+            //console.log("Shilpa Inside" + this.state.fields.address);
             Geocode.setApiKey("AIzaSyDz7pF2K0HzwVHeQdXk3e-ALsHBnDClEbM");
-            Geocode.fromAddress(this.state.address).then(
+            Geocode.fromAddress(this.state.fields.address).then(
                 response => {
                     const { lat, lng } = response.results[0].geometry.location;
-                    console.log("lat  :" + lat, lng);
+                    //console.log("lat  :" + lat, lng);
                     console.log("Status for Message" + response.status);
+                    const tempFix = this.state.fields.address;
                     this.setState({
                         location_lat: lat,
-                        location_lng: lng
+                        location_lng: lng,
+                        address: tempFix
                     });
                 },
                 error => {
@@ -76,12 +79,7 @@ handleValidation(){
             errors["city"] = "Cannot be empty";
          }
  
-         if(typeof fields["city"] !== "undefined"){
-            if(!fields["city"].match(/^[a-zA-Z]+$/)){
-               formIsValid = false;
-               errors["city"] = "Only letters";
-            }        
-         }
+
 
         //state
         if(!fields["state"]){
@@ -103,7 +101,8 @@ handleValidation(){
          }
 
 
-       this.setState({errors: errors});
+       this.setState({
+           errors: errors});
        return formIsValid;
    }
     handleInputChange = event => {
@@ -178,8 +177,8 @@ handleValidation(){
                     startTime: this.state.fields.startTime,
                     endTime: this.state.fields.endTime,
                     members: this.state.fields.members,
-                location_lat: this.state.fields.location_lat,
-                location_lng: this.state.fields.location_lng
+                location_lat: this.state.location_lat,
+                location_lng: this.state.location_lng
                 }).then(this.props.history.push("markets/" + myid)
                 )
                 console.log("worked!")
@@ -312,25 +311,25 @@ handleValidation(){
                                             </div>
                                             <div className="form-group col-md-2">
                                                 <label>Members</label>
-                                                <input type="text" className="form-control" name="members" value={this.state.members} onChange={this.handleInputChange} />
+                                                <input type="text" className="form-control" name="members" value={this.state.fields["members"]} onChange={this.handleChange.bind(this, "members")} />
                                             </div>
                                         </div>
                                         <div className="form-row">
                                             <div className="form-group col-md-12">
                                                 <label>Tell us about your market:</label>
-                                                <textarea className="form-control" name="about" rows="3" value={this.state.about} onChange={this.handleInputChange}></textarea>
+                                                <textarea className="form-control" name="about" rows="3" value={this.state.fields["about"]} onChange={this.handleChange.bind(this, "about")}></textarea>
                                             </div>
                                         </div>
                                         <div className="form-row">
                                             <div className="form-group col-md-12">
                                                 <label>Link to an image of your garden or market:</label>
-                                                <input className="form-control" name="img" value={this.state.img} onChange={this.handleInputChange} />
+                                                <input className="form-control" name="img" value={this.state.fields["img"]} onChange={this.handleChange.bind(this, "img")} />
                                             </div>
                                         </div>
                                         <div className="row">
                                             <div className="col">
                                                 <label className="my-1 mr-2">Starting Month</label>
-                                                <select name="startMonth" className="custom-select my-1 mr-sm-2" id="startMonth" value={this.state.startMonth} onChange={this.handleInputChange}>
+                                                <select name="startMonth" className="custom-select my-1 mr-sm-2" id="startMonth" value={this.state.fields["startMonth"]} onChange={this.handleChange.bind(this, "startMonth")}>
                                                     <option>Choose...</option>
                                                     <option value="January">January</option>
                                                     <option value="February">February</option>
@@ -348,7 +347,7 @@ handleValidation(){
                                             </div>
                                             <div className="col">
                                                 <label className="my-1 mr-2">Ending Month</label>
-                                                <select name="endMonth" className="custom-select my-1 mr-sm-2" id="endMonth" value={this.state.endMonth} onChange={this.handleInputChange}>
+                                                <select name="endMonth" className="custom-select my-1 mr-sm-2" id="endMonth" value={this.state.fields["endMonth"]} onChange={this.handleChange.bind(this, "endMonth")}>
                                                     <option>Choose...</option>
                                                     <option value="January">January</option>
                                                     <option value="February">February</option>
@@ -365,27 +364,26 @@ handleValidation(){
                                                 </select>
                                             </div>
                                         </div>
-
-                                        {/* <div className="form-group">
+                                        <div className="form-group">
                                             <label>Choose all that apply:</label>
                                             <div className="form-check">
-                                                <input className="form-check-input" type="checkbox" name="days" value="Sunday " onChange={this.onChangeDays.bind(this)} />
+                                                <input className="form-check-input" type="checkbox" name="days" value="Sunday " onChange={this.handleChange.bind(this, "days")} />
                                                 <label className="form-check-label">Sunday</label>
                                             </div>
                                             <div className="form-check">
-                                                <input className="form-check-input" type="checkbox" name="days" value="Monday " onChange={this.onChangeDays.bind(this)} />
+                                                <input className="form-check-input" type="checkbox" name="days" value="Monday " onChange={this.handleChange.bind(this, "days")} />
                                                 <label className="form-check-label">Monday</label>
                                             </div>
                                             <div className="form-check">
-                                                <input className="form-check-input" type="checkbox" name="days" value="Tuesday " onChange={this.onChangeDays.bind(this)} />
+                                                <input className="form-check-input" type="checkbox" name="days" value="Tuesday " onChange={this.handleChange.bind(this, "days")}/>
                                                 <label className="form-check-label">Tuesday</label>
                                             </div>
                                             <div className="form-check">
-                                                <input className="form-check-input" type="checkbox" name="days" value="Wednesday " onChange={this.onChangeDays.bind(this)} />
+                                                <input className="form-check-input" type="checkbox" name="days" value="Wednesday " onChange={this.handleChange.bind(this, "days")} />
                                                 <label className="form-check-label">Wednesday</label>
                                             </div>
                                             <div className="form-check">
-                                                <input className="form-check-input" type="checkbox" name="days" value="Thursday " onChange={this.onChangeDays.bind(this)} />
+                                                <input className="form-check-input" type="checkbox" name="days" value="Thursday " onChange={this.handleChange.bind(this, "days")} />
                                                 <label className="form-check-label">Thursday</label>
                                             </div>
                                             <div className="form-check">
@@ -396,11 +394,11 @@ handleValidation(){
                                                 <input className="form-check-input" type="checkbox" name="days" value="Saturday " onChange={this.onChangeDays.bind(this)} />
                                                 <label className="form-check-label">Saturday</label>
                                             </div>
-                                        </div> */}
+                                        </div>  
                                         <div className="row">
-                                            {/* <div className="col">
+                                            <div className="col">
                                                 <label className="my-1 mr-2">Starting Time</label>
-                                                <select name="startTime" className="custom-select my-1 mr-sm-2" id="startTime" value={this.state.startTime} onChange={this.handleInputChange}>
+                                                <select name="startTime" className="custom-select my-1 mr-sm-2" id="startTime" value={this.state.fields["startTime"]} onChange={this.handleChange.bind(this, "startTime")}>
                                                     <option>Choose...</option>
                                                     <option value="5:00am">5:00am</option>
                                                     <option value="6:00am">6:00am</option>
@@ -415,7 +413,7 @@ handleValidation(){
                                             </div>
                                             <div className="col">
                                                 <label className="my-1 mr-2">Ending Time</label>
-                                                <select name="endTime" className="custom-select my-1 mr-sm-2" id="endTime" value={this.state.endTime} onChange={this.handleInputChange}>
+                                                <select name="endTime" className="custom-select my-1 mr-sm-2" id="endTime" value={this.state.fields["endTime"]} onChange={this.handleChange.bind(this, "endTime")}>
                                                     <option>Choose...</option>
                                                     <option value="8:00am">8:00am</option>
                                                     <option value="9:00am">9:00am</option>
@@ -430,62 +428,62 @@ handleValidation(){
                                                     <option value="6:00pm">6:00pm</option>
                                                     <option value="7:00pm">7:00pm</option>
                                                 </select>
-                                            </div> */}
+                                            </div> 
                                         </div>
                                         <div className="form-group">
                                             <label>Choose all that apply:</label>
                                             <div className="row">
                                                 <div className="col">
                                                     <div className="form-check">
-                                                        <input className="form-check-input" type="checkbox" name="products" value="VEGETABLES " onChange={this.onChange.bind(this)} />
+                                                        <input className="form-check-input" type="checkbox" name="products" value="VEGETABLES "  onChange={this.handleChange.bind(this, "products")} />
                                                         <label className="form-check-label">Veggies</label>
                                                     </div>
                                                     <div className="form-check">
-                                                        <input className="form-check-input" type="checkbox" name="products" value="FRUIT " onChange={this.onChange.bind(this)} />
+                                                        <input className="form-check-input" type="checkbox" name="products" value="FRUIT " onChange={this.handleChange.bind(this, "products")} />
                                                         <label className="form-check-label">Fruits</label>
                                                     </div>
                                                     <div className="form-check">
-                                                        <input className="form-check-input" type="checkbox" name="products" value="EGGS " onChange={this.onChange.bind(this)} />
+                                                        <input className="form-check-input" type="checkbox" name="products" value="EGGS " onChange={this.handleChange.bind(this, "products")} />
                                                         <label className="form-check-label">Eggs</label>
                                                     </div>
                                                     <div className="form-check">
-                                                        <input className="form-check-input" type="checkbox" name="products" value="MEAT " onChange={this.onChange.bind(this)} />
+                                                        <input className="form-check-input" type="checkbox" name="products" value="MEAT " onChange={this.handleChange.bind(this, "products")} />
                                                         <label className="form-check-label">Meat</label>
                                                     </div>
                                                 </div>
                                                 <div className="col">
                                                     <div className="form-check">
-                                                        <input className="form-check-input" type="checkbox" name="products" value="DAIRY " onChange={this.onChange.bind(this)} />
+                                                        <input className="form-check-input" type="checkbox" name="products" value="DAIRY " onChange={this.handleChange.bind(this, "products")} />
                                                         <label className="form-check-label">Dairy</label>
                                                     </div>
                                                     <div className="form-check">
-                                                        <input className="form-check-input" type="checkbox" name="products" value="HONEY " onChange={this.onChange.bind(this)} />
+                                                        <input className="form-check-input" type="checkbox" name="products" value="HONEY " onChange={this.handleChange.bind(this, "products")} />
                                                         <label className="form-check-label">Honey</label>
                                                     </div>
                                                     <div className="form-check">
-                                                        <input className="form-check-input" type="checkbox" name="products" value="CRAFTS " onChange={this.onChange.bind(this)} />
+                                                        <input className="form-check-input" type="checkbox" name="products" value="CRAFTS " onChange={this.handleChange.bind(this, "products")} />
                                                         <label className="form-check-label">Crafts</label>
                                                     </div>
                                                     <div className="form-check">
-                                                        <input className="form-check-input" type="checkbox" name="products" value="BREAD " onChange={this.onChange.bind(this)} />
+                                                        <input className="form-check-input" type="checkbox" name="products" value="BREAD " onChange={this.handleChange.bind(this, "products")} />
                                                         <label className="form-check-label">Bread</label>
                                                     </div>
 
                                                 </div>
                                                 <div className="col">
                                                     <div className="form-check">
-                                                        <input className="form-check-input" type="checkbox" name="products" value="MUSIC " onChange={this.onChange.bind(this)} />
+                                                        <input className="form-check-input" type="checkbox" name="products" value="MUSIC " onChange={this.handleChange.bind(this, "products")} />
                                                         <label className="form-check-label">Music</label>
                                                     </div>
                                                     <div className="form-check">
-                                                        <input className="form-check-input" type="checkbox" name="products" value="OTHER " onChange={this.onChange.bind(this)} />
+                                                        <input className="form-check-input" type="checkbox" name="products" value="OTHER " onChange={this.handleChange.bind(this, "products")} />
                                                         <label className="form-check-label">Other</label>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <button type="submit" className="btn btn-primary" onClick={this.handleFormSubmit}>Submit</button>
-                                        </fieldset>
+                                     </fieldset>
                                     </form>
                                 </div>
                             </div>
