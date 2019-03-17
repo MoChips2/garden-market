@@ -38,9 +38,9 @@ class Navbar extends Component {
                         <li className={window.location.pathname === "/newmarket" ? "active" : ""} style={{ display: isLoggedIn ? "block" : "none" }}>
                             <Link className="nav-link" to="/newmarket">NewMarket</Link>
                         </li>
-                        <li className={window.location.pathname === "/newmarket" ? "active" : ""} style={{ display: isLoggedIn ? "none" : "block" }}>
+                        {/* <li className={window.location.pathname === "/newmarket" ? "active" : ""} style={{ display: isLoggedIn ? "none" : "block" }}>
                             <a className="nav-link" id="disabledLink" aria-disabled="true" to="#">NewMarket</a>
-                        </li>
+                        </li> */}
 
                         {/* <li className={window.location.pathname === "/searchresult" ? "active" : ""}>
                         <Link className="nav-link" to="/searchresult">Search Result</Link>
