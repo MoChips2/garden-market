@@ -18,8 +18,8 @@ import Navbar from "./components/Navbar";
 import mHome from "./components/Map/mHome";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
-import Join from "./pages/Join";
-import PrivateRoute from "./components/private-route/PrivateRoute";
+// import Join from "./pages/Join";
+// import PrivateRoute from "./components/private-route/PrivateRoute";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {

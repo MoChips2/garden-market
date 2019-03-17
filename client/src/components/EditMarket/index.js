@@ -1,6 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+// import PropTypes from "prop-types";
+// import { Link } from "react-router-dom";
 import "./style.css";
 
 function EditMarket(props) {
@@ -9,7 +9,7 @@ function EditMarket(props) {
         <div className="joinBtnDiv">
         <form action={"/mymarket/" + props.id}>
           {/* <Link to={"/mymarket/" + props.id}><h6 className="myMarket">edit market</h6></Link> */}
-          <button  type="submit" class="btn btn-primary joinBtn">Edit MARKET</button>
+          <button  type="submit" className="btn btn-primary joinBtn">Edit MARKET</button>
           </form>
         </div>
 
