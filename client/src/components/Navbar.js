@@ -21,7 +21,7 @@ class Navbar extends Component {
         console.log(userName)
         return (
 
-            <nav className="navbar navbar-expand-lg navbar-default bg-default">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <Link className="navbar-brand" to="/">Green Street</Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
@@ -35,25 +35,9 @@ class Navbar extends Component {
                         <li className={window.location.pathname === "/about" ? "active" : ""}>
                             <Link className="nav-link" to="/about">About</Link>
                         </li>
-                        <li className={window.location.pathname === "/newmarket" ? "active" : ""} style={{ display: isLoggedIn ? "block" : "none" }}>
-                            <Link className="nav-link" to="/newmarket">NewMarket</Link>
+                        <li>
+                            <Link className={"nav-link " + (isLoggedIn ? '' : 'disabled dis-link')} to="/newmarket">NewMarket</Link>
                         </li>
-                        {/* <li className={window.location.pathname === "/newmarket" ? "active" : ""} style={{ display: isLoggedIn ? "none" : "block" }}>
-                            <a className="nav-link" id="disabledLink" aria-disabled="true" to="#">NewMarket</a>
-                        </li> */}
-
-                        {/* <li className={window.location.pathname === "/searchresult" ? "active" : ""}>
-                        <Link className="nav-link" to="/searchresult">Search Result</Link>
-                    </li>
-                    <li className={window.location.pathname === "/mymarket" ? "active" : ""} style={{display: isLoggedIn?"block":"none"}}>
-                    <Link className="nav-link" to="/mymarket/5c7c2bdf6489ba0000387807">My Market</Link>
-
-                    </li>
-                    <li className={window.location.pathname === "/map" ? "active" : ""} style={{display: isLoggedIn?"block":"none"}}>
-                    <Link className="nav-link" to="/map">Address</Link>
-
-                    </li> */}
-
                     </ul>
 
                     <ul className="navbar-nav">
