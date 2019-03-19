@@ -1,3 +1,10 @@
-#carouselExampleControls {
-    height: 100%;
-}
+.carouselImg {
+    /* position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: 500px;
+    max-width: none; */
+    object-fit: cover;
+    min-width: 100%;
+  }

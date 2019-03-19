@@ -43,7 +43,7 @@ module.exports = {
     console.log(req.body.messages)
     console.log(req.body.sender)
     db.Market
-      .updateOne({ _id: req.params.id }, { $push: { messages: { $each: [ {message: req.body.messages, sender: req.body.sender} ], $position: 0 }}})
+      .updateOne({ _id: req.params.id }, { $push: { messages: { $each: [ {message: req.body.messages, sender: req.body.sender, keyID: req.body.keyID} ], $position: 0 }}})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -53,7 +53,7 @@ module.exports = {
     console.log(req.body.email)
     console.log(req.body.message)
     db.Market
-    .updateOne({ _id: req.params.id }, { $push: { joinMessages: { $each: [ {name: req.body.name, email: req.body.email, message: req.body.message } ], $position: 0 }}})
+    .updateOne({ _id: req.params.id }, { $push: { joinMessages: { $each: [ {name: req.body.name, email: req.body.email, message: req.body.message, keyID: req.body.keyID } ], $position: 0 }}})
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
   },

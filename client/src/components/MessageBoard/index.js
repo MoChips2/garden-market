@@ -5,9 +5,6 @@ import MessageList from "../../components/MessageList";
 
 class MessageBoard extends Component {
 
-    constructor(props) {
-        super(props);
-    }
     state = {
         messages: [],
         sender: ""
@@ -22,9 +19,10 @@ class MessageBoard extends Component {
     };
 
     handleFormSubmit = event => {
+        let randomId = Math.floor(Math.random()* 1000000000);
         event.preventDefault();
         var id = event.target.id;
-        API.pushMessage(id, { messages: this.state.messages, sender: this.state.sender })    
+        API.pushMessage(id, { messages: this.state.messages, sender: this.state.sender, keyID: randomId })    
     }
 
     render() {

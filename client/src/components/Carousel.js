@@ -15,14 +15,13 @@ function Carousel() {
             </div>
             <div className="carousel-inner">
                 <div className="carousel-item active">
-
-                    <img src="images/vegetables-752153_1920.jpg" className="d-block w-100" alt="..." />
+                    <img src="images/vegetables-752153_1920.jpg" className="d-flex align-items-center justify-content-center min-vh-100 carouselImg" alt="..." />
                 </div>
                 <div className="carousel-item">
-                    <img src="images/grapes-690230_1920.jpg" className="d-block w-100" alt="..." />
+                    <img src="images/grapes-690230_1920.jpg" className="d-flex align-items-center justify-content-center min-vh-100 carouselImg" alt="..." />
                 </div>
                 <div className="carousel-item">
-                    <img src="images/plant-690051_1920.jpg" className="d-block w-100" alt="..." />
+                    <img src="images/plant-690051_1920.jpg" className="d-flex align-items-center justify-content-center min-vh-100 carouselImg" alt="..." />
                 </div>
             </div>
             <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">

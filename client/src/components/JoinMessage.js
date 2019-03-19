@@ -18,12 +18,9 @@ class JoinMessage extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         if (this.state.message && this.state.email && this.state.name) {
+            let randomId = Math.floor(Math.random() * 1000000000);
             var id = this.props.id;
-            console.log(id)
-            console.log(this.state.name)
-            console.log(this.state.email)
-            console.log(this.state.message)
-            API.sendJoin(id, { name: this.state.name, email: this.state.email, message: this.state.message })
+            API.sendJoin(id, { name: this.state.name, email: this.state.email, message: this.state.message, keyID: randomId })
 
         }
     }

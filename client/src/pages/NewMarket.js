@@ -485,15 +485,20 @@ handleValidation(){
                                                 </div>
                                             </div>
                                         </div>
+                                        <br />
+
                                         <fieldset>
-                                        <button type="submit" className="btn btn-primary" onClick={this.handleFormSubmit}>Submit</button>
+                                        <button type="submit" className="btn btn-dark newMarketBtn" onClick={this.handleFormSubmit}>Submit</button>
                                      </fieldset>
                                     </form>
+                                    <br />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <br />
+                <br />
             </div>
         )
     }
