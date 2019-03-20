@@ -18,6 +18,13 @@ class Navbar extends Component {
     render() {
         const isLoggedIn = this.props.auth.isAuthenticated;
         const userName = this.props.auth.user.name;
+        const admin = "admin";
+        let adminLoggedIn = false;
+        if (isLoggedIn && userName === admin) {
+            adminLoggedIn = true;
+        } else {
+            adminLoggedIn = false;
+        }
         console.log(userName)
         return (
 
@@ -37,6 +44,9 @@ class Navbar extends Component {
                         </li>
                         <li>
                             <Link className={"nav-link " + (isLoggedIn ? '' : 'disabled dis-link')} to="/newmarket">NewMarket</Link>
+                        </li>
+                        <li>
+                            <Link className={"nav-link " + (isLoggedIn ? '' : 'disabled dis-link')} to="/admin/messages" style={{ display: adminLoggedIn ? "block" : "none" }}>Admin Messages</Link>
                         </li>
                     </ul>
 

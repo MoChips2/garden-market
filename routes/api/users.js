@@ -16,7 +16,7 @@ const User = require("../../models/users");
 router.route("/contact/admin")
   .post(usersController.pushAdminMessage)
 router.route("/messages/admin")
-  .get()
+  .get(usersController.getAdminMessages)
 
 
 // @route POST api/users/register
