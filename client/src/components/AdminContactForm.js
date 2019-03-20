@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 
-class JoinMessage extends Component {
+class AdminContactForm extends Component {
     state = {
         name: "",
         email: "",
@@ -17,10 +17,11 @@ class JoinMessage extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
+        console.log("submit form!")
         if (this.state.message && this.state.email && this.state.name) {
             let randomId = Math.floor(Math.random() * 1000000000);
-            var id = this.props.id;
-            API.sendJoin(id, { name: this.state.name, email: this.state.email, message: this.state.message, keyID: randomId })
+            
+            API.contactAdmin({ name: this.state.name, email: this.state.email, message: this.state.message, keyID: randomId })
 
         }
     }
@@ -31,10 +32,10 @@ class JoinMessage extends Component {
 
             <div className="card gardenCard">
                 <div className="card-header gardenCardHeader">
-                    <h2 className="gardenHeader">JOIN MARKET</h2>
+                    <h2 className="gardenHeader">CONTACT US</h2>
                 </div>
                 <div className="card-body gardenCardBody">
-                    <h5 className="card-title gardenCardTitle">Please tell us a bit about yourself.</h5>
+                    <h5 className="card-title gardenCardTitle">We look forward to hearing from you!</h5>
                     <form>
                         <div className="form-group">
                             <label>Name</label>
@@ -46,37 +47,21 @@ class JoinMessage extends Component {
                         </div>
                         <div className="form-row joinMessage">
                             <div className="form-group">
-                                <label>Send a private message to the organizer with your name, where you live, what you grow and why you would like to join this market. The organizer will get back to you as soon as possible.</label>
+                                <label>Message</label>
                                 <textarea className="form-control" name="message" rows="3" value={this.state.message} onChange={this.handleInputChange}></textarea>
                                 <div className="gardenBtnDiv">
-                                    <button type="submit" className="btn btn-dark gardenBtn" onClick={this.handleFormSubmit}>JOIN</button>
+                                    <button type="submit" className="btn btn-dark gardenBtn" onClick={this.handleFormSubmit}>SUBMIT</button>
                                 </div>
                             </div>
                         </div>
                     </form>
                 </div>
-
-
                 <br />
                 <br />
                 <br />
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
         )
     }
-
 }
 
-export default JoinMessage;
+export default AdminContactForm;

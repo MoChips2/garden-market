@@ -93,7 +93,7 @@ class Login extends Component {
                     </span>
                   </div>
                   <div className="gardenBtnDiv">
-                    <button type="submit" className="btn btn-primary gardenBtn">LOGIN</button>
+                    <button type="submit" className="btn btn-dark gardenBtn">LOGIN</button>
                   </div>
                 </form>
               </div>

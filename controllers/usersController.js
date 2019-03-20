@@ -19,5 +19,11 @@ module.exports = {
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
   },
+  pushAdminMessage: function(req, res) {
+    db.Users
+    .updateOne({name: "admin"}, { $push: { messages: { $each: [ {name: req.body.name, email: req.body.email, message: req.body.message, keyID: req.body.keyID } ], $position: 0 }}})
+    .then(dbModel => res.json(dbModel))
+    .catch(err => res.status(422).json(err));
+  }
   
 }

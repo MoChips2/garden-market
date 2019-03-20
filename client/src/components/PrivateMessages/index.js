@@ -21,15 +21,11 @@ function PrivateMessages(props) {
                         <hr />
                     </div>
                 ))}
-
             </div>
-
-
             <br />
             <br />
             <br />
         </div>
-
     )
 }
 
