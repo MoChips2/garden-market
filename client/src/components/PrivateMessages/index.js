@@ -14,22 +14,18 @@ function PrivateMessages(props) {
                 <h5 className="card-title gardenCardTitle">This is where people will reach you to request to become a member.</h5>
                 <hr />
                 {joinMessages.map(message => (
-                    <div>
+                    <div key={message.keyID}>
                         <h4 className="privateSender">Name: {message.name}</h4>
                         <h4 className="privateSender">Email: {message.email}</h4>
                         <p className="privateMessage">{message.message}</p>
                         <hr />
                     </div>
                 ))}
-
             </div>
-
-
             <br />
             <br />
             <br />
         </div>
-
     )
 }
 

@@ -6,64 +6,72 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
 // Load input validation
-const validateLoginInput  = require("../../config/validation/login");
+const validateLoginInput = require("../../config/validation/login");
 const validateRegisterInput = require("../../config/validation/register");
 // Load User model
 const User = require("../../models/users");
+
+
+
+router.route("/contact/admin")
+  .post(usersController.pushAdminMessage)
+router.route("/messages/admin")
+  .get(usersController.getAdminMessages)
+
 
 // @route POST api/users/register
 // @desc Register user
 // @access Public
 router.post("/register", (req, res) => {
-    // Form validation
+  // Form validation
   const { errors, isValid } = validateRegisterInput(req.body);
   // Check validation
-    if (!isValid) {
-      return res.status(400).json(errors);
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+  User.findOne({ email: req.body.email }).then(user => {
+    if (user) {
+      return res.status(400).json({ email: "Email already exists" });
     }
-    User.findOne({ email: req.body.email }).then(user => {
-      if (user) {
-        return res.status(400).json({ email: "Email already exists" });
-      } 
-  const newUser = new User({
-          name: req.body.name,
-          // username:req.body.username,
-          email: req.body.email,
-          password: req.body.password
-        });
-  // Hash password before saving in database
-        bcrypt.genSalt(10, (err, salt) => {
-          bcrypt.hash(newUser.password, salt, (err, hash) => {
-            if (err) throw err;
-            newUser.password = hash;
-            newUser
-              .save()
-              .then(user => res.json(user))
-              .catch(err => console.log(err));
-          });
-        });
+    const newUser = new User({
+      name: req.body.name,
+      // username:req.body.username,
+      email: req.body.email,
+      password: req.body.password
+    });
+    // Hash password before saving in database
+    bcrypt.genSalt(10, (err, salt) => {
+      bcrypt.hash(newUser.password, salt, (err, hash) => {
+        if (err) throw err;
+        newUser.password = hash;
+        newUser
+          .save()
+          .then(user => res.json(user))
+          .catch(err => console.log(err));
       });
+    });
+  });
 });
 
-  // @route POST api/users/login
+// @route POST api/users/login
 // @desc Login user and return JWT token
 // @access Public
 router.post("/login", (req, res) => {
   // Form validation
   console.log("payload")
-const { errors, isValid } = validateLoginInput(req.body);
-// Check validation
+  const { errors, isValid } = validateLoginInput(req.body);
+  // Check validation
   if (!isValid) {
     return res.status(400).json(errors);
   }
-const email = req.body.email;
+  const email = req.body.email;
   const password = req.body.password;
-// Find user by email
-User.findOne({email:email}).then(user => {
+  // Find user by email
+  User.findOne({ email: email }).then(user => {
     if (!user) {
       return res.status(404).json({ emailnotfound: "Email not found" });
     }
-// Check password
+    // Check password
     bcrypt.compare(password, user.password).then(isMatch => {
       if (isMatch) {
 
@@ -77,7 +85,7 @@ User.findOne({email:email}).then(user => {
         };
         console.log("payload")
         console.log(payload)
-// Sign token
+        // Sign token
         jwt.sign(
           payload,
           keys.secretOrKey,

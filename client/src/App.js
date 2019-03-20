@@ -18,6 +18,7 @@ import Navbar from "./components/Navbar";
 import mHome from "./components/Map/mHome";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
+import AdminMessages from "./pages/AdminMessages";
 // import Join from "./pages/Join";
 // import PrivateRoute from "./components/private-route/PrivateRoute";
 
@@ -62,6 +63,7 @@ class App extends Component {
               {/* The following line will take user to a specific market by id */}
               <Route exact path="/markets/:id" component={Market} />
               <Route exact path="/register" component={Register} />
+              <Route exact path="/admin/messages" component={AdminMessages} />
 
               <Route component={NoMatch} />
             </Switch>

@@ -39,25 +39,10 @@ body {
     padding-left: 25px;
 }
 
-.red-text {
-    color: red;
-}
-
 .gardenBtnDiv {
     text-align: right;
 }
 
-.gardenBtn {
-    width: 120px;
-    background-color: rgb(45, 47, 45);
-    border-color: rgb(45, 47, 45);
-    margin-bottom: 20px;
-}
-
-.gardenBtn:hover {
-    background-color: #ff8f8f;
-    border-color: #ff8f8f;
-}
 
 .label {
     color: rgb(45, 47, 45);

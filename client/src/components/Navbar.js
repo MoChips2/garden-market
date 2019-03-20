@@ -18,6 +18,13 @@ class Navbar extends Component {
     render() {
         const isLoggedIn = this.props.auth.isAuthenticated;
         const userName = this.props.auth.user.name;
+        const admin = "admin";
+        let adminLoggedIn = false;
+        if (isLoggedIn && userName === admin) {
+            adminLoggedIn = true;
+        } else {
+            adminLoggedIn = false;
+        }
         console.log(userName)
         return (
 
@@ -38,22 +45,25 @@ class Navbar extends Component {
                         <li>
                             <Link className={"nav-link " + (isLoggedIn ? '' : 'disabled dis-link')} to="/newmarket">NewMarket</Link>
                         </li>
+                        <li>
+                            <Link className={"nav-link " + (isLoggedIn ? '' : 'disabled dis-link')} to="/admin/messages" style={{ display: adminLoggedIn ? "block" : "none" }}>Admin Messages</Link>
+                        </li>
                     </ul>
 
                     <ul className="navbar-nav">
 
-                        <li className={window.location.pathname === "/login" ? "active" : ""} style={{ display: isLoggedIn ? "none" : "block" }}>
-                            <Link className="nav-link" to="/login">Login</Link>
-                        </li>
+
                         <li className={window.location.pathname === "/register" ? "active" : ""} style={{ display: isLoggedIn ? "none" : "block" }}>
                             <Link className="nav-link" to="/register">Register</Link>
                         </li>
-                        <li style={{ display: isLoggedIn ? "block" : "none" }} className="nav-link userName">{userName} &nbsp; |
-                    </li>
+                        <li style={{ display: isLoggedIn ? "block" : "none" }} className="userName">[ &nbsp;{userName}&nbsp; ]
+                        </li>
                         <li className={window.location.pathname === "/" ? "active" : ""} style={{ display: isLoggedIn ? "block" : "none" }} >
                             <Link className="nav-link" to="/" onClick={this.onLogoutClick}>Logout</Link>
                         </li>
-
+                        <li className={window.location.pathname === "/login" ? "active" : ""} style={{ display: isLoggedIn ? "none" : "block" }}>
+                            <Link className="nav-link" to="/login">Login</Link>
+                        </li>
                     </ul>
 
                 </div>

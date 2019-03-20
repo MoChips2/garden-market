@@ -39,6 +39,17 @@ export default {
         return axios.post(`/api/markets/join/${id}`, joinMessage)
     },
 
+    contactAdmin: function(contactAdminData) {
+        console.log("contactAdmin")
+        console.log(contactAdminData);
+        return axios.post(`/api/users/contact/admin`, contactAdminData)
+    },
+
+    getAdminMessages: function() {
+        console.log("getAdminMessages in API.js")
+        return axios.get("/api/users/messages/admin")
+    },
+
     // getPublicMessages: function(id) {
     //     console.log(id) // this keeps running
     //     return axios.get(`api/markets/messages/${id}`);

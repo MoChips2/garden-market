@@ -120,7 +120,7 @@ class Register extends Component {
                     <span className="red-text">{errors.password2}</span>
                   </div>
                   <div className="gardenBtnDiv">
-                    <button type="submit" className="btn btn-primary gardenBtn">REGISTER</button>
+                    <button type="submit" className="btn btn-dark gardenBtn">REGISTER</button>
                   </div>
                 </form>
               </div>

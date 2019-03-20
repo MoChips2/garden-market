@@ -22,6 +22,12 @@
 .addressSearchBtn:hover {
     background-color: rgb(172, 0, 0);
     border-color: rgb(172, 0, 0);
+    color: white;
+}
+.addressSearchBtn:active {
+    background-color: rgb(146, 0, 0);
+    border-color: rgb(146, 0, 0);
+    color: rgb(236, 236, 236);
 }
 
 .searchMessage {
