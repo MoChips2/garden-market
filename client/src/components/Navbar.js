@@ -52,18 +52,18 @@ class Navbar extends Component {
 
                     <ul className="navbar-nav">
 
-                        <li className={window.location.pathname === "/login" ? "active" : ""} style={{ display: isLoggedIn ? "none" : "block" }}>
-                            <Link className="nav-link" to="/login">Login</Link>
-                        </li>
+
                         <li className={window.location.pathname === "/register" ? "active" : ""} style={{ display: isLoggedIn ? "none" : "block" }}>
                             <Link className="nav-link" to="/register">Register</Link>
                         </li>
-                        <li style={{ display: isLoggedIn ? "block" : "none" }} className="nav-link userName">{userName} &nbsp; |
-                    </li>
+                        <li style={{ display: isLoggedIn ? "block" : "none" }} className="userName">[ &nbsp;{userName}&nbsp; ]
+                        </li>
                         <li className={window.location.pathname === "/" ? "active" : ""} style={{ display: isLoggedIn ? "block" : "none" }} >
                             <Link className="nav-link" to="/" onClick={this.onLogoutClick}>Logout</Link>
                         </li>
-
+                        <li className={window.location.pathname === "/login" ? "active" : ""} style={{ display: isLoggedIn ? "none" : "block" }}>
+                            <Link className="nav-link" to="/login">Login</Link>
+                        </li>
                     </ul>
 
                 </div>
