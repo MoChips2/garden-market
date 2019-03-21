@@ -58,48 +58,48 @@ class EditContainer extends Component {
         }
     };
     handleValidation(){
-        let fields = this.state.fields;
+        // let fields = this.state.fields;
         let errors = {};
         let formIsValid = true;
 
         //Name
-        if(!fields["marketName"]){
-           formIsValid = false;
-           errors["marketName"] = "Cannot be empty";
-        }
+        // if(!fields["marketName"]){
+        //    formIsValid = false;
+        //    errors["marketName"] = "Cannot be empty";
+        // }
 
-        //address
-        if(!fields["address"]){
-            formIsValid = false;
-            errors["address"] = "Cannot be empty";
-         }
+        // //address
+        // if(!fields["address"]){
+        //     formIsValid = false;
+        //     errors["address"] = "Cannot be empty";
+        //  }
 
-         //city
-        if(!fields["city"]){
-            formIsValid = false;
-            errors["city"] = "Cannot be empty";
-         }
+        //  //city
+        // if(!fields["city"]){
+        //     formIsValid = false;
+        //     errors["city"] = "Cannot be empty";
+        //  }
  
 
 
         //state
-        if(!fields["state"]){
-            formIsValid = false;
-            errors["state"] = "Cannot be empty";
-         }
+        // if(!fields["state"]){
+        //     formIsValid = false;
+        //     errors["state"] = "Cannot be empty";
+        //  }
 
-                 //Zip
-        if(!fields["zip"]){
-            formIsValid = false;
-            errors["zip"] = "Cannot be empty";
-         }
+        //          //Zip
+        // if(!fields["zip"]){
+        //     formIsValid = false;
+        //     errors["zip"] = "Cannot be empty";
+        //  }
 
-         if(typeof fields["zip"] !== "undefined"){
-            if(!fields["zip"].match(/^[0-9]+$/)){
-               formIsValid = false;
-               errors["zip"] = "Only numbers";
-            }        
-         }
+        //  if(typeof fields["zip"] !== "undefined"){
+        //     if(!fields["zip"].match(/^[0-9]+$/)){
+        //        formIsValid = false;
+        //        errors["zip"] = "Only numbers";
+        //     }        
+        //  }
 
 
        this.setState({
