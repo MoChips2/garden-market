@@ -29,9 +29,7 @@ class Market extends Component {
     };
 
     componentDidMount() {
-        if (this.state.markets) {
             this.loadOneMarket();
-        }
     }
 
     // The code below works to update immediately but it doesn't stop. Infinite Loop.
