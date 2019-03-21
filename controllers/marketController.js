@@ -64,5 +64,14 @@ module.exports = {
       .sort({date: -1})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+
+  findPosts: function (req, res) {
+    console.log("line 70 in marketcontroller")
+    console.log(req.params.id)
+    db.Market
+    .findById(req.params.id)
+    .then(dbModel => res.json(dbModel))
+    .catch(err => res.status(422).json(err))
   }
 }

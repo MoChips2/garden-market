@@ -29,13 +29,13 @@ class Search extends React.Component {
         return (
             <div className="col-md-12 mx-auto searchDiv">
                 <label className="searchMessage">FIND A MARKET NEAR YOU</label>
-                <div className="input-group">
+                <form className="input-group">
                     <input type="text" className="form-control" name="address" placeholder="Roseville MN" value={this.state.address} onChange={this.handleInputChange} />
-                    <span className="input-group-btn">
-                        <button className="btn addressSearchBtn" type="button" onClick={this.handleFormSubmit}>
+                    <div className="input-group-btn">
+                        <button type="submit" className="btn addressSearchBtn" onClick={this.handleFormSubmit}>
                         SEARCH</button>
-                    </span>
-                </div>
+                    </div>
+                </form>
             </div >
         )
     }

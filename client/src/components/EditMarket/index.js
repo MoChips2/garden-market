@@ -9,7 +9,7 @@ function EditMarket(props) {
         <div className="joinBtnDiv">
         <form action={"/mymarket/" + props.id}>
           {/* <Link to={"/mymarket/" + props.id}><h6 className="myMarket">edit market</h6></Link> */}
-          <button  type="submit" className="btn btn-primary joinBtn">Edit MARKET</button>
+          <button  type="submit" className="btn btn-danger joinBtn">EDIT MARKET</button>
           </form>
         </div>
 
