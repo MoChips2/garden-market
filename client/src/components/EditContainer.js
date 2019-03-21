@@ -31,21 +31,24 @@ class EditContainer extends Component {
         location_lat: "",
         location_lng: "",
         fields: {},
-           errors: {}
+        errors: {}
 
     };
- componentDidUpdate(perpProps, prepState) {
-        console.log(this.state.address);
-        if (this.state.address !== prepState.address) {
+    componentDidUpdate(perpProps, prepState) {
+        //console.log("Shilpa" + this.state.fields.address);
+       if (this.state.fields.address !== prepState.address) {
+            //console.log("Shilpa Inside" + this.state.fields.address);
             Geocode.setApiKey("AIzaSyDz7pF2K0HzwVHeQdXk3e-ALsHBnDClEbM");
-            Geocode.fromAddress(this.state.address).then(
+            Geocode.fromAddress(this.state.fields.address).then(
                 response => {
                     const { lat, lng } = response.results[0].geometry.location;
-                    console.log("lat  :" + lat, lng);
+                    //console.log("lat  :" + lat, lng);
                     console.log("Status for Message" + response.status);
+                    const tempFix = this.state.fields.address;
                     this.setState({
                         location_lat: lat,
-                        location_lng: lng
+                        location_lng: lng,
+                        address: tempFix
                     });
                 },
                 error => {
@@ -54,71 +57,53 @@ class EditContainer extends Component {
             );
         }
     };
-handleValidation(){
+    handleValidation(){
         let fields = this.state.fields;
         let errors = {};
         let formIsValid = true;
 
         //Name
-        if(Object.keys(fields).indexOf("marketName")!== -1){
-            if(!fields["marketName"] ){
-                formIsValid = false;
-                errors["marketName"] = "Cannot be empty";
-             }
+        if(!fields["marketName"]){
+           formIsValid = false;
+           errors["marketName"] = "Cannot be empty";
         }
-      
 
         //address
-        if(Object.keys(fields).indexOf("address")!==-1){
-
         if(!fields["address"]){
             formIsValid = false;
             errors["address"] = "Cannot be empty";
          }
-        }
+
          //city
-         if(Object.keys(fields).indexOf("city")!==-1){
         if(!fields["city"]){
             formIsValid = false;
             errors["city"] = "Cannot be empty";
          }
-        }
  
-        if(Object.keys(fields).indexOf("city")!==-1){
-         if(typeof fields["city"] !== "undefined"){
-            if(!fields["city"].match(/^[a-zA-Z]+$/)){
-               formIsValid = false;
-               errors["city"] = "Only letters";
-            }        
-         }
-        }
+
 
         //state
-        if(Object.keys(fields).indexOf("state")!==-1){
         if(!fields["state"]){
             formIsValid = false;
             errors["state"] = "Cannot be empty";
          }
-        }
+
                  //Zip
-                 if(Object.keys(fields).indexOf("zip")!==-1){
         if(!fields["zip"]){
             formIsValid = false;
             errors["zip"] = "Cannot be empty";
          }
-        }
 
-        if(Object.keys(fields).indexOf("zip")!==-1){
          if(typeof fields["zip"] !== "undefined"){
             if(!fields["zip"].match(/^[0-9]+$/)){
                formIsValid = false;
                errors["zip"] = "Only numbers";
             }        
          }
-        }
 
 
-       this.setState({errors: errors});
+       this.setState({
+           errors: errors});
        return formIsValid;
 }
 
@@ -179,7 +164,7 @@ handleValidation(){
                     marketName: this.state.fields.marketName,
                     organizer: this.props.auth.user.name,
                     email: email,
-                    products: this.state.fields.products,
+                    products: this.state.products,
                     address: this.state.fields.address,
                     state: this.state.fields.state,
                     city: this.state.fields.city,
@@ -188,7 +173,7 @@ handleValidation(){
                     img: this.state.fields.img,
                     startMonth: this.state.fields.startMonth,
                     endMonth: this.state.fields.endMonth,
-                    days: this.state.fields.days,
+                    days: this.state.days,
                     startTime: this.state.fields.startTime,
                     endTime: this.state.fields.endTime,
                     members: this.state.fields.members,
@@ -349,30 +334,30 @@ handleValidation(){
                                             </div>
                                             <div className="form-group col-md-2">
                                                 <label>Zip</label>
-                                                <input type="text" className="form-control" name="zip" value={this.state.fields["zip"]} defaultValue={this.props.zip}  onChange={this.handleChange.bind(this, "zip")} />
+                                                <input type="text" className="form-control" name="zip" value={this.state.fields["zip"]} onChange={this.handleChange.bind(this, "zip")} />
                                                 <span style={{color: "red"}}>{this.state.errors["zip"]}</span>
                                             </div>
                                             <div className="form-group col-md-2">
                                                 <label>Members</label>
-                                                <input type="text" className="form-control" name="members" value={this.state.members}  defaultValue={this.props.members} onChange={this.handleInputChange} />
+                                                <input type="text" className="form-control" name="members" value={this.state.fields["members"]} onChange={this.handleChange.bind(this, "members")} />
                                             </div>
                                         </div>
                                         <div className="form-row">
                                             <div className="form-group col-md-12">
                                                 <label>Tell us about your market:</label>
-                                                <textarea className="form-control" name="about" rows="3" value={this.state.about} defaultValue={this.props.about}  onChange={this.handleInputChange}></textarea>
+                                                <textarea className="form-control" name="about" rows="3" value={this.state.fields["about"]} onChange={this.handleChange.bind(this, "about")}></textarea>
                                             </div>
                                         </div>
                                         <div className="form-row">
                                             <div className="form-group col-md-12">
                                                 <label>Link to an image of your garden or market:</label>
-                                                <input className="form-control" name="img" value={this.state.img} defaultValue={this.props.img}  onChange={this.handleInputChange} />
+                                                <input className="form-control" name="img" value={this.state.fields["img"]} onChange={this.handleChange.bind(this, "img")} />
                                             </div>
                                         </div>
                                         <div className="row">
                                             <div className="col">
                                                 <label className="my-1 mr-2">Starting Month</label>
-                                                <select name="startMonth" className="custom-select my-1 mr-sm-2" id="startMonth" value={this.state.startMonth} defaultValue={this.props.startMonth}  onChange={this.handleInputChange}>
+                                                <select name="startMonth" className="custom-select my-1 mr-sm-2" id="startMonth" value={this.state.fields["startMonth"]} onChange={this.handleChange.bind(this, "startMonth")}>
                                                     <option>Choose...</option>
                                                     <option value="January">January</option>
                                                     <option value="February">February</option>
@@ -390,7 +375,7 @@ handleValidation(){
                                             </div>
                                             <div className="col">
                                                 <label className="my-1 mr-2">Ending Month</label>
-                                                <select name="endMonth" className="custom-select my-1 mr-sm-2" id="endMonth" value={this.state.endMonth}  defaultValue={this.props.endMonth}  onChange={this.handleInputChange}>
+                                                <select name="endMonth" className="custom-select my-1 mr-sm-2" id="endMonth" value={this.state.fields["endMonth"]} onChange={this.handleChange.bind(this, "endMonth")}>
                                                     <option>Choose...</option>
                                                     <option value="January">January</option>
                                                     <option value="February">February</option>
@@ -407,8 +392,8 @@ handleValidation(){
                                                 </select>
                                             </div>
                                         </div>
-
-                                        {/* <div className="form-group">
+                                        </fieldset>
+                                        <div className="form-group">
                                             <label>Choose all that apply:</label>
                                             <div className="form-check">
                                                 <input className="form-check-input" type="checkbox" name="days" value="Sunday " onChange={this.onChangeDays.bind(this)} />
@@ -419,7 +404,7 @@ handleValidation(){
                                                 <label className="form-check-label">Monday</label>
                                             </div>
                                             <div className="form-check">
-                                                <input className="form-check-input" type="checkbox" name="days" value="Tuesday " onChange={this.onChangeDays.bind(this)} />
+                                                <input className="form-check-input" type="checkbox" name="days" value="Tuesday " onChange={this.onChangeDays.bind(this)}/>
                                                 <label className="form-check-label">Tuesday</label>
                                             </div>
                                             <div className="form-check">
@@ -438,11 +423,12 @@ handleValidation(){
                                                 <input className="form-check-input" type="checkbox" name="days" value="Saturday " onChange={this.onChangeDays.bind(this)} />
                                                 <label className="form-check-label">Saturday</label>
                                             </div>
-                                        </div> */}
+                                        </div>  
+                                        <fieldset>
                                         <div className="row">
-                                            {/* <div className="col">
+                                            <div className="col">
                                                 <label className="my-1 mr-2">Starting Time</label>
-                                                <select name="startTime" className="custom-select my-1 mr-sm-2" id="startTime" value={this.state.startTime} onChange={this.handleInputChange}>
+                                                <select name="startTime" className="custom-select my-1 mr-sm-2" id="startTime" value={this.state.fields["startTime"]} onChange={this.handleChange.bind(this, "startTime")}>
                                                     <option>Choose...</option>
                                                     <option value="5:00am">5:00am</option>
                                                     <option value="6:00am">6:00am</option>
@@ -457,7 +443,7 @@ handleValidation(){
                                             </div>
                                             <div className="col">
                                                 <label className="my-1 mr-2">Ending Time</label>
-                                                <select name="endTime" className="custom-select my-1 mr-sm-2" id="endTime" value={this.state.endTime} onChange={this.handleInputChange}>
+                                                <select name="endTime" className="custom-select my-1 mr-sm-2" id="endTime" value={this.state.fields["endTime"]} onChange={this.handleChange.bind(this, "endTime")}>
                                                     <option>Choose...</option>
                                                     <option value="8:00am">8:00am</option>
                                                     <option value="9:00am">9:00am</option>
@@ -472,14 +458,15 @@ handleValidation(){
                                                     <option value="6:00pm">6:00pm</option>
                                                     <option value="7:00pm">7:00pm</option>
                                                 </select>
-                                            </div> */}
+                                            </div> 
                                         </div>
+                                        </fieldset>
                                         <div className="form-group">
                                             <label>Choose all that apply:</label>
                                             <div className="row">
                                                 <div className="col">
                                                     <div className="form-check">
-                                                        <input className="form-check-input" type="checkbox" name="products" value="VEGETABLES " onChange={this.onChange.bind(this)} />
+                                                        <input className="form-check-input" type="checkbox" name="products" value="VEGETABLES "  onChange={this.onChange.bind(this)} />
                                                         <label className="form-check-label">Veggies</label>
                                                     </div>
                                                     <div className="form-check">
@@ -501,7 +488,7 @@ handleValidation(){
                                                         <label className="form-check-label">Dairy</label>
                                                     </div>
                                                     <div className="form-check">
-                                                        <input className="form-check-input" type="checkbox" name="products" value="HONEY " onChange={this.onChange.bind(this)} />
+                                                        <input className="form-check-input" type="checkbox" name="products" value="HONEY " onChange={this.onChange.bind(this)}/>
                                                         <label className="form-check-label">Honey</label>
                                                     </div>
                                                     <div className="form-check">
@@ -526,57 +513,9 @@ handleValidation(){
                                                 </div>
                                             </div>
                                         </div>
-                                    {/* </td>
-                                    <td><button type="submit" className="btn btn-dark editBtn" id={this.props.id} onClick={this.handleFormSubmit} name={'days'}>Submit</button></td>
-                                </tr>
-                                <tr>
-                                    <td>Start Time</td>
-                                    <td className="current">{this.props.startTime}</td>
-                                    <td>
-                                        <select name="startTime" className="custom-select my-1 mr-sm-2" value={this.state.startTime} onChange={this.handleInputChange}>
-                                            <option>Choose...</option>
-                                            <option value="5:00am">5:00am</option>
-                                            <option value="6:00am">6:00am</option>
-                                            <option value="7:00am">7:00am</option>
-                                            <option value="8:00am">8:00am</option>
-                                            <option value="9:00am">9:00am</option>
-                                            <option value="10:00am">10:00am</option>
-                                            <option value="11:00am">11:00am</option>
-                                            <option value="12:00 noon">12:00 noon</option>
-                                            <option value="1:00pm">1:00pm</option>
-                                        </select>
-                                    </td>
-                                    <td><button type="submit" className="btn btn-dark editBtn" id={this.props.id} onClick={this.handleFormSubmit} name={'startTime'}>Submit</button></td>
-                                </tr>
-                                <tr>
-                                    <td>End Time</td>
-                                    <td className="current">{this.props.endTime}</td>
-                                    <td>
-                                        <select name="endTime" className="custom-select my-1 mr-sm-2" value={this.state.endTime} onChange={this.handleInputChange}>
-                                            <option>Choose...</option>
-                                            <option value="8:00am">8:00am</option>
-                                            <option value="9:00am">9:00am</option>
-                                            <option value="10:00am">10:00am</option>
-                                            <option value="11:00am">11:00am</option>
-                                            <option value="12:00 noon">12:00 noon</option>
-                                            <option value="1:00pm">1:00pm</option>
-                                            <option value="2:00pm">2:00pm</option>
-                                            <option value="3:00pm">3:00pm</option>
-                                            <option value="4:00pm">4:00pm</option>
-                                            <option value="5:00pm">5:00pm</option>
-                                            <option value="6:00pm">6:00pm</option>
-                                            <option value="7:00pm">7:00pm</option>
-                                        </select>
-                                    </td>
-                                    <td><button type="submit" className="btn btn-dark editBtn" id={this.props.id} onClick={this.handleFormSubmit} name={'endTime'}>Submit</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        
-                        <br />
-                        <br /> */}
+                                        <fieldset>
                                         <button type="submit" className="btn btn-primary" onClick={this.handleFormSubmit}>Submit</button>
-                                        </fieldset>
+                                     </fieldset>
                                     </form>
                                 </div>
                             </div>
