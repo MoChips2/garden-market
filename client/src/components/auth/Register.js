@@ -20,7 +20,8 @@ class Register extends Component {
   componentDidMount() {
     // If logged in and user navigates to Register page, should redirect them to market
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/market");
+      // To bring user to their market, we need the route to specify their market id. I changed it to redirect to home page for now.
+      this.props.history.push("/");
     }
   }
   componentWillReceiveProps(nextProps) {

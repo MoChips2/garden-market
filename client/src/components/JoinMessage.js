@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import API from "../utils/API";
+import "./JoinMessage.css";
 
 class JoinMessage extends Component {
     state = {
@@ -29,12 +30,11 @@ class JoinMessage extends Component {
         return (
 
 
-            <div className="card gardenCard">
+            <div className="card messageCard">
                 <div className="card-header gardenCardHeader">
-                    <h2 className="gardenHeader">JOIN MARKET</h2>
+                    <h2 className="messageHeader">CONTACT THE ORGANIZER</h2>
                 </div>
                 <div className="card-body gardenCardBody">
-                    <h5 className="card-title gardenCardTitle">Please tell us a bit about yourself.</h5>
                     <form>
                         <div className="form-group">
                             <label>Name</label>
@@ -44,22 +44,17 @@ class JoinMessage extends Component {
                             <label>Email</label>
                             <input type="text" className="form-control" name="email" value={this.state.email} onChange={this.handleInputChange} />
                         </div>
-                        <div className="form-row joinMessage">
-                            <div className="form-group">
-                                <label>Send a private message to the organizer with your name, where you live, what you grow and why you would like to join this market. The organizer will get back to you as soon as possible.</label>
-                                <textarea className="form-control" name="message" rows="3" value={this.state.message} onChange={this.handleInputChange}></textarea>
-                                <div className="gardenBtnDiv">
-                                    <button type="submit" className="btn btn-dark gardenBtn" onClick={this.handleFormSubmit}>JOIN</button>
-                                </div>
+                        <div className="form-group">
+                            <label>Message</label>
+                            <textarea className="form-control" name="message" rows="3" value={this.state.message} onChange={this.handleInputChange}></textarea>
+                            <p className="messageInstruction">Send the organizer a message if you'd like to join their market. Tell them what you have to offer and a bit about yourself.</p>
+
+                            <div className="gardenBtnDiv">
+                                <button type="submit" className="btn btn-dark gardenBtn" onClick={this.handleFormSubmit}>SUBMIT</button>
                             </div>
                         </div>
                     </form>
                 </div>
-
-
-                <br />
-                <br />
-                <br />
             </div>
 
 

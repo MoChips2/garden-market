@@ -18,6 +18,9 @@ router.route("/:id")
 router.route("/join/:id")
   .post(marketController.addJoin)
 
+  router.route("/posts/:id")
+  .get(marketController.findPosts)
+
 // router.route("/messages/:id")
 //   .get(marketController.findMessage)
 

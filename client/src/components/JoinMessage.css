@@ -1,0 +1,22 @@
+.messageCardTitle {
+    font-size: 1rem;
+}
+
+.messageHeader {
+    font-size: 1.25rem;
+}
+
+.messageCard {
+    margin-top: 0;
+}
+
+.messageInstruction {
+    font-size: 12px;
+    color: grey;
+    padding-top: 0;
+    text-align: justify;
+}
+
+textarea.form-control {
+    margin-bottom: 0;
+}

@@ -19,6 +19,7 @@ class Navbar extends Component {
         const isLoggedIn = this.props.auth.isAuthenticated;
         const userName = this.props.auth.user.name;
         const admin = "admin";
+        // let userMarketId = 
         let adminLoggedIn = false;
         if (isLoggedIn && userName === admin) {
             adminLoggedIn = true;
@@ -42,6 +43,11 @@ class Navbar extends Component {
                         <li className={window.location.pathname === "/about" ? "active" : ""}>
                             <Link className="nav-link" to="/about">About</Link>
                         </li>
+                        {/* <li className={window.location.pathname === "/about" ? "active" : ""} >
+                            <Link className="nav-link" to={"/markets/" + userMarketId}>My Market</Link>
+                        </li> */}
+
+
                         <li>
                             <Link className={"nav-link " + (isLoggedIn ? '' : 'disabled dis-link')} to="/newmarket">NewMarket</Link>
                         </li>

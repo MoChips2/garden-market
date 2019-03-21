@@ -9,6 +9,11 @@ export default {
         return axios.post("/api/markets", marketData);
 
     },
+    getPosts: function(id) {
+        console.log(id)
+        return axios.get(`api/markets/posts/${id}`)
+
+    },
     getMarkets: function() {
         console.log("API line 16")
         return axios.get("/api/markets")
@@ -50,6 +55,7 @@ export default {
         return axios.get("/api/users/messages/admin")
     },
 
+    
     // getPublicMessages: function(id) {
     //     console.log(id) // this keeps running
     //     return axios.get(`api/markets/messages/${id}`);

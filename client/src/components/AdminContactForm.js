@@ -20,7 +20,7 @@ class AdminContactForm extends Component {
         console.log("submit form!")
         if (this.state.message && this.state.email && this.state.name) {
             let randomId = Math.floor(Math.random() * 1000000000);
-            
+
             API.contactAdmin({ name: this.state.name, email: this.state.email, message: this.state.message, keyID: randomId })
 
         }
@@ -35,7 +35,6 @@ class AdminContactForm extends Component {
                     <h2 className="gardenHeader">CONTACT US</h2>
                 </div>
                 <div className="card-body gardenCardBody">
-                    <h5 className="card-title gardenCardTitle">We look forward to hearing from you!</h5>
                     <form>
                         <div className="form-group">
                             <label>Name</label>
@@ -45,19 +44,15 @@ class AdminContactForm extends Component {
                             <label>Email</label>
                             <input type="text" className="form-control" name="email" value={this.state.email} onChange={this.handleInputChange} />
                         </div>
-                        <div className="form-row joinMessage">
-                            <div className="form-group">
-                                <label>Message</label>
-                                <textarea className="form-control" name="message" rows="3" value={this.state.message} onChange={this.handleInputChange}></textarea>
-                                <div className="gardenBtnDiv">
-                                    <button type="submit" className="btn btn-dark gardenBtn" onClick={this.handleFormSubmit}>SUBMIT</button>
-                                </div>
+                        <div className="form-group">
+                            <label>Message</label>
+                            <textarea className="form-control" name="message" rows="3" value={this.state.message} onChange={this.handleInputChange}></textarea>
+                            <div className="gardenBtnDiv">
+                                <button type="submit" className="btn btn-dark gardenBtn" onClick={this.handleFormSubmit}>SUBMIT</button>
                             </div>
                         </div>
                     </form>
                 </div>
-                <br />
-                <br />
                 <br />
             </div>
         )

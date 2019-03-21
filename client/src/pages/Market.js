@@ -3,9 +3,6 @@ import API from "../utils/API";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
-// import { Link } from "react-router-dom";
-// // import ProductList from "../components/ProductList";
-// import JoinBtn from "../components/JoinBtn";
 import EditMarket from "../components/EditMarket";
 import AboutMarket from "../components/AboutMarket";
 import Times from "../components/Times/index";
@@ -35,9 +32,11 @@ class Market extends Component {
         this.loadOneMarket();
     }
 
-// The code below works to update immediately but it doesn't stop. Infinite Loop.
+    // The code below works to update immediately but it doesn't stop. Infinite Loop.
     // componentDidUpdate() {
+    //     if (this.state.markets) {
     //     this.loadOneMarket();
+    //     }
     // }
 
     loadOneMarket = () => {
@@ -49,10 +48,10 @@ class Market extends Component {
                     products: res.data.products,
                     message: res.data.messages.message
                 }))
-            
+
             .catch(err => console.log(err));
     };
-    
+
 
     // isOwner =() =>{
     //     const { userName } = this.props.auth.user.name;
@@ -63,14 +62,11 @@ class Market extends Component {
 
 
     render() {
-     
         var isOwner = false;
-        if(this.props.auth.user.name === this.state.markets.organizer){
+        if (this.props.auth.user.name === this.state.markets.organizer) {
             isOwner = true;
         }
-        
         return (
-
             <div className="container-fluid">
                 <div className="row titleRow" key={this.state.markets._id}>
                     <div className="col-md-12 mx-auto">
@@ -98,36 +94,23 @@ class Market extends Component {
                                     />
                                 </div>
                             </div>
-                            <div className="row">
+                            {/* <div className="row">
                                 <div className="col-md-12" style={{display: isOwner?"none":"block"}}  >
-                                    {/* <JoinBtn
-                                        id={this.state.markets._id}
-                                    /> */}
                                     <JoinMessage 
                                         id={this.state.markets._id}
                                     />
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-md-12" style={{display: isOwner?"block":"none"}}>
+                                <div className="col-md-12" style={{ display: isOwner ? "block" : "none" }}>
                                     <PrivateMessages
                                         joinMessages={this.state.markets.joinMessages}
                                         id={this.state.markets._id}
                                     />
                                 </div>
-                            </div>
-
-                            <div className="row">
-                                <div className="col-md-12" style={{display: isOwner?"block":"none"}} >
-                                    <EditMarket
-                                    id ={this.state.markets._id}
-                                    />
-                                </div>
-                            </div>
-                            
+                            </div> */}
                         </div>
                     </div>
-
                     <div className="col-md-3">
                         <div className="container">
                             <div className="row productRow">
@@ -166,18 +149,40 @@ class Market extends Component {
                                     />
                                 </div>
                             </div>
+                            <div className="row">
+                                <div className="col-md-12" style={{ display: isOwner ? "block" : "none" }} >
+                                    <EditMarket
+                                        id={this.state.markets._id}
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className="col-md-3">
                         <div className="container">
                             <div className="row">
+                                <div className="col-md-12" style={{ display: isOwner ? "none" : "block" }}  >
+                                    <JoinMessage
+                                        id={this.state.markets._id}
+                                    />
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-md-12" style={{ display: isOwner ? "block" : "none" }}>
+                                    <PrivateMessages
+                                        joinMessages={this.state.markets.joinMessages}
+                                        id={this.state.markets._id}
+                                    />
+                                </div>
+                            </div>
+                            {/* <div className="row productRow">
                                 <div className="col-md-12">
                                     <MessageBoard
                                         messages={this.state.markets.messages}
                                         id={this.state.markets._id}
                                     />
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>
@@ -186,6 +191,7 @@ class Market extends Component {
             </div >
         )
     }
+
 }
 // export default Market;
 Market.propTypes = {

@@ -19,6 +19,7 @@ import mHome from "./components/Map/mHome";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import AdminMessages from "./pages/AdminMessages";
+import MessageBoardPage from "./pages/MessageBoardPage";
 // import Join from "./pages/Join";
 // import PrivateRoute from "./components/private-route/PrivateRoute";
 
@@ -56,14 +57,12 @@ class App extends Component {
               <Route exact path="/searchresult" component={SearchResult} />
               <Route exact path="/mymarket/:id" component={MyMarket} />
               <Route exact path="/newmarket" component={NewMarket} />
-              {/* <Route exact path="/joinmarket/:id" component={Join} /> */}
-              {/* The following line won't exist in final version. Just for testing purposes using a generic market. */}
-              <Route exact path="/market" component={Market} />
               <Route exact path="/about" component={About} />
               {/* The following line will take user to a specific market by id */}
               <Route exact path="/markets/:id" component={Market} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/admin/messages" component={AdminMessages} />
+              <Route exact path="/posts/:id" component={MessageBoardPage} />
 
               <Route component={NoMatch} />
             </Switch>

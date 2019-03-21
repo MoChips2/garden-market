@@ -56,7 +56,7 @@ class UpdateMarket extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        if (this.state.marketName && this.state.organizer && this.state.email) {
+        // if (this.state.marketName && this.state.organizer && this.state.email) {
             var myid = mongoose.Types.ObjectId();
             console.log(myid.toString())
 
@@ -80,7 +80,7 @@ class UpdateMarket extends Component {
                 members: this.state.members
             }).then(this.props.history.push("markets/" + myid)
             )
-        }
+        // }
     }
     render() {
         return (
