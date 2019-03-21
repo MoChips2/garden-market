@@ -2,20 +2,20 @@
 ## A Front Yard Market Revolution
 Green Street is dedicated to solving the complex crisis of food deserts around the world by thinking small. If every city block had a collection of backyard gardeners growing fresh fruits, vegetables, honey and eggs, access to fresh food would be everywhere. Green Street provides the network and space to establish connections between gardeners and the neighbors that surround them. Front yard markets provide a community with fresh food, economic opportunity and a strong social structure. Front yard markets provide a safe space for neighbors to interact and share ideas and for families to see where their food comes from. We believe in these values. If you do too, please search for a Green Street market in your neighborhood or JOIN Green Street and start a revolution today.
 ## Green Street was created by:
-## Shilpa Pawar:
-### Login, register, routing, googlemap coords
+### Shilpa Pawar:
+Login, register, routing, googlemap coords
 https://github.com/shilpipawar
 
-## Pranab Rajbhandary:
-### Models, logout, form validation, testing and bug fixing
+### Pranab Rajbhandary:
+Models, logout, form validation, testing and bug fixing
 https://github.com/prajbhandary
 
-## Simone Medhanie:
-### Controls, Google Maps, Google Geocoding
+### Simone Medhanie:
+Controls, Google Maps, Google Geocoding
 https://github.com/MoChips2
 
-## Brian Nickila:
-### Visuals, controls, UI/UX, layout, React Components and Pages
+### Brian Nickila:
+Visuals, controls, UI/UX, layout, React Components and Pages
 https://github.com/nickila
 
 Please visit our GitHub Repo at https://github.com/MoChips2/garden-market
