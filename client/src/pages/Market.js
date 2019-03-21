@@ -97,11 +97,11 @@ class Market extends Component {
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-md-12">
+                                <div className="col-md-12" style={{display: isOwner?"none":"block"}}  >
                                     {/* <JoinBtn
                                         id={this.state.markets._id}
                                     /> */}
-                                    <JoinMessage
+                                    <JoinMessage 
                                         id={this.state.markets._id}
                                     />
                                 </div>
