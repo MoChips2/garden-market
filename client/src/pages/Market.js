@@ -29,7 +29,7 @@ class Market extends Component {
     };
 
     componentDidMount() {
-            this.loadOneMarket();
+        this.loadOneMarket();
     }
 
     // The code below works to update immediately but it doesn't stop. Infinite Loop.
@@ -94,11 +94,8 @@ class Market extends Component {
                                     />
                                 </div>
                             </div>
-                            <div className="row">
+                            {/* <div className="row">
                                 <div className="col-md-12" style={{display: isOwner?"none":"block"}}  >
-                                    {/* <JoinBtn
-                                        id={this.state.markets._id}
-                                    /> */}
                                     <JoinMessage 
                                         id={this.state.markets._id}
                                     />
@@ -111,7 +108,7 @@ class Market extends Component {
                                         id={this.state.markets._id}
                                     />
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     <div className="col-md-3">
@@ -163,14 +160,29 @@ class Market extends Component {
                     </div>
                     <div className="col-md-3">
                         <div className="container">
-                            <div className="row productRow">
+                            <div className="row">
+                                <div className="col-md-12" style={{ display: isOwner ? "none" : "block" }}  >
+                                    <JoinMessage
+                                        id={this.state.markets._id}
+                                    />
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-md-12" style={{ display: isOwner ? "block" : "none" }}>
+                                    <PrivateMessages
+                                        joinMessages={this.state.markets.joinMessages}
+                                        id={this.state.markets._id}
+                                    />
+                                </div>
+                            </div>
+                            {/* <div className="row productRow">
                                 <div className="col-md-12">
                                     <MessageBoard
                                         messages={this.state.markets.messages}
                                         id={this.state.markets._id}
                                     />
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

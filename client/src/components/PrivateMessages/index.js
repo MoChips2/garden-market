@@ -1,4 +1,5 @@
 import React from "react";
+import "../../components/JoinMessage.css";
 
 function PrivateMessages(props) {
     let joinMessages = props.joinMessages || [];
@@ -6,12 +7,11 @@ function PrivateMessages(props) {
     return (
 
 
-        <div className="card gardenCard">
+        <div className="card messageCard">
             <div className="card-header gardenCardHeader">
-                <h2 className="gardenHeader">PRIVATE MESSAGES</h2>
+                <h2 className="messageHeader">PRIVATE MESSAGES</h2>
             </div>
             <div className="card-body gardenCardBody">
-                <h5 className="card-title gardenCardTitle">This is where people will reach you to request to become a member.</h5>
                 <hr />
                 {joinMessages.map(message => (
                     <div key={message.keyID}>
