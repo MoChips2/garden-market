@@ -28,7 +28,7 @@
     "google-maps-react": "^2.0.2",
     "if-env": "^1.0.4",
     "is-empty": "^1.2.0",
-    "jsonwebtoken": "^8.5.0",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^5.4.17",
     "morgan": "^1.9.1",
     "passport": "^0.4.0",
